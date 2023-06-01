@@ -1,4 +1,4 @@
-# whoisns Mac Help Nashville, Inc.
+# whoisns by Carey James Balboa - Mac Help Nashville, Inc.
 a Python3 script for MacOS Terminal that gets right to the mission criticals of a domain!
 
 WhoisNS.py - Python Script for DNS & WHOIS Information
