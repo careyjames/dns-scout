@@ -11,6 +11,8 @@ The most important things I need to know to help resolve client issues are:
 *MX records
 *SPF and dmarc
 
+this provides the exact data without all the extra fluff.
+
 System Requirements
 Python 3.x
 whois command-line utility
