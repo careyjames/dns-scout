@@ -4,7 +4,7 @@ a Python3 script for MacOS Terminal that gets right to the mission criticals of 
 WhoisNS.py - Python Script for DNS & WHOIS Information
 
 Description:
-Retrieves and displays WHOIS data (Registrar and Name Servers) and DNS records (MX and TXT SPF records, including DMARC records if they exist) for a given domain.
+Retrieves and displays WHOIS data (Registrar and Name Servers) and DNS records (MX and ALL TXT SPF records, including DMARC records if they exist) for a given domain.
 
 The most important things I need to know to help resolve client email issues are: 
 -Registrar
@@ -18,7 +18,7 @@ Open Terminal.
 Navigate to the directory containing the whoisns.py script using the cd command.
 Run the script using Python 3: python3 whoisns.py
 When prompted, enter the domain for which you want to fetch the WHOIS and DNS information.
-The script will then display the Registrar, Name Servers, and the relevant DNS records (MX, TXT (SPF), and DMARC if available) for the provided domain.
+The script will then display the Registrar, Name Servers, and the relevant DNS records (MX, ALL TXT (SPF), and DMARC if available) for the provided domain.
 
 Example:
 ```
