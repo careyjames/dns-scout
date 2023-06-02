@@ -53,7 +53,7 @@ System Requirements
 Python 3.x
 whois command-line utility
 nslookup command-line utility
-The script was written and tested using Python 3.8.5, but it should work with other Python 3 versions. Please ensure you have the whois and nslookup utilities installed on your system.
+The script was written and tested using MacOS Ventura, Python 3.8.5, but it should work with other Python 3 versions. Please ensure you have the whois and nslookup utilities installed on your system.
 
 On macOS, you can check whether these utilities are installed by opening Terminal and running which whois and which nslookup. If these commands return a path, the utilities are installed. If not, you will need to install them. These utilities come pre-installed on most macOS versions.
 
