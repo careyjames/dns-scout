@@ -1,5 +1,5 @@
 # WhoisNS
-a Python3 script for MacOS Terminal that gets right to the mission criticals of a domain!
+a Python3 script for MacOS & Ubuntu Linux Terminal that gets right to the mission criticals of a domain!
 
 WhoisNS.py - Python Script for DNS & WHOIS Information
 
@@ -15,10 +15,12 @@ This script provides the exact data without all the extra fluff.
 
 Usage
 Open Terminal.
-Navigate to the directory containing the whoisns.py script using the cd command.
+sudo apt install whois
+sudo apt install dnsutils
+You can just navigate to the directory containing the whoisns.py script using the cd command.
 Run the script using Python 3: python3 whoisns.py
-When prompted, enter the domain for which you want to fetch the WHOIS and DNS information.
-The script will then display the Registrar, Name Servers, and the relevant DNS records (MX, ALL TXT (SPF), and DMARC if available) for the provided domain.
+When prompted, you can just enter the domain you want to fetch the WHOIS and DNS information.
+The script will display the Registrar, Name Servers, and the relevant DNS records (MX, ALL TXT (SPF), and DMARC if available) for the provided domain.
 
 Example:
 ```
