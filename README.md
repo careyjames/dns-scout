@@ -19,19 +19,29 @@ The essential information needed to resolve client email issues:
 Provides the exact data with no extra fluff.  
 Info is easy to see and copy/paste.  
 
-Requirements & Dependencies  
-System Utilities:  
-whois: Used to retrieve domain registration data.  
-nslookup: Utilized for DNS record lookups.  
-These utilities are commonly available on macOS and Linux. If you're on another system, ensure they're installed and available in your PATH.  
+Table of Contents
+Requirements & Dependencies
+System Utilities
+Python
+Python Libraries
+Usage
+Requirements & Dependencies
+System Utilities:
+whois: Used to retrieve domain registration data.
+nslookup: Utilized for DNS record lookups.
+These utilities are commonly available on macOS and Linux. If you're on another system, ensure they're installed and available in your PATH.
 
-Python:  
-Python 3.x  
-Python Libraries:  
-colorama: Required for color-coded console output. Install using pip: 
+Python:
+Python 3.x
+Python Libraries:
+colorama: Required for color-coded console output.
+To install the necessary Python library, run:
 
-Usage:  
+Copy code
+pip install colorama
+Usage:
+Navigate to the directory where dns-scout.py is located and run:
 
-System Requirements:  
-
-
+Copy code
+python3 dns-scout.py
+Follow the on-screen prompts to input a domain and retrieve its information.  
