@@ -1,7 +1,6 @@
 # XtraDNS
-a Python3 script for MacOS & Ubuntu Linux Terminal that gets right to the mission criticals of a domain!
 
-WhoisNS.py - Python Script for DNS & WHOIS Information
+XtraDNS.py - A powerful and easy-to-use domain DNS lookup utility for the terminal.
 
 Description:
 Retrieves and displays WHOIS data (Registrar and Name Servers) and DNS records (MX and ALL TXT SPF records, including DMARC records if they exist) for a given domain.
@@ -17,9 +16,9 @@ Usage
 Open Terminal.
 sudo apt install whois
 sudo apt install dnsutils
-You can just navigate to the directory containing the whoisns.py script using the cd command.
+Navigate to the directory containing the XtraDNS.py script using the cd command.
 Run the script using Python 3: python3 whoisns.py
-When prompted, you can just enter the domain you want to fetch the WHOIS and DNS information.
+When prompted, you can enter the domain to fetch the WHOIS and DNS information.
 The script will display the Registrar, Name Servers, and the relevant DNS records (MX, ALL TXT (SPF), and DMARC if available) for the provided domain.
 
 Example:
