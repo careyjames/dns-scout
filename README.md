@@ -8,7 +8,6 @@ Fetches Name Servers (NS).
 Shows MX Records (Mail Exchange).
 Displays TXT Records, useful for checking domain verification, SPF settings, etc.
 Retrieves DMARC Records to understand a domain's email authentication settings.
-dns-scout.py - A powerful and easy-to-use domain DNS lookup utility for the terminal.
 
 The essential information needed to resolve client email issues:
 -Registrar
