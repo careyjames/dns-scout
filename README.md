@@ -23,12 +23,12 @@ The script will display the Registrar, Name Servers, and the relevant DNS record
 
 Example:
 ```
-$ python3 whoisns.py
+$ python3 XtraDNS.py
 Enter domain: example.com
 ```
 The script will output the domain's WHOIS and DNS records in the following format:
 ```
-python3 whoisns.py                                                                                                            ─╯
+python3 XtraDNS.py                                                                                                            ─╯
 Enter domain: google.com
 Registrar: MarkMonitor, Inc.
 Name Servers: ns3.google.com
