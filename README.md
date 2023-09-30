@@ -1,6 +1,6 @@
-# XtraDNS
+# DNS-Scout
 
-XtraDNS.py - A powerful and easy-to-use domain DNS lookup utility for the terminal.
+dns.py - A powerful and easy-to-use domain DNS lookup utility for the terminal.
 
 Description:
 Retrieves and displays WHOIS data (Registrar and Name Servers) and DNS records (MX and ALL TXT SPF records, including DMARC records if they exist) for a given domain.
@@ -23,12 +23,12 @@ The script will display the Registrar, Name Servers, and the relevant DNS record
 
 Example:
 ```
-$ python3 XtraDNS.py
+$ python3 dns.py
 Enter domain: example.com
 ```
 The script will output the domain's WHOIS and DNS records in the following format:
 ```
-python3 XtraDNS.py                                                                                                            ─╯
+python3 dns.py                                                                                                            ─╯
 Enter domain: google.com
 Registrar: MarkMonitor, Inc.
 Name Servers: ns3.google.com
