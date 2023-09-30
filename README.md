@@ -1,4 +1,4 @@
-# WhoisNS
+# XtraDNS
 a Python3 script for MacOS & Ubuntu Linux Terminal that gets right to the mission criticals of a domain!
 
 WhoisNS.py - Python Script for DNS & WHOIS Information
