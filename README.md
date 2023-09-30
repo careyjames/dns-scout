@@ -24,7 +24,7 @@ Python:
 Python 3.x  
 Python Libraries:  
 colorama: Required for color-coded console output.  
-To install the necessary Python library, run: ''' pip install colorama  
+To install the necessary Python library, run: '''pip install colorama  
 
 Usage:  
 Navigate to the directory where dns-scout.py is located and run: python3 dns-scout.py  
