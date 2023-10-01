@@ -23,7 +23,7 @@ Info is easy to see and copy/paste.
 
 ### Installation Guide for DNS Scout  
 Clone the Repository:  
-If you have Git installed, run:  ```git clone https://github.com/YOUR_USERNAME/dns-scout.git```  
+If you have Git installed, run:  ```git clone https://github.com/careyjames/dns-scout.git```  
 Prerequisites:
 Python: Python 3.x  
 Python Libraries: colorama : Required for color-coded console output.  
