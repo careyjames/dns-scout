@@ -7,16 +7,16 @@ Registrar, NS, MX, SPF, DMARC, and PTR for easy DNS reconnaissance and troublesh
 
 ## Features:  
 **+Curated Output for Clarity:**  
-DNS Scout stands out by filtering out non-essential information, presenting users with a cleaner,  
-more focused view of the DNS data, and optimizing for clarity and relevance.  
+ DNS Scout stands out by filtering out non-essential information, presenting users with a cleaner,  
+ more focused view of the DNS data, and optimizing for clarity and relevance.  
 **+Enhanced Interactive CLI Interface:**  
-Unlike traditional utilities, DNS Scout leverages prompt_toolkit to offer an advanced command-line interface  
-that supports easy pasting and keeps track of your domain lookup history for quick recall.  
+ Unlike traditional utilities, DNS Scout leverages prompt_toolkit to offer an advanced command-line interface  
+ that supports easy pasting and keeps track of your domain lookup history for quick recall.  
 **+Streamlined WHOIS Lookup:**
-DNS Scout efficiently parses domain registration data, presenting the user with concise registrar details and name servers, eliminating the clutter typically seen in raw WHOIS outputs.  
+ DNS Scout efficiently parses domain registration data, presenting the user with concise registrar details and name servers, eliminating the clutter typically seen in  raw WHOIS outputs.  
 **+Clear TXT Record Display:**   
-Unlike basic utilities, DNS Scout lists TXT records in an easily digestible format,  
-making tasks like SPF data or domain verification review more straightforward.  
+ Unlike basic utilities, DNS Scout lists TXT records in an easily digestible format,  
+ making tasks like SPF data or domain verification review more straightforward.  
 **+Retrieves Registrar information**   
 **+Fetches Name Servers (NS)**  
 **+Shows MX Records (Mail Exchange)**  
