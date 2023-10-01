@@ -38,7 +38,8 @@ Run the following commands to install the necessary Python libraries:
 
  -```colorama``` to print colored output to the terminal.  
  -```prompt_toolkit``` to enhance the input prompt,  
- allowing for functionalities like pasting and keeping a history of entered domains.  
+ allowing for functionalities like copy/paste and keeping a history of entered domains.  
+ You can arrow up and down to cycle thru past domains you have run.
  Python Libraries: colorama : Required for color-coded console output.  
  To install the necessary Python library, run: 
  ```pip install colorama``` 
