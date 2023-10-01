@@ -26,7 +26,8 @@ Registrar, NS, MX, SPF, DMARC, and PTR for easy DNS reconnaissance and troublesh
 **NS Name Servers**  
 **MX Records**  
 **Displays TXT Records**, useful for checking domain verification, SPF settings, etc.  
-**Retrieves DMARC Records**    
+**DMARC Records**
+**PTR**  
 **Provides the exact data with no extra fluff**      
 
 ### Installation Guide for DNS Scout  
