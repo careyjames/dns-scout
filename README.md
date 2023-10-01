@@ -27,7 +27,11 @@ If you have Git installed, run:  ```git clone https://github.com/careyjames/dns-
 If you don't have Git, simply download the repository as a zip file and extract it in the home folder.  
 
 #### Navigate to the Directory:  
-```cd ~/DNS-Scout```
+```cd ~/DNS-Scout```  
+
+##### Install Required Python Libraries:
+Run the following command to install the necessary Python libraries:  
+```pip install prompt_toolkit colorama```  
 
 Prerequisites:
 Python: Python 3.x  
