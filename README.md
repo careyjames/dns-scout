@@ -5,18 +5,23 @@ Registrar, NS, MX, SPF, DMARC, and PTR for easy DNS reconnaissance and troublesh
  
 <img src="apple-dns.png" alt="Apple DNS records" width="800">  
 
-## Features:  
+## Features:   
+
 **Curated Output for Clarity:**  
  DNS Scout stands out by filtering out non-essential information, presenting users with a cleaner,  
  more focused view of the DNS data, and optimizing for clarity and relevance.  
+ 
 **Enhanced Interactive CLI Interface:**  
  DNS Scout leverages ```prompt_toolkit``` to offer an advanced command-line interface  
  that's **easy to see and copy/paste** and uses arrow keys up and down to **cycle through the history** of queried domains.  
+ 
 **Streamlined WHOIS Lookup:**
  DNS Scout efficiently parses domain registration data, presenting the user with concise registrar details and name servers, eliminating the clutter typically seen in  raw WHOIS outputs.  
+ 
 **Clear TXT Record Display:**   
  DNS Scout lists TXT records in an easily digestible format,  
  making tasks like SPF data or domain verification review more straightforward.  
+ 
 **Retrieves Registrar information**   
 **NS Name Servers**  
 **MX Records (Mail Exchange)**  
