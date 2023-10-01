@@ -25,14 +25,14 @@ Info is easy to see and copy/paste.
 Prerequisites:
 Python: Python 3.x  
 
-#### 1. **Clone the Repository:**    
+#### 1. Clone the Repository:    
 If you have Git installed, run:  ```git clone https://github.com/careyjames/dns-scout.git```  
 If you don't have Git, download the repository as a zip file and extract it in the home folder.  
 
-#### Navigate to the Directory:  
+##### 2. Navigate to the Directory:  
 ```cd ~/DNS-Scout```  
 
-#####  Install Required Python Libraries:
+###### 3. Install Required Python Libraries:
 Run the following commands to install the necessary Python libraries:  
 ```pip install prompt_toolkit colorama```  
 
@@ -40,7 +40,7 @@ Run the following commands to install the necessary Python libraries:
  -```prompt_toolkit``` to enhance the input prompt,  
  allowing for functionalities like copy/paste and keeping a history of entered domains.  
 
-###### Usage:  
+####### 4. Usage:  
 Navigate to the directory where ```dns-scout.py``` is located.  
 ```cd ~/DNS-Scout/```
 Then run: ```python3 dns-scout.py```  
