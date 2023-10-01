@@ -1,4 +1,4 @@
-# DNS-Scout  
+ # DNS-Scout  
 
 DNS Scout for Linux/MacOS pulls and displays DNS records in a color-coded console output that is **easy to see** and **copy/paste**.   
 Registrar, NS, MX, SPF, DMARC and PTR for easy DNS reconnaissance and troubleshooting.  
@@ -32,19 +32,15 @@ If you don't have Git, simply download the repository as a zip file and extract 
 #### Navigate to the Directory:  
 ```cd ~/DNS-Scout```  
 
-##### Install Required Python Libraries:
+#####  Install Required Python Libraries:
 Run the following commands to install the necessary Python libraries:  
 ```pip install prompt_toolkit colorama```  
 
  -```colorama``` to print colored output to the terminal.  
  -```prompt_toolkit``` to enhance the input prompt,  
  allowing for functionalities like copy/paste and keeping a history of entered domains.  
- You can arrow up and down to cycle thru past domains you have run.  
- Python Libraries: colorama : Required for color-coded console output.  
- To install the necessary Python library, run: 
- ```pip install colorama``` 
 
-Usage:  
+###### Usage:  
 Navigate to the directory where ```dns-scout.py``` is located.  
 ```cd ~/DNS-Scout/```
 Then run: ```python3 dns-scout.py```  
