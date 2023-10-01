@@ -13,7 +13,7 @@ more focused view of the DNS data, optimizing for clarity and relevance.
 Unlike traditional utilities, DNS Scout leverages prompt_toolkit to offer an advanced command-line interface  
 that supports easy pasting and keeps track of your domain lookup history for quick recall.  
 **-Streamlined WHOIS Lookup:**
-DNS Scout efficiently parses domain registration data, presenting the user with concise registrar details and name servers, eliminating the clutter typically seen in raw WHOIS outputs.
+DNS Scout efficiently parses domain registration data, presenting the user with concise registrar details and name servers, eliminating the clutter typically seen in raw WHOIS outputs.  
 **-Clear TXT Record Display:**   
 Unlike basic utilities, DNS Scout lists TXT records in an easily digestible format,  
 making tasks like SPF data or domain verification review more straightforward.
