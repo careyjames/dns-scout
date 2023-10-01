@@ -30,6 +30,6 @@ Navigate to the directory where ```dns-scout.py``` is located.
 Run: ```python3 dns-scout.py```  
 Follow the on-screen prompts to input a domain and retrieve its information.   
 OR  
-Keep dns-scout.py in your home folder and add this line in your .zshrc file for a cool shortcut.  
+Keep ```dns-scout.py``` in your home folder and add this line in your .zshrc file for a cool shortcut.  
 then you can simply type "dns" in terminal to launch:  
 ```alias dns='python3 ~/dns-scout.py```
