@@ -30,8 +30,7 @@ Registrar, NS, MX, SPF, DMARC, and PTR for easy DNS reconnaissance and troublesh
 **Provides the exact data with no extra fluff**      
 
 ### Installation Guide for DNS Scout  
-Prerequisites:
-Python: Python 3.x  
+Prerequisites: Python 3.x  
 
 #### 1. Clone the Repository:    
 If you have Git installed, run:  ```git clone https://github.com/careyjames/dns-scout.git```  
