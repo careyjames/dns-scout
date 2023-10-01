@@ -22,7 +22,7 @@ Provides the exact data with no extra fluff.
 Info is easy to see and copy/paste.  
 
 ### Installation Guide for DNS Scout  
-Clone the Repository:  
+*Clone the Repository:*  
 If you have Git installed, run:  ```git clone https://github.com/careyjames/dns-scout.git```  
 If you don't have Git, simply download the repository as a zip file and extract it in the home folder.  
 
