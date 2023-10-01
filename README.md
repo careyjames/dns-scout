@@ -15,7 +15,7 @@ Registrar, NS, MX, SPF, DMARC, and PTR for easy DNS reconnaissance and troublesh
 **Streamlined WHOIS Lookup:**
  DNS Scout efficiently parses domain registration data, presenting the user with concise registrar details and name servers, eliminating the clutter typically seen in  raw WHOIS outputs.  
 **Clear TXT Record Display:**   
- Unlike basic utilities, DNS Scout lists TXT records in an easily digestible format,  
+ DNS Scout lists TXT records in an easily digestible format,  
  making tasks like SPF data or domain verification review more straightforward.  
 **Retrieves Registrar information**   
 **NS Name Servers**  
