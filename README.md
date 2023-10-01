@@ -20,7 +20,7 @@ Registrar, NS, MX, SPF, DMARC, and PTR for easy DNS reconnaissance and troublesh
 **Retrieves Registrar information**   
 **NS Name Servers**  
 **MX Records (Mail Exchange)**  
-**Displays TXT Records, useful for checking domain verification, SPF settings, etc.**  
+**Displays TXT Records**, useful for checking domain verification, SPF settings, etc.  
 **Retrieves DMARC Records**    
 **Provides the exact data with no extra fluff**      
 
