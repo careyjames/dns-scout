@@ -22,6 +22,9 @@ Provides the exact data with no extra fluff.
 Info is easy to see and copy/paste.  
 
 ### Installation Guide for DNS Scout  
+Prerequisites:
+Python: Python 3.x  
+
 **Clone the Repository:**    
 If you have Git installed, run:  ```git clone https://github.com/careyjames/dns-scout.git```  
 If you don't have Git, simply download the repository as a zip file and extract it in the home folder.  
@@ -30,14 +33,14 @@ If you don't have Git, simply download the repository as a zip file and extract 
 ```cd ~/DNS-Scout```  
 
 ##### Install Required Python Libraries:
-Run the following command to install the necessary Python libraries:  
+Run the following commands to install the necessary Python libraries:  
 ```pip install prompt_toolkit colorama```  
-
-Prerequisites:
-Python: Python 3.x  
-Python Libraries: colorama : Required for color-coded console output.  
-To install the necessary Python library, run: 
-```pip install colorama``` 
+ We're using colorama to print colored output to the terminal.
+ We've implemented the use of prompt_toolkit to enhance the input prompt,  
+ allowing for functionalities like pasting and keeping a history of entered domains.  
+ Python Libraries: colorama : Required for color-coded console output.  
+ To install the necessary Python library, run: 
+ ```pip install colorama``` 
 
 Usage:  
 Navigate to the directory where ```dns-scout.py``` is located.  
