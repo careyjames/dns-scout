@@ -40,13 +40,13 @@ If you don't have Git, download the repository as a zip file and extract it in y
 ##### 2. Navigate to the Directory:  
 ```cd ~/DNS-Scout```  
 
-###### **3. Install Required Python Libraries:**  
+###### 3. Install Required Python Libraries:  
  Run the following commands to install the necessary Python libraries:  
  ```pip install prompt_toolkit colorama```  
 
- -```colorama``` to print colored output to the terminal.  
- -```prompt_toolkit``` to enhance the input prompt,  
- allowing for functionalities like copy/paste and keeping a history of entered domains.  
+  -```colorama``` to print colored output to the terminal.  
+  -```prompt_toolkit``` to enhance the input prompt,  
+  allowing for functionalities like copy/paste and keeping a history of entered domains.  
 
 ***Usage:***  
 Navigate to the directory where ```dns-scout.py``` is located.  
