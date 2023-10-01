@@ -3,8 +3,7 @@
 DNS Scout pulls and displays DNS records in a clear, color-coded console output.  
 From standard NS records to DMARC settings, it provides a quick overview for DNS reconnaissance and troubleshooting.  
   
-  <img src="![Apple DNS records](apple-dns.png)" alt="Description of Image" width="200">
-
+<img src="apple-dns.png" alt="Apple DNS records" width="200">  
 
 Features:  
 Retrieves Registrar information.  
