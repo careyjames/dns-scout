@@ -24,6 +24,8 @@ Info is easy to see and copy/paste.
 ### Installation Guide for DNS Scout  
 Clone the Repository:  
 If you have Git installed, run:  ```git clone https://github.com/careyjames/dns-scout.git```  
+If you don't have Git, simply download the repository as a zip file and extract it in the home folder.  
+
 Prerequisites:
 Python: Python 3.x  
 Python Libraries: colorama : Required for color-coded console output.  
