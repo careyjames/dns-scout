@@ -16,7 +16,7 @@ that supports easy pasting and keeps track of your domain lookup history for qui
 DNS Scout efficiently parses domain registration data, presenting the user with concise registrar details and name servers, eliminating the clutter typically seen in raw WHOIS outputs.  
 **-Clear TXT Record Display:**   
 Unlike basic utilities, DNS Scout lists TXT records in an easily digestible format,  
-making tasks like SPF data or domain verification review more straightforward.
+making tasks like SPF data or domain verification review more straightforward.  
 **-Retrieves Registrar information**   
 **-Fetches Name Servers (NS)**  
 **-Shows MX Records (Mail Exchange)**  
