@@ -18,8 +18,8 @@ Registrar, NS, MX, SPF, DMARC, and PTR for easy DNS reconnaissance and troublesh
  Unlike basic utilities, DNS Scout lists TXT records in an easily digestible format,  
  making tasks like SPF data or domain verification review more straightforward.  
 **Retrieves Registrar information**   
-**Fetches Name Servers (NS)**  
-**Shows MX Records (Mail Exchange)**  
+**NS Name Servers**  
+**MX Records (Mail Exchange)**  
 **Displays TXT Records, useful for checking domain verification, SPF settings, etc.**  
 **Retrieves DMARC Records**    
 **Provides the exact data with no extra fluff**    
