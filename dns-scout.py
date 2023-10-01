@@ -1,4 +1,4 @@
-# Version: v4.9
+# DNS Scout - Version: v5.0
 
 import subprocess
 import sys
@@ -37,7 +37,7 @@ history = InMemoryHistory()
 def get_info(start_line, lines):
     registrar = None
     name_servers = []
-    i = start_line  # Initialize the index
+    i = start_line
     for i in range(start_line, len(lines)):
         line = lines[i]
         if "Registrar:" in line and registrar is None:
@@ -53,7 +53,7 @@ def get_info(start_line, lines):
         return i, True
     return i, False
 
-def print_dns_records(mx_records, txt_records, dmarc_record):
+def print_dns_records(mx_records, txt_records, dmarc_record, ptr_records):
     # MX Records
     print(Fore.MAGENTA + "\nMX Records:")
     for line in mx_records:
@@ -74,12 +74,23 @@ def print_dns_records(mx_records, txt_records, dmarc_record):
             txt = line.split("text =")[1].strip()
             print("  ", txt)
 
+    # PTR Records
+    print(Fore.MAGENTA + "\nPTR Records:")
+    ptr_found = False
+    for line in ptr_records:
+        if "name =" in line:
+            ptr = line.split("name =")[1].strip()
+            print("  ", ptr)
+            ptr_found = True
+    if not ptr_found:
+        print("  None found")
+
 # Main loop
 while True:
     print('-' * 80)  # Line separator
     domain = prompt(
         FormattedText([('cyan', 'Enter domain (or \'exit\' to quit): ')]),
-        history=history,  # Add the history argument here
+        history=history,
         key_bindings=kb,
         clipboard=InMemoryClipboard()
     ).strip()
@@ -113,4 +124,9 @@ while True:
     except subprocess.CalledProcessError:
         dmarc_record = []
 
-    print_dns_records(mx_records, txt_records, dmarc_record)
+    try:
+        ptr_records = subprocess.check_output(["nslookup", "-q=ptr", domain]).decode("utf-8").splitlines()
+    except subprocess.CalledProcessError:
+        ptr_records = []
+
+    print_dns_records(mx_records, txt_records, dmarc_record, ptr_records)
