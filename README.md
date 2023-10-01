@@ -48,6 +48,7 @@ Follow the on-screen prompts to input a domain and retrieve its information.
 OR  
 Add this line: ```alias dns='python3 ~/DNS-Scout/dns-scout.py``` in your ```.zshrc``` file for a cool shortcut.  
 Then, you can simply type "dns" in terminal to launch.  
+
 <img src="dns-scout.gif" alt="Just type dns" width="800">   
 
 <img src="google-dns.png" alt="Google DNS records" width="800">  
