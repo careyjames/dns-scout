@@ -25,9 +25,9 @@ Info is easy to see and copy/paste.
 Prerequisites:
 Python: Python 3.x  
 
-**Clone the Repository:**    
+#### 1. **Clone the Repository:**    
 If you have Git installed, run:  ```git clone https://github.com/careyjames/dns-scout.git```  
-If you don't have Git, simply download the repository as a zip file and extract it in the home folder.  
+If you don't have Git, download the repository as a zip file and extract it in the home folder.  
 
 #### Navigate to the Directory:  
 ```cd ~/DNS-Scout```  
