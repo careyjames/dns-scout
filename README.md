@@ -15,11 +15,10 @@ Registrar, NS, MX, SPF, DMARC, and PTR for easy DNS reconnaissance and troublesh
  DNS Scout leverages ```prompt_toolkit``` to offer an advanced command-line interface  
  that's **easy to see and copy/paste**     
  **Session-based Memory Cycling**  
-DNS Scout's interactive interface provides users a convenient memory cycle feature through the up and down arrow keys.  
-This allows you to swiftly navigate your recent domain lookup history for the current session.  
-It's an invaluable tool when you're conducting multiple lookups and need to refer back to a previous entry.  
-However, it's essential to note that this memory is session-based.  
-Once you exit DNS Scout, this lookup history is cleared, ensuring privacy and a clean slate for your next session.
+DNS Scout's interactive interface has a memory cycle feature, controlled by the up and down arrow keys.  
+It helps navigate recent domain lookups for the session quickly.  
+This feature is useful when conducting multiple lookups, and you need to refer to a previous entry.   
+The memory is session-based, which means it clears once you exit DNS Scout, maintaining your privacy and a clean slate for your next session.  
  
 **Streamlined WHOIS Lookup:**
  DNS Scout efficiently parses domain registration data, presenting the user with concise registrar details and name servers, eliminating the clutter typically seen in  raw WHOIS outputs.  
