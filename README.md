@@ -40,7 +40,7 @@ If you don't have Git, download the repository as a zip file and extract it in y
 ##### 2. Navigate to the Directory:  
 ```cd ~/DNS-Scout```  
 
-###### 3. Install Required Python Libraries:
+###### **3. Install Required Python Libraries:**  
  Run the following commands to install the necessary Python libraries:  
  ```pip install prompt_toolkit colorama```  
 
