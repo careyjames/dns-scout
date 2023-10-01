@@ -5,7 +5,7 @@ Registrar, NS, MX, SPF, DMARC and PTR for easy DNS reconnaissance and troublesho
  
 <img src="apple-dns.png" alt="Apple DNS records" width="800">  
 
-Features:  
+## Features:  
 Retrieves Registrar information.  
 Fetches Name Servers (NS).  
 Shows MX Records (Mail Exchange).  
@@ -17,10 +17,14 @@ The essential information needed to resolve client email issues:
 -The 2NS servers  
 -MX records  
 -SPF and dmarc  
--PTR  
+  
 Provides the exact data with no extra fluff.  
 Info is easy to see and copy/paste.  
 
+### Installation Guide for DNS Scout  
+Clone the Repository:  
+If you have Git installed, run:  ```git clone https://github.com/YOUR_USERNAME/dns-scout.git```  
+Prerequisites:
 Python: Python 3.x  
 Python Libraries: colorama : Required for color-coded console output.  
 To install the necessary Python library, run: 
