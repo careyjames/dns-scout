@@ -35,7 +35,7 @@ If you don't have Git, simply download the repository as a zip file and extract 
 ##### Install Required Python Libraries:
 Run the following commands to install the necessary Python libraries:  
 ```pip install prompt_toolkit colorama```  
- We're using colorama to print colored output to the terminal.
+ We're using colorama to print colored output to the terminal.  
  We've implemented the use of prompt_toolkit to enhance the input prompt,  
  allowing for functionalities like pasting and keeping a history of entered domains.  
  Python Libraries: colorama : Required for color-coded console output.  
