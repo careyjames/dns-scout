@@ -11,7 +11,7 @@ Registrar, NS, MX, SPF, DMARC, and PTR for easy DNS reconnaissance and troublesh
  more focused view of the DNS data, and optimizing for clarity and relevance.  
 **Enhanced Interactive CLI Interface:**  
  Unlike traditional utilities, DNS Scout leverages prompt_toolkit to offer an advanced command-line interface  
- that's **Easier to see and copy/paste** and keeps track of your domain lookup history for quick recall.  
+ that's **easier to see and copy/paste** and keeps track of your domain lookup history for quick recall.  
 **Streamlined WHOIS Lookup:**
  DNS Scout efficiently parses domain registration data, presenting the user with concise registrar details and name servers, eliminating the clutter typically seen in  raw WHOIS outputs.  
 **Clear TXT Record Display:**   
