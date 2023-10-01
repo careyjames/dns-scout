@@ -48,7 +48,7 @@ If you don't have Git, download the repository as a zip file and extract it in y
   -```prompt_toolkit``` to enhance the input prompt,  
   allowing for functionalities like copy/paste and keeping a history of entered domains.  
 
-####**Usage:**  
+#### **Usage:**  
 Navigate to the directory where ```dns-scout.py``` is located.  
 ```cd ~/DNS-Scout/```
 Then run: ```python3 dns-scout.py```  
