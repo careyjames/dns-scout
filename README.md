@@ -17,7 +17,6 @@ The essential information needed to resolve client email issues:
 -The 2NS servers  
 -MX records  
 -SPF and dmarc  
-  
 Provides the exact data with no extra fluff.  
 Info is easy to see and copy/paste.  
 
@@ -40,7 +39,7 @@ Run the following commands to install the necessary Python libraries:
  -```prompt_toolkit``` to enhance the input prompt,  
  allowing for functionalities like copy/paste and keeping a history of entered domains.  
 
-####### 4. Usage:  
+######## 4. Usage:  
 Navigate to the directory where ```dns-scout.py``` is located.  
 ```cd ~/DNS-Scout/```
 Then run: ```python3 dns-scout.py```  
