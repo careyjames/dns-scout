@@ -33,7 +33,7 @@ The memory is session-based, which means it clears once you exit DNS Scout, main
 **Displays TXT Records**, useful for checking domain verification, SPF settings, etc.  
 **DMARC Records**
 **PTR**  
-**Provides the exact data with no extra fluff**      
+**Provides exact DNS data, no scrolling**      
 
 ### Installation Guide for DNS Scout  
 Prerequisites: Python 3.x  
