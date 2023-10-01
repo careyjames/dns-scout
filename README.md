@@ -20,10 +20,8 @@ The essential information needed to resolve client email issues:
 Provides the exact data with no extra fluff.  
 Info is easy to see and copy/paste.  
 
-Python:  
-Python 3.x  
-Python Libraries:  
-colorama: Required for color-coded console output.  
+Python: Python 3.x  
+Python Libraries: colorama : Required for color-coded console output.  
 To install the necessary Python library, run: 
 ```pip install colorama``` 
 
