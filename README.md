@@ -2,8 +2,7 @@
 
 DNS Scout for Linux/MacOS pulls and displays DNS records in a color-coded console output that is **easy to see** and **copy/paste**.   
 Registrar, NS, MX, SPF, and DMARC for easy DNS reconnaissance and troubleshooting.  
-
-<img src="dns-scout.gif" alt="Just type dns" width="800">  
+ 
 <img src="apple-dns.png" alt="Apple DNS records" width="800">  
 
 Features:  
@@ -33,6 +32,7 @@ Follow the on-screen prompts to input a domain and retrieve its information.
 OR  
 Keep ```dns-scout.py``` in your home folder and add this line: ```alias dns='python3 ~/dns-scout.py``` in your ```.zshrc``` file for a cool shortcut.  
 Then, you can simply type "dns" in terminal to launch.  
+<img src="dns-scout.gif" alt="Just type dns" width="800">   
 
 <img src="google-dns.png" alt="Google DNS records" width="800">  
 
