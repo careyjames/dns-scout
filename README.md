@@ -1,6 +1,6 @@
 # DNS-Scout  
 
-DNS Scout pulls and displays DNS records in a color-coded console output that is **easy to see** and **copy/paste**.   
+DNS Scout for Linux/MacOS pulls and displays DNS records in a color-coded console output that is **easy to see** and **copy/paste**.   
 Registrar, NS, MX, SPF, and DMARC settings for easy DNS reconnaissance and troubleshooting.
   
 <img src="apple-dns.png" alt="Apple DNS records" width="800">  
