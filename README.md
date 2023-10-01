@@ -28,7 +28,7 @@ To install the necessary Python library, run:
 ```pip install colorama``` 
 
 Usage:  
-Navigate to the directory where dns-scout.py is located.  
+Navigate to the directory where ```dns-scout.py``` is located.  
 Run: ```python3 dns-scout.py```  
 Follow the on-screen prompts to input a domain and retrieve its information.  
 OR
