@@ -47,7 +47,7 @@ If you don't have Git, download the repository as a zip file and extract it in y
 
 3. Install Required Python Libraries:  
  Run the following commands to install the necessary Python libraries:  
- ```pip install prompt_toolkit colorama```  
+ ```pip install dns whois prompt-toolkit colorama```  
 
   -```colorama``` to print colored output to the terminal.  
   -```prompt_toolkit``` to enhance the input prompt,  
