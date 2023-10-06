@@ -3,7 +3,7 @@
 DNS Scout for Linux/MacOS pulls and displays DNS records in a color-coded console output that is **easy to see** and **copy/paste**.   
 Registrar, NS, MX, SPF, DMARC, and PTR for easy DNS reconnaissance and troubleshooting.  
  
-<img src="apple-dns.png" alt="Apple DNS records" width="800">  
+<img src="example-domains.png" alt="Apple DNS records" width="800">  
 
 ## Features:   
 
