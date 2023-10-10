@@ -10,9 +10,12 @@ on:
     branches: [ "main" ]
 
 jobs:
+      strategy:
+        matrix:
+          os: [ubuntu-latest, macos-latest]
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
 
