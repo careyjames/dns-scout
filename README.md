@@ -49,7 +49,7 @@ For those who like to get their hands dirty:
    ```chmod +x dns-scout```
 
 3. **Move to PATH**:  
-   Move the executable to a directory in your system's PATH. For example, you can move it to `/usr/local/bin` on a Unix-based system:  
+   Move the executable to a directory in your system's PATH. For example, you can move it to `/usr/local/bin/` on a Unix-based system:  
    ```sudo mv dns-scout /usr/local/bin/```
 
 4. **Run DNS Scout**:  
