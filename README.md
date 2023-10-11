@@ -36,14 +36,27 @@ This feature is useful when conducting multiple lookups, and you need to refer t
 **Exact DNS data, no scrolling**      
 
 ### Installation Guide for DNS Scout  
-Prerequisites: Go 1.21  
+  
+#### Manual Nerd Install
+Prerequisites: Go 1.21
+For those who like to get their hands dirty:
 
-1. Clone the Repository:    
-If you have Git installed, run:  ```git clone https://github.com/careyjames/dns-scout.git```  
-If you don't have Git, download the repository as a zip file and extract it in your home folder.  
+1. **Download the Binary**:  
+   Download the compiled binary for your operating system from the [Releases](https://github.com/careyjames/dns-scout/releases) page.
 
-2. Navigate to the Directory:  
-```cd ~/DNS-Scout```  
+2. **Make It Executable**:  
+   After downloading, navigate to the download directory and run:  
+   ```chmod +x dns-scout```
+
+3. **Move to PATH**:  
+   Move the executable to a directory in your system's PATH. For example, you can move it to `/usr/local/bin` on a Unix-based system:  
+   ```sudo mv dns-scout /usr/local/bin```
+
+4. **Run DNS Scout**:  
+   Open a new terminal window and simply type `dns-scout` to start using the tool.
+
+That's it! You've manually installed DNS-Scout like a true nerd.
  
+ #### **Usage:**
 
-#### **Usage:**  
+
