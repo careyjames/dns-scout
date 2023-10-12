@@ -1,3 +1,6 @@
+// The main function in this code is a command-line tool that fetches and displays various information
+// about a domain or IP address, including registrar, DNS records, SPF and DMARC records, PTR records,
+// and ASN information.
 package main
 
 import (
@@ -24,17 +27,18 @@ const IPInfoAPIURL = "https://ipinfo.io/"
 
 // IPInfoResponse struct holds the response from the IPInfo API
 type IPInfoResponse struct {
-	IP       string `json:"ip"`
-	Domain   string `json:"domain"`
-	Hostname string `json:"hostname"`
-	City     string `json:"city"`
-	Region   string `json:"region"`
-	Country  string `json:"country"`
-	Loc      string `json:"loc"`
-	Org      string `json:"org"`
-	Postal   string `json:"postal"`
-	Timezone string `json:"timezone"`
-	Readme   string `json:"readme"`
+	ASN      map[string]interface{} `json:"asn"`
+	IP       string                 `json:"ip"`
+	Domain   string                 `json:"domain"`
+	Hostname string                 `json:"hostname"`
+	City     string                 `json:"city"`
+	Region   string                 `json:"region"`
+	Country  string                 `json:"country"`
+	Loc      string                 `json:"loc"`
+	Org      string                 `json:"org"`
+	Postal   string                 `json:"postal"`
+	Timezone string                 `json:"timezone"`
+	Readme   string                 `json:"readme"`
 }
 
 // getRegistrar fetches the registrar information for a given domain.
@@ -392,6 +396,12 @@ func main() {
 				fmt.Printf("\033[38;5;39m Organization: \033[38;5;78m%s\033[0m\n", asnInfo.Org)
 				fmt.Printf("\033[38;5;39m Postal Code: \033[38;5;78m%s\033[0m\n", asnInfo.Postal)
 				fmt.Printf("\033[38;5;39m Timezone: \033[38;5;78m%s\033[0m\n", asnInfo.Timezone)
+				asnInfoStrs := []string{}
+				for k, v := range asnInfo.ASN {
+					asnInfoStrs = append(asnInfoStrs, fmt.Sprintf("%s: %v", k, v))
+				}
+				fmt.Printf("\033[38;5;39m ASN: \033[38;5;78m%s\033[0m\n", strings.Join(asnInfoStrs, ", "))
+
 			} else {
 				fmt.Println(" Error fetching ASN Information:", err)
 			}
