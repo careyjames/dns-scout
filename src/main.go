@@ -1,6 +1,3 @@
-// The main function in this code is a command-line tool that fetches and displays various information
-// about a domain or IP address, including registrar, DNS records, SPF and DMARC records, PTR records,
-// and ASN information.
 package main
 
 import (
