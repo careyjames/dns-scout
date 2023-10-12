@@ -66,7 +66,7 @@ Argumento de línea de comandos: útil para aquellos que desean especificar dife
 
 Almacenado en un archivo: ideal para usuarios habituales que desean establecer el token de API una vez y olvidarlo. El token se leerá de un archivo en el directorio de inicio del usuario, lo que lo hace conveniente para ellos.
 
-Si estás en MacOS, ve a Ajustes del sistema > Seguridad y privacidad y dale a ```dns-scout-<version>``` permisos de disco completo.
+**Si estás en MacOS**, ve a Ajustes del sistema > Seguridad y privacidad y dale a ```dns-scout-<version>``` permisos de disco completo.
 
 <img src="dev-not-verified.png" alt="Dev not Verified" width="800"> 
 <img src="mac-click-allow.png" alt="Example IP records" width="800"> 
