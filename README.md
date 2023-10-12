@@ -46,14 +46,21 @@ For those who like to get their hands dirty:
 
 2. **Make It Executable**:  
    After downloading, navigate to the download directory and run:  
-   ```chmod +x dns-scout```
+   ```chmod +x dns-scout-<version>``` (macos-silicon linux-amd64)
 
 3. **Move to PATH**:  
-   Move the executable to a directory in your system's PATH. For example, you can move it to `/usr/local/bin` on a Unix-based system:  
-   ```sudo mv dns-scout /usr/local/bin```
+   Move the executable to a directory in your system's PATH. For example, you can move it to `/usr/local/bin/` on a Unix-based system:  
+   ```sudo mv dns-scout /usr/local/bin/```
 
-4. **Run DNS Scout**:  
-   Open a new terminal window and simply type `dns-scout` to start using the tool.
+4. Additional Steps for macOS Users:
+   If you're on macOS, you might see a security warning when trying to run DNS Scout for the first time. To resolve this:
+
+   Go to System Settings > Security & Privacy.
+   Look for a message about DNS Scout being blocked.
+   Click Allow Anyway.
+
+5. **Run DNS Scout**:  
+   Open a new terminal window and simply type `dns-scout<version>` to start using the tool.
 
 That's it! You've manually installed DNS-Scout like a true nerd.
  
