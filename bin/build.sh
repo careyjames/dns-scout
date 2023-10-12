@@ -1,8 +1,7 @@
 #!/bin/bash
-- uses: actions/setup-go@v2
-  with:
-    go-version: 1.21
-    modules-directory: src
+
+# Make sure to install Go 1.21 before running this script
+# or update the path to the Go binary accordingly.
 
 # Step 1: Compile the Go code
 echo "Compiling Go code..."
