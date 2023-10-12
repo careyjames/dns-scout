@@ -1,4 +1,4 @@
-# DNS-Scout  
+# DNS-Scout 🇨🇴 🇺🇸 Carey James Balboa - Mac Help Nashville, Inc. 
 
 [español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
 
