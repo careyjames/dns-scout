@@ -3,7 +3,9 @@ DNS Scout para Linux/MacOS extrae y muestra los registros DNS en una salida de c
 
 Registrador, NS, MX, SPF, DMARC, ASN y PTR para un fácil reconocimiento y resolución de problemas de DNS.
 
-<img src="example-domain.png" alt="Example DNS records" width="800"> 
+<img src="example-domain.png" alt="Example DNS records" width="800">  
+
+<img src="example-IP.png" alt="Example IP records" width="800">  
 
 ## Características:
 
