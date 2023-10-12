@@ -73,4 +73,5 @@ Command-Line Argument: Useful for those who wish to specify different API tokens
 
 Stored in a File: Ideal for regular users who want to set the API token once and forget it. The token will be read from a file in the user's home directory, making it convenient for them.   
 If you are on  MacOS, go to System Settings > Security & Privacy and give ```dns-scout-<version>``` full disk permissions.   
-  
+ <img src="dev-not-verified.png" alt="Dev not Verified" width="800"> 
+<img src="mac-click-allow.png" alt="Example IP records" width="800"> 
