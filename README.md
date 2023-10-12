@@ -16,7 +16,7 @@ Registrar, NS, MX, SPF, DMARC, ASN and PTR for easy DNS reconnaissance and troub
  that's **easy to see and copy/paste**     
  **Session-based Memory Cycling**  
 DNS Scout's interactive interface has a memory cycle feature, controlled by the up and down arrow keys.  
-It helps navigate recent domain lookups for the session quickly.  
+It helps navigate recent lookups for the session quickly.  
 This feature is useful when conducting multiple lookups, and you need to refer to a previous entry.   
   
 **Streamlined WHOIS Lookup:**
@@ -24,7 +24,7 @@ This feature is useful when conducting multiple lookups, and you need to refer t
  
 **Clear TXT Record Display:**   
  DNS Scout lists TXT records in an easily digestible format,  
- making tasks like SPF data or domain verification review more straightforward.  
+ making tasks like SPF or DMARC verification review more straightforward.  
  
 **Registrar**   
 **NS Name Servers**  
@@ -37,7 +37,7 @@ This feature is useful when conducting multiple lookups, and you need to refer t
 
 ### Installation Guide for DNS Scout  
   
-#### Manual Nerd Install
+#### Manual MacOS/Linux Nerd Install
 Prerequisites: Go 1.21
 For those who like to get their hands dirty:
 
