@@ -1,5 +1,7 @@
 # DNS-Scout  
 
+[español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
+
 DNS Scout for Linux/MacOS pulls and displays DNS records in a color-coded console output that is **easy to see** and **copy/paste**.   
 Registrar, NS, MX, SPF, DMARC, ASN and PTR for easy DNS reconnaissance and troubleshooting.  
  
