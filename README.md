@@ -60,8 +60,19 @@ For those who like to get their hands dirty:
    Click Allow Anyway.
 
 5. **Run DNS Scout**:  
-   Open a new terminal window and simply type `dns-scout<version>` to start using the tool.
+   Open a new terminal window and type `dns-scout<version>` to start using the tool.
 
 That's it! You've manually installed DNS-Scout like a true nerd.
 
+**Here's a breakdown of how each method of storing the API token could be useful:**  
+
+Environment Variable: Useful for users running the program in a controlled environment like a server,   
+where setting environment variables is common practice.   
+The ```/share/setup-api-token.sh``` script would be helpful for them.  
+  
+Command-Line Argument: Useful for those who wish to specify different API tokens for different runs without changing environment variables. It could be useful for testing.   
+
+Stored in a File: Ideal for regular users who want to set the API token once and forget it. The token will be read from a file in the user's home directory, making it convenient for them.   
+If you are on  MacOS, go to System Settings > Security & Privacy and give dns-scout-<version> full disk permissions.   
+  
 
