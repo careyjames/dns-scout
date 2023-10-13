@@ -13,7 +13,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, kalilinux/kali-rolling]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -29,4 +29,10 @@ jobs:
 
     - name: Test
       run: cd src && go test -v ./... && cd -
-      
+
+    - name: Security Scan
+      run: gosec ./...
+
+    - name: Deploy (if on main branch)
+      if: github.ref == 'refs/heads/main'
+      run: ./deploy.sh # Replace with your actual deployment script
