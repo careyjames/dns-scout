@@ -1,4 +1,4 @@
-module DNS-Scout
+module github.com/careyjames/DNS-Scout
 
 go 1.21
 
