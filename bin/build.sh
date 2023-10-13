@@ -5,7 +5,7 @@
 
 # Step 1: Compile the Go code
 echo "Compiling Go code..."
-cd ../src && go build -v -o ../bin/dns-scout main.go && cd -
+go build -v -o ../bin/dns-scout main.go
 
 # Step 2: Create the directory structure
 echo "Creating directory structure..."

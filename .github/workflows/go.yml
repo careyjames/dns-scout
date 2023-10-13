@@ -24,9 +24,6 @@ jobs:
       with:
         go-version: '1.21'
 
-    - name: Change to src directory
-      run: cd src
-
     - name: Debug - Show current directory
       run: pwd
 
@@ -34,7 +31,7 @@ jobs:
       run: ls -al
 
     - name: Build
-      run: go build -v -o ../bin/dns-scout main.go
+      run: go build -v -o ./bin/dns-scout main.go
 
     - name: Test
       run: go test -v ./...
