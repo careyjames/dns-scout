@@ -27,6 +27,12 @@ jobs:
     - name: Change to src directory
       run: cd src
 
+    - name: Debug - Show current directory
+      run: pwd
+
+    - name: Debug - List directory contents
+      run: ls -al
+
     - name: Build
       run: go build -v -o ../bin/dns-scout main.go
 
