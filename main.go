@@ -248,6 +248,22 @@ func colorCodeSPFRecord(record string, valid bool) string {
 	return fmt.Sprintf("%s%s\033[0m", colorCode, record)
 }
 
+// fetchAPIToken fetches the IPInfo API token from environment variable or user input.
+func fetchAPIToken(apiTokenFlag string) string {
+	apiToken := os.Getenv("IPINFO_API_TOKEN")
+
+	if apiTokenFlag != "" {
+		apiToken = apiTokenFlag
+	}
+
+	if apiToken == "" {
+		fmt.Print("IPINFO_API_TOKEN environment variable is not set.\nPlease enter your IPInfo API token: ")
+		fmt.Scanln(&apiToken)
+	}
+
+	return apiToken
+}
+
 func main() {
 	var apiTokenFlag string
 	flag.StringVar(&apiTokenFlag, "api-token", "", "IPInfo API token")
@@ -267,16 +283,7 @@ func main() {
 	}
 	defer rl.Close()
 
-	apiToken := os.Getenv("IPINFO_API_TOKEN")
-
-	if apiTokenFlag != "" {
-		apiToken = apiTokenFlag
-	}
-
-	if apiToken == "" {
-		fmt.Print("IPINFO_API_TOKEN environment variable is not set.\nPlease enter your IPInfo API token: ")
-		fmt.Scanln(&apiToken)
-	}
+	apiToken := fetchAPIToken(apiTokenFlag)
 
 	s := spinner.New(spinner.CharSets[9], 100*time.Millisecond) // Use the dots character set and update every 100ms
 
