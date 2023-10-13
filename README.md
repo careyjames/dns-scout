@@ -2,8 +2,6 @@
 ![Build Status](https://github.com/careyjames/DNS-Scout/actions/workflows/go.yml/badge.svg?branch=main)
 [![Code Climate](https://codeclimate.com/github/careyjames/DNS-Scout/badges/gpa.svg)](https://codeclimate.com/github/careyjames/DNS-Scout)
 [![Dependabot status](https://api.dependabot.com/status?host=github&repo=careyjames/DNS-Scout)](https://api.dependabot.com/status?host=github&repo=careyjames/DNS-Scout)
-![Deploy Backend](https://github.com/careyjames/DNS-Scout/workflows/Backend%20Pipeline/badge.svg?branch=master)
-![Deploy Frontend](https://github.com/careyjames/DNS-Scout/workflows/Frontend%20Pipeline/badge.svg?branch=master)
 
 [español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
 
