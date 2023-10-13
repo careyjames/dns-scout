@@ -5,6 +5,6 @@
 
 # Step 1: Compile the Go code
 echo "Compiling Go code..."
-go build -v -o dns-scout ../main.go
+go build -v -o ./bin/dns-scout main.go
 
 echo "Build complete."
