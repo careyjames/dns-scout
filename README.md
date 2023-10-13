@@ -1,5 +1,5 @@
 # DNS-Scout 🇺🇸 Carey James Balboa - Mac Help Nashville, Inc. 
-![Build Status](https://github.com/careyjames/DNS-Scout/actions/workflows/go.yml/badge.svg)
+![Build Status](https://github.com/careyjames/DNS-Scout/actions/.github/workflows/go.yml/badge.svg)
 
 
 [español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
