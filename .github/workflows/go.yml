@@ -32,7 +32,3 @@ jobs:
 
     - name: Security Scan
       run: gosec ./...
-
-    - name: Deploy (if on main branch)
-      if: github.ref == 'refs/heads/main'
-      run: ./deploy.sh # Replace with your actual deployment script
