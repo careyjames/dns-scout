@@ -24,10 +24,11 @@ jobs:
       with:
         go-version: '1.21'
 
-    - name: Build and Test
-      run: |
-        cd src
-        go build -o ../bin/your_binary
-        go test ./...
-        cd -
+    - name: Change to src directory
+      run: cd src
 
+    - name: Build
+      run: go build -v -o ../bin/dns-scout main.go
+
+    - name: Test
+      run: go test -v ./...
