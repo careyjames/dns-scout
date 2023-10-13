@@ -26,6 +26,7 @@ jobs:
 
     - name: Build
       run: cd src && go build -v -o ../bin/dns-scout main.go && cd -
+            run: go test -v ./...
 
     - name: Test
       run: cd src && go test -v ./... && cd -
