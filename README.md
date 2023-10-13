@@ -5,8 +5,7 @@
 
 [español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
 
-DNS Scout for Linux/MacOS pulls and displays DNS records in a color-coded console output that is **easy to see** and **copy/paste**.   
-Registrar, NS, MX, SPF, DMARC, ASN and PTR for easy DNS reconnaissance and troubleshooting.  
+DNS Scout is a DNS security tool that helps you find and fix DNS problems with email flow. It is easy to use and can be used by both IT professionals and beginners. DNS Scout can help you improve your email security, prevent email spoofing, and troubleshoot email delivery problems.    
  
 <img src="example-domain.png" alt="Example DNS records" width="800">   
 
