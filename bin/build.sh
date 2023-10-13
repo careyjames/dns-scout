@@ -5,14 +5,6 @@
 
 # Step 1: Compile the Go code
 echo "Compiling Go code..."
-go build -v -o ../bin/dns-scout main.go
-
-# Step 2: Create the directory structure
-echo "Creating directory structure..."
-mkdir -p ../bin/DNS-Scout/share
-
-# Step 4: Copy the shell script to share/
-echo "Copying shell script to share/..."
-cp ../share/setup-api-token.sh ../bin/DNS-Scout/share/setup-api-token.sh
+go build -v -o dns-scout ../main.go
 
 echo "Build complete."

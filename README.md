@@ -5,7 +5,7 @@
 
 [español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
 
-DNS Scout is a DNS security tool that helps you find and fix DNS problems with email flow. It is easy to use and can be used by both IT professionals and beginners. DNS Scout can help you improve your email security, prevent email spoofing, and troubleshoot email delivery problems.    
+DNS Scout is a DNS troubleshooting tool that helps you get your email to the inbox. It checks SPF, DMARC, and MX records, and it is for both pros and beginners. DNS Scout is compatible with macOS, Ubuntu, and Kali Linux.    
  
 <img src="example-domain.png" alt="Example DNS records" width="800">   
 
