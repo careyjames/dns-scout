@@ -1,4 +1,7 @@
 # DNS-Scout 🇺🇸 Carey James Balboa - Mac Help Nashville, Inc. 
+[![Backend Pipeline Status](https://github.com/careyjames/DNS-Scout/actions/workflows/backend.yml/badge.svg)](https://github.com/careyjames/DNS-Scout//actions/workflows/backend.yml)
+
+[![Frontend Pipeline Status](https://github.com/<YOUR_USERNAME>/<YOUR_REPOSITORY>/actions/workflows/frontend.yml/badge.svg)](https://github.com/<YOUR_USERNAME>/<YOUR_REPOSITORY>/actions/workflows/frontend.yml)
 
 [español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
 
