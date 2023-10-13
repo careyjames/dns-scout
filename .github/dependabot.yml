@@ -1,0 +1,7 @@
+version: 2
+updates:
+  - package-ecosystem: "gomod"  # For Go modules
+    directory: "/"  # Root directory where go.mod is located
+    schedule:
+      interval: "weekly"  # Weekly updates
+
