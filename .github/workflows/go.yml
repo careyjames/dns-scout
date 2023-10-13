@@ -13,7 +13,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, kalilinux/kali-rolling]
+        os: [kalilinux/kali-rolling, ubuntu-latest, macos-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
