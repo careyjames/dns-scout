@@ -15,7 +15,7 @@ jobs:
       matrix:
         os: [kalilinux/kali-rolling, ubuntu-latest, macos-latest]
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os == 'kalilinux/kali-rolling' && 'self-hosted' || matrix.os }}
     steps:
     - uses: actions/checkout@v3
 
