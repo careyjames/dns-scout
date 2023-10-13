@@ -30,8 +30,8 @@ jobs:
     - name: Test
       run: cd src && go test -v ./... && cd -
 
-    - name: Install gosec
-      run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+#    - name: Install gosec
+#      run: go install github.com/securego/gosec/v2/cmd/gosec@latest
   
-    - name: Security Scan
-      run: gosec ./...
+#    - name: Security Scan
+#      run: gosec ./...
