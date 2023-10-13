@@ -1,6 +1,3 @@
-// The main function in this code is a command-line tool that fetches and displays various information
-// about a domain or IP address, including registrar, DNS records, SPF and DMARC records, PTR records,
-// and ASN information.
 package main
 
 import (
@@ -251,9 +248,7 @@ func colorCodeSPFRecord(record string, valid bool) string {
 	return fmt.Sprintf("%s%s\033[0m", colorCode, record)
 }
 
-// main is the entry point of the application.
 func main() {
-	// Add these lines right here, at the beginning of the main function
 	var apiTokenFlag string
 	flag.StringVar(&apiTokenFlag, "api-token", "", "IPInfo API token")
 	flag.Parse()
@@ -272,15 +267,12 @@ func main() {
 	}
 	defer rl.Close()
 
-	// Read API token from environment variable
 	apiToken := os.Getenv("IPINFO_API_TOKEN")
 
-	// Override with command-line argument if provided
 	if apiTokenFlag != "" {
 		apiToken = apiTokenFlag
 	}
 
-	// If API token is still not set, prompt the user
 	if apiToken == "" {
 		fmt.Print("IPINFO_API_TOKEN environment variable is not set.\nPlease enter your IPInfo API token: ")
 		fmt.Scanln(&apiToken)
