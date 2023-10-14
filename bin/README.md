@@ -61,27 +61,27 @@ For those who like to get their hands dirty:
    Download the compiled binary for your operating system from
    the [Releases](https://github.com/careyjames/dns-scout/releases) page.
 
-2. **Make It Executable:**
+1. **Make It Executable:**
    After downloading, navigate to the download directory and run:
 
    ```chmod +x dns-scout-<version>``` (macos-silicon linux-amd64)
 
-3. **Move to PATH:**
+1. **Move to PATH:**
    Move the executable to a directory in your system's PATH. For example,
    you can move it to `/usr/local/bin/` on a Unix-based system:
    ```sudo mv dns-scout /usr/local/bin/```
 
-4. **Get free or paid token from ipinfo.io**
+1. **Get free or paid token from ipinfo.io**
    [Website](ipinfo.io)
 
-5. **Run DNS Scout:**
+1. **Run DNS Scout:**
    Open a new terminal window and type `dns-scout` to start using the tool.
 
 That's it! You've manually installed DNS-Scout like a true nerd.
 
 **Here's a breakdown of how each method of storing the API token could be useful:**
 
-Environment Variable: Useful for users running the program in a controlled 
+Environment Variable: Useful for users running the program in a controlled
 environment like a server,
 where setting environment variables is common practice.
 The ```/share/setup-api-token.sh``` script would be helpful for them.
