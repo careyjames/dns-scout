@@ -1,4 +1,5 @@
 # DNS-Scout 🇨🇴 Carey James Balboa - Mac Help Nashville, Inc.
+
 DNS Scout para Linux/MacOS extrae y muestra los registros DNS en una
 salida de consola codificada por colores que es fácil de ver y copiar/pegar.
 

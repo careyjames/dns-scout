@@ -1,4 +1,5 @@
 # DNS-Scout 🇺🇸 Carey James Balboa - Mac Help Nashville, Inc.
+
 ![Build Status](https://github.com/careyjames/DNS-Scout/actions/workflows/go.yml/badge.svg?branch=main)
 [![Code Climate](https://codeclimate.com/github/careyjames/DNS-Scout/badges/gpa.svg)](https://codeclimate.com/github/careyjames/DNS-Scout)
 [![Go Report Card](https://goreportcard.com/badge/github.com/careyjames/DNS-Scout)](https://goreportcard.com/report/github.com/careyjames/DNS-Scout)
@@ -10,7 +11,6 @@ It checks SPF, DMARC, and MX records, and it is for both pros and beginners.
 DNS Scout is compatible with macOS, Ubuntu, and Kali Linux.
 
 <img src="example-domain.png" alt="Example DNS records" width="800">
-
 <img src="example-IP.png" alt="Example IP records" width="800">
 
 ## Features
@@ -70,6 +70,7 @@ For those who like to get their hands dirty:
    ```sudo mv dns-scout /usr/local/bin/```
 
 4. **Get free or paid token from ipinfo.io**
+   [Website](ipinfo.io)
 
 5. **Run DNS Scout:**
    Open a new terminal window and type `dns-scout` to start using the tool.
