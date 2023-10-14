@@ -242,6 +242,37 @@ func TestGetNSPrompt(t *testing.T) {
 	output2 := buf2.String()
 	expectedOutput2 := "\033[38;5;39m Name Servers: \033[0m\033[38;5;88mNone\033[0m\n"
 	if output2 == expectedOutput2 {
-		t.Errorf("getNSPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
+	}
+}
+
+func TestGetMXPrompt(t *testing.T) {
+	// Test case 1: valid input with MX records
+	input1 := "example.com"
+	expected1 := []string{"mx1.example.com", "mx2.example.com"}
+	mx1, _ := getMX(input1)
+	if reflect.DeepEqual(mx1, expected1) {
+		t.Errorf("getMXPrompt(%q) = %q; expected %q", input1, mx1, expected1)
+	}
+	var buf bytes.Buffer
+	getMXPrompt(input1)
+	output1 := buf.String()
+	expectedOutput1 := fmt.Sprintf("\033[38;5;39m Mail Servers: \033[38;5;78m%s\033[0m\n", strings.Join(expected1, ", "))
+	if output1 == expectedOutput1 {
+		t.Errorf("getMXPrompt(%q) output = %q; expected %q", input1, output1, expectedOutput1)
+	}
+
+	// Test case 2: valid input with no MX records
+	input2 := "example.net"
+	expected2 := []string{}
+	mx2, _ := getMX(input2)
+	if reflect.DeepEqual(mx2, expected2) {
+		t.Errorf("getMXPrompt(%q) = %q; expected %q", input2, mx2, expected2)
+	}
+	var buf2 bytes.Buffer
+	getMXPrompt(input2)
+	output2 := buf2.String()
+	expectedOutput2 := "\033[38;5;39m Mail Servers: \033[0m\033[38;5;88mNone\033[0m\n"
+	if output2 == expectedOutput2 {
+		t.Errorf("getMXPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
 	}
 }
