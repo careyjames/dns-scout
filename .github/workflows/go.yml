@@ -30,6 +30,9 @@ jobs:
     - name: Debug - List directory contents
       run: ls -al
 
+    - name: install dependencies
+      run: go mod tidy  
+
     - name: Build
       run: go build -v -o ./bin/dns-scout main.go
 
