@@ -21,7 +21,7 @@ jobs:
         run: |
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
-        working-directory: ${{ github.workspace }}
+        working-directory: ./
 
       - name: Run Tests and Upload Coverage
         env:
@@ -30,4 +30,4 @@ jobs:
           go test ./... -coverprofile c.out
           ./cc-test-reporter format-coverage -t gocov -o codeclimate.json c.out
           ./cc-test-reporter upload-coverage
-        working-directory: ${{ github.workspace }}
+        working-directory: ./
