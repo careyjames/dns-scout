@@ -10,8 +10,8 @@ DNS Scout is a DNS troubleshooting tool that helps you get your email to the inb
 It checks SPF, DMARC, and MX records, and it is for both pros and beginners.
 DNS Scout is compatible with macOS, Ubuntu, and Kali Linux.
 
-<img src="example-domain.png" alt="Example DNS records" width="800">
-<img src="example-IP.png" alt="Example IP records" width="800">
+![Example DNS records](example-domain.png)
+![Example IP records](example-IP.png)
 
 ## Features
 
@@ -87,7 +87,7 @@ where setting environment variables is common practice.
 The ```/share/setup-api-token.sh``` script would be helpful for them.
 
 Command-Line Argument: Useful for those who wish to specify different API tokens
-for different runs without changing environment variables. 
+for different runs without changing environment variables.
 It could be useful for testing.
 
 Stored in a File: Ideal for regular users who want to set the API
@@ -98,5 +98,5 @@ making it convenient for them.
 **If you are on MacOS,** go to System Settings > Security & Privacy and
 give `dns-scout-<version>` permissions.
 
-<img src="dev-not-verified.png" alt="Dev not Verified" width="800">
-<img src="mac-click-allow.png" alt="Example IP records" width="800">
+![Dev not Verified](dev-not-verified.png)
+![Example IP records](mac-click-allow.png)

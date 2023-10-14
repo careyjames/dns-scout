@@ -6,9 +6,8 @@ salida de consola codificada por colores que es fácil de ver y copiar/pegar.
 Registrador, NS, MX, SPF, DMARC, ASN y PTR para un fácil reconocimiento y
 resolución de problemas de DNS.
 
-<img src="example-domain.png" alt="Example DNS records" width="800">
-
-<img src="example-IP.png" alt="Example IP records" width="800">
+![Example DNS records](example-domain.png)
+![Example IP records](example-IP.png)
 
 ## Características
 
@@ -97,5 +96,5 @@ directorio de inicio del usuario, lo que lo hace conveniente para ellos.
 **Si estás en MacOS**, ve a Ajustes del sistema > Seguridad y privacidad
 y dale a ```dns-scout-<version>``` permisos.
 
-<img src="dev-not-verified.png" alt="Dev not Verified" width="800">
-<img src="mac-click-allow.png" alt="Example IP records" width="800">
+![Dev not Verified](dev-not-verified.png)
+![Example IP records](mac-click-allow.png)
