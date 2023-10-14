@@ -35,4 +35,6 @@ jobs:
           mkdir -p ./github.com/careyjames
           ln -s $PWD ./github.com/careyjames/DNS-Scout
           ./cc-test-reporter format-coverage -t gocov -o codeclimate.json c.out
+          mkdir -p ./coverage
+          ln -s $PWD ./coverage
           ./cc-test-reporter upload-coverage
