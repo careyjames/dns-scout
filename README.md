@@ -21,7 +21,7 @@ DNS Scout is a DNS troubleshooting tool that helps you get your email to the inb
  DNS Scout leverages ```readline``` to offer an advanced command-line interface  
  that's **easy to see and copy/paste**     
  **Session-based Memory Cycling**  
-DNS Scout's interactive interface has a memory cycle feature, controlled by the up and down arrow keys.  
+DNS Scout's interactive interface has a memory cycle feature,controlled by the up and down arrow keys.  
 It helps navigate recent lookups for the session quickly.  
 This feature is useful when conducting multiple lookups, and you need to refer to a previous entry.   
   
