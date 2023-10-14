@@ -314,36 +314,13 @@ func main() {
 		}
 
 		if !isIP {
-			ips, _ := net.LookupIP(input)
-			if len(ips) > 0 {
-				fmt.Printf("\033[38;5;39m Resolved IPs: \033[38;5;78m%s\033[0m\n", strings.Join(ipsToStrings(ips), ", "))
-			}
+			resolvedIPPrompt(input)
 
-			ns, _ := getNS(input)
-			if len(ns) > 0 {
-				fmt.Printf("\033[38;5;39m Name Servers: \033[38;5;78m%s\033[0m\n", strings.Join(ns, ", "))
-			} else {
-				fmt.Printf("\033[38;5;39m Name Servers: \033[0m\033[38;5;88mNone\033[0m\n")
-			}
+			getNSPrompt(input)
 
-			mx, _ := getMX(input)
-			if len(mx) > 0 {
-				fmt.Printf("\033[38;5;39m MX Records: \033[38;5;78m%s\033[0m\n", strings.Join(mx, ", "))
-			} else {
-				fmt.Printf("\033[38;5;39m MX Records: \033[0m\033[38;5;88mNo MX, No email.\033[0m\n")
-			}
+			getMXPrompt(input)
 
-			txt, _ := getTXT(input)
-			if len(txt) > 0 {
-				fmt.Printf("\033[38;5;39m TXT Records:\033[0m\n")
-				for _, record := range txt {
-					isValidSPF := strings.HasPrefix(record, "v=spf1")
-					coloredRecord := colorCodeSPFRecord(record, isValidSPF)
-					fmt.Printf(" %s\n", coloredRecord)
-				}
-			} else {
-				fmt.Printf("\033[38;5;39m TXT Records: \033[0m\033[38;5;88mNone\033[0m\n")
-			}
+			getTXTPrompt(input)
 
 			dmarc, _ := getDMARC(input)
 			if dmarc != "" {
@@ -405,5 +382,44 @@ func main() {
 				fmt.Println(" Error fetching ASN Information:", err)
 			}
 		}
+	}
+}
+
+func resolvedIPPrompt(input string) {
+	ips, _ := net.LookupIP(input)
+	if len(ips) > 0 {
+		fmt.Printf("\033[38;5;39m Resolved IPs: \033[38;5;78m%s\033[0m\n", strings.Join(ipsToStrings(ips), ", "))
+	}
+}
+
+func getNSPrompt(input string) {
+	ns, _ := getNS(input)
+	if len(ns) > 0 {
+		fmt.Printf("\033[38;5;39m Name Servers: \033[38;5;78m%s\033[0m\n", strings.Join(ns, ", "))
+	} else {
+		fmt.Printf("\033[38;5;39m Name Servers: \033[0m\033[38;5;88mNone\033[0m\n")
+	}
+}
+
+func getMXPrompt(input string) {
+	mx, _ := getMX(input)
+	if len(mx) > 0 {
+		fmt.Printf("\033[38;5;39m MX Records: \033[38;5;78m%s\033[0m\n", strings.Join(mx, ", "))
+	} else {
+		fmt.Printf("\033[38;5;39m MX Records: \033[0m\033[38;5;88mNo MX, No email.\033[0m\n")
+	}
+}
+
+func getTXTPrompt(input string) {
+	txt, _ := getTXT(input)
+	if len(txt) > 0 {
+		fmt.Printf("\033[38;5;39m TXT Records:\033[0m\n")
+		for _, record := range txt {
+			isValidSPF := strings.HasPrefix(record, "v=spf1")
+			coloredRecord := colorCodeSPFRecord(record, isValidSPF)
+			fmt.Printf(" %s\n", coloredRecord)
+		}
+	} else {
+		fmt.Printf("\033[38;5;39m TXT Records: \033[0m\033[38;5;88mNone\033[0m\n")
 	}
 }
