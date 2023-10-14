@@ -81,7 +81,7 @@ For those who like to get their hands dirty:
    **If you are on MacOS,** go to System Settings > Security & Privacy and
    give `dns-scout` permissions.
 
-![Example IP records](mac-click-allow.png)
+   ![Example IP records](mac-click-allow.png)
 
 That's it! You've manually installed DNS-Scout like a true nerd.
 
