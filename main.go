@@ -268,7 +268,6 @@ func main() {
 	var apiTokenFlag string
 	flag.StringVar(&apiTokenFlag, "api-token", "", "IPInfo API token")
 	flag.Parse()
-
 	rl, err := readline.NewEx(&readline.Config{
 		Prompt:              " \033[38;5;39m🌎\033[38;5;39m ",
 		HistoryFile:         ".tmp-history",
@@ -312,27 +311,30 @@ func main() {
 		if !isIP || (isIP && registrar != "Unknown or Classified") {
 			fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78m%s\033[0m\n", registrar)
 		}
+		promptRunner(isIP, isCIDR, input, apiToken)
+	}
+}
 
-		if !isIP {
-			resolvedIPPrompt(input)
+func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
+	if !isIP {
+		resolvedIPPrompt(input)
 
-			getNSPrompt(input)
+		getNSPrompt(input)
 
-			getMXPrompt(input)
+		getMXPrompt(input)
 
-			getTXTPrompt(input)
+		getTXTPrompt(input)
 
-			getDMARCPrompt(input)
+		getDMARCPrompt(input)
 
-			getSPFPrompt(input)
-		}
+		getSPFPrompt(input)
+	}
 
-		getPTRPrompt(input)
+	getPTRPrompt(input)
 
-		if isIP || isCIDR {
-			asnInfo, err := getASNInfo(input, apiToken)
-			handleResponse(asnInfo, err)
-		}
+	if isIP || isCIDR {
+		asnInfo, err := getASNInfo(input, apiToken)
+		handleResponse(asnInfo, err)
 	}
 }
 
