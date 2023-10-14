@@ -52,11 +52,12 @@ making tasks like SPF or DMARC verification review more straightforward.
 ### Installation Guide for DNS Scout
 
 #### Manual MacOS/Linux Nerd Install
+
 Prerequisites: Go 1.21
 For those who like to get their hands dirty:
 
 1. **Download the Binary:**
-   Download the compiled binary for your operating system from 
+   Download the compiled binary for your operating system from
    the [Releases](https://github.com/careyjames/dns-scout/releases) page.
 
 2. **Make It Executable:**
@@ -84,8 +85,10 @@ The ```/share/setup-api-token.sh``` script would be helpful for them.
 Command-Line Argument: Useful for those who wish to specify different API tokens
 for different runs without changing environment variables. It could be useful for testing.
 
-Stored in a File: Ideal for regular users who want to set the API token once and forget it.
-The token will be read from a file in the user's home directory, making it convenient for them.
+Stored in a File: Ideal for regular users who want to set the API
+token once and forget it.
+The token will be read from a file in the user's home directory,
+making it convenient for them.
 
 **If you are on MacOS,** go to System Settings > Security & Privacy and
 give `dns-scout-<version>` permissions.

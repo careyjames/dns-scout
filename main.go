@@ -20,6 +20,7 @@ import (
 	"github.com/miekg/dns"
 )
 
+// IPInfoAPIURL is and API URL
 const IPInfoAPIURL = "https://ipinfo.io/"
 
 // IPInfoResponse struct holds the response from the IPInfo API
