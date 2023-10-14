@@ -59,20 +59,20 @@ Para aquellos que les gusta ensuciarse las manos:
     Descargue el binario compilado para su sistema operativo desde la
     página Releases: [Release](https://github.com/careyjames/dns-scout/releases).
 
-2. Hazlo ejecutable:
+1. Hazlo ejecutable:
     Después de descargar, navegue al directorio de descarga y ejecute:
 
-```chmod +x dns-scout-<version>``` (macos-silicon linux-amd64)
+    ```chmod +x dns-scout-<version>``` (macos-silicon linux-amd64)
 
-3. Mover a PATH:
+1. Mover a PATH:
     Mueva el ejecutable a un directorio en la PATH de su sistema. Por
     ejemplo, puede moverlo a ```/usr/local/bin/``` en un sistema basado en Unix/Mac:
     ```sudo mv dns-scout /usr/local/bin/```
 
-4. Obtén un token gratuito o de pago de ```https://ipinfo.io```
+1. Obtén un token gratuito o de pago de ```https://ipinfo.io```
     [Website](https://ipinfo.io)
 
-5. Ejecutar DNS Scout:
+1. Ejecutar DNS Scout:
     Abra una nueva ventana de terminal y escriba dns-scout para comenzar
     a usar la herramienta.
 
