@@ -308,3 +308,35 @@ func TestGetTXTPrompt(t *testing.T) {
 		t.Errorf("getTXTPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
 	}
 }
+
+func TestGetDMARCPrompt(t *testing.T) {
+	// Test case 1: valid input with DMARC record
+	input1 := "example.com"
+	expected1 := "v=DMARC1; p=none; rua=mailto:dmarc@example.com"
+	dmarc1, _ := getDMARC(input1)
+	if dmarc1 == expected1 {
+		t.Errorf("getDMARCPrompt(%q) = %q; expected %q", input1, dmarc1, expected1)
+	}
+	var buf bytes.Buffer
+	getDMARCPrompt(input1)
+	output1 := buf.String()
+	expectedOutput1 := fmt.Sprintf("\033[38;5;39m DMARC Record: \033[38;5;78m%s\033[0m\n", expected1)
+	if output1 == expectedOutput1 {
+		t.Errorf("getDMARCPrompt(%q) output = %q; expected %q", input1, output1, expectedOutput1)
+	}
+
+	// Test case 2: valid input with no DMARC record
+	input2 := "example.net"
+	expected2 := ""
+	dmarc2, _ := getDMARC(input2)
+	if dmarc2 != expected2 {
+		t.Errorf("getDMARCPrompt(%q) = %q; expected %q", input2, dmarc2, expected2)
+	}
+	var buf2 bytes.Buffer
+	getDMARCPrompt(input2)
+	output2 := buf2.String()
+	expectedOutput2 := "\033[38;5;39m DMARC Record: \033[0m\033[38;5;88mNone\033[0m\n"
+	if output2 == expectedOutput2 {
+		t.Errorf("getDMARCPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
+	}
+}
