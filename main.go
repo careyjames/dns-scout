@@ -322,65 +322,16 @@ func main() {
 
 			getTXTPrompt(input)
 
-			dmarc, _ := getDMARC(input)
-			if dmarc != "" {
-				formattedDMARC := formatLongText(dmarc, 80, " ")
-				fmt.Printf("\033[38;5;39m DMARC Record:\033[0m\n")
-				fmt.Printf("\033[38;5;78m %s\033[0m\n", formattedDMARC)
-			} else {
-				fmt.Printf("\033[38;5;39m DMARC Record: \033[0m\033[38;5;88mNone\033[0m\n")
-			}
+			getDMARCPrompt(input)
 
-			spfValid, spfRecord, _ := getSPF(input)
-
-			if spfValid || spfRecord != "No SPF record" {
-				coloredSPFRecord := colorCodeSPFRecord(spfRecord, spfValid)
-				fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
-			} else {
-				coloredSPFRecord := colorCodeSPFRecord(spfRecord, false) // "No SPF record" will be red
-				fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
-			}
+			getSPFPrompt(input)
 		}
 
-		ptr, _ := getPTR(input)
-		if len(ptr) > 0 {
-			// Remove the trailing period from each PTR record
-			for i, record := range ptr {
-				if strings.HasSuffix(record, ".") {
-					ptr[i] = record[:len(record)-1]
-				}
-			}
-			// Join the records with a comma and a space, then replace ", " at the end of each line with a line break followed by a space
-			ptrStr := strings.Join(ptr, ", ")
-			ptrStr = strings.ReplaceAll(ptrStr, ", ", ",\n ")
-			fmt.Printf("\033[38;5;39m PTR Records: \033[38;5;78m%s\033[0m\n", ptrStr)
-		} else {
-			fmt.Printf("\033[38;5;39m PTR Records: \033[0m\033[38;5;222mNone\033[0m\n")
-		}
+		getPTRPrompt(input)
 
 		if isIP || isCIDR {
 			asnInfo, err := getASNInfo(input, apiToken)
-			if err == nil {
-				fmt.Printf("\033[38;5;39m\n ASN Information: \n\033[0m")
-				fmt.Printf("\033[38;5;39m IP: \033[38;5;78m%s\033[0m\n", asnInfo.IP)
-				fmt.Printf("\033[38;5;39m Domain: \033[38;5;78m%s\033[0m\n", asnInfo.Domain)
-				fmt.Printf("\033[38;5;39m Hostname: \033[38;5;78m%s\033[0m\n", asnInfo.Hostname)
-				fmt.Printf("\033[38;5;39m City: \033[38;5;78m%s\033[0m\n", asnInfo.City)
-				fmt.Printf("\033[38;5;39m Region: \033[38;5;78m%s\033[0m\n", asnInfo.Region)
-				fmt.Printf("\033[38;5;39m Country: \033[38;5;78m%s\033[0m\n", asnInfo.Country)
-				fmt.Printf("\033[38;5;39m Location: \033[38;5;78m%s\033[0m\n", asnInfo.Loc)
-				fmt.Printf("\033[38;5;39m Organization: \033[38;5;78m%s\033[0m\n", asnInfo.Org)
-				fmt.Printf("\033[38;5;39m Postal Code: \033[38;5;78m%s\033[0m\n", asnInfo.Postal)
-				fmt.Printf("\033[38;5;39m Timezone: \033[38;5;78m%s\033[0m\n", asnInfo.Timezone)
-				asnInfoStrs := []string{}
-				for k, v := range asnInfo.ASN {
-					asnInfoStrs = append(asnInfoStrs, fmt.Sprintf("%s: %v", k, v))
-				}
-				fmt.Printf("\033[38;5;39m ASN: \033[38;5;78m%s\033[0m\n", strings.Join(asnInfoStrs, ", "))
-
-			} else {
-				fmt.Println(" Error fetching ASN Information:", err)
-			}
+			handleResponse(asnInfo, err)
 		}
 	}
 }
@@ -421,5 +372,70 @@ func getTXTPrompt(input string) {
 		}
 	} else {
 		fmt.Printf("\033[38;5;39m TXT Records: \033[0m\033[38;5;88mNone\033[0m\n")
+	}
+}
+
+func getDMARCPrompt(input string) {
+	dmarc, _ := getDMARC(input)
+	if dmarc != "" {
+		formattedDMARC := formatLongText(dmarc, 80, " ")
+		fmt.Printf("\033[38;5;39m DMARC Record:\033[0m\n")
+		fmt.Printf("\033[38;5;78m %s\033[0m\n", formattedDMARC)
+	} else {
+		fmt.Printf("\033[38;5;39m DMARC Record: \033[0m\033[38;5;88mNone\033[0m\n")
+	}
+}
+
+func getSPFPrompt(input string) {
+	spfValid, spfRecord, _ := getSPF(input)
+
+	if spfValid || spfRecord != "No SPF record" {
+		coloredSPFRecord := colorCodeSPFRecord(spfRecord, spfValid)
+		fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
+	} else {
+		coloredSPFRecord := colorCodeSPFRecord(spfRecord, false) // "No SPF record" will be red
+		fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
+	}
+}
+
+func getPTRPrompt(input string) {
+	ptr, _ := getPTR(input)
+	if len(ptr) > 0 {
+		// Remove the trailing period from each PTR record
+		for i, record := range ptr {
+			if strings.HasSuffix(record, ".") {
+				ptr[i] = record[:len(record)-1]
+			}
+		}
+		// Join the records with a comma and a space, then replace ", " at the end of each line with a line break followed by a space
+		ptrStr := strings.Join(ptr, ", ")
+		ptrStr = strings.ReplaceAll(ptrStr, ", ", ",\n ")
+		fmt.Printf("\033[38;5;39m PTR Records: \033[38;5;78m%s\033[0m\n", ptrStr)
+	} else {
+		fmt.Printf("\033[38;5;39m PTR Records: \033[0m\033[38;5;222mNone\033[0m\n")
+	}
+}
+
+func handleResponse(asnInfo *IPInfoResponse, err error) {
+	if err == nil {
+		fmt.Printf("\033[38;5;39m\n ASN Information: \n\033[0m")
+		fmt.Printf("\033[38;5;39m IP: \033[38;5;78m%s\033[0m\n", asnInfo.IP)
+		fmt.Printf("\033[38;5;39m Domain: \033[38;5;78m%s\033[0m\n", asnInfo.Domain)
+		fmt.Printf("\033[38;5;39m Hostname: \033[38;5;78m%s\033[0m\n", asnInfo.Hostname)
+		fmt.Printf("\033[38;5;39m City: \033[38;5;78m%s\033[0m\n", asnInfo.City)
+		fmt.Printf("\033[38;5;39m Region: \033[38;5;78m%s\033[0m\n", asnInfo.Region)
+		fmt.Printf("\033[38;5;39m Country: \033[38;5;78m%s\033[0m\n", asnInfo.Country)
+		fmt.Printf("\033[38;5;39m Location: \033[38;5;78m%s\033[0m\n", asnInfo.Loc)
+		fmt.Printf("\033[38;5;39m Organization: \033[38;5;78m%s\033[0m\n", asnInfo.Org)
+		fmt.Printf("\033[38;5;39m Postal Code: \033[38;5;78m%s\033[0m\n", asnInfo.Postal)
+		fmt.Printf("\033[38;5;39m Timezone: \033[38;5;78m%s\033[0m\n", asnInfo.Timezone)
+		asnInfoStrs := []string{}
+		for k, v := range asnInfo.ASN {
+			asnInfoStrs = append(asnInfoStrs, fmt.Sprintf("%s: %v", k, v))
+		}
+		fmt.Printf("\033[38;5;39m ASN: \033[38;5;78m%s\033[0m\n", strings.Join(asnInfoStrs, ", "))
+
+	} else {
+		fmt.Println(" Error fetching ASN Information:", err)
 	}
 }
