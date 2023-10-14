@@ -1,4 +1,4 @@
-# DNS-Scout 🇺🇸 Carey James Balboa - Mac Help Nashville, Inc.
+# DNS-Scout 🇺🇸 Carey James Balboa - Mac Help Nashville, Inc
 
 ![Build Status](https://github.com/careyjames/DNS-Scout/actions/workflows/go.yml/badge.svg?branch=main)
 [![Code Climate](https://codeclimate.com/github/careyjames/DNS-Scout/badges/gpa.svg)](https://codeclimate.com/github/careyjames/DNS-Scout)
@@ -43,7 +43,8 @@ making tasks like SPF or DMARC verification review more straightforward.
 **Registrar**
 **NS Name Servers**
 **MX Records**
-**Displays TXT Records**, useful for checking domain verification, SPF settings, etc.
+**Displays TXT Records**, useful for checking domain verification,
+SPF settings, etc.
 **DMARC Records**
 **PTR**
 **ASN**
@@ -62,6 +63,7 @@ For those who like to get their hands dirty:
 
 2. **Make It Executable:**
    After downloading, navigate to the download directory and run:
+
    ```chmod +x dns-scout-<version>``` (macos-silicon linux-amd64)
 
 3. **Move to PATH:**
@@ -79,12 +81,14 @@ That's it! You've manually installed DNS-Scout like a true nerd.
 
 **Here's a breakdown of how each method of storing the API token could be useful:**
 
-Environment Variable: Useful for users running the program in a controlled environment like a server,
+Environment Variable: Useful for users running the program in a controlled 
+environment like a server,
 where setting environment variables is common practice.
 The ```/share/setup-api-token.sh``` script would be helpful for them.
 
 Command-Line Argument: Useful for those who wish to specify different API tokens
-for different runs without changing environment variables. It could be useful for testing.
+for different runs without changing environment variables. 
+It could be useful for testing.
 
 Stored in a File: Ideal for regular users who want to set the API
 token once and forget it.
@@ -96,4 +100,3 @@ give `dns-scout-<version>` permissions.
 
 <img src="dev-not-verified.png" alt="Dev not Verified" width="800">
 <img src="mac-click-allow.png" alt="Example IP records" width="800">
-

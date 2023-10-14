@@ -1,4 +1,4 @@
-# DNS-Scout 🇨🇴 Carey James Balboa - Mac Help Nashville, Inc.
+# DNS-Scout 🇨🇴 Carey James Balboa - Mac Help Nashville, Inc
 
 DNS Scout para Linux/MacOS extrae y muestra los registros DNS en una
 salida de consola codificada por colores que es fácil de ver y copiar/pegar.
@@ -10,7 +10,7 @@ resolución de problemas de DNS.
 
 <img src="example-IP.png" alt="Example IP records" width="800">
 
-## Características:
+## Características
 
 **Salida curada para mayor claridad:**
 DNS Scout se destaca por filtrar la información no esencial, presentando a
@@ -41,40 +41,45 @@ sean más sencillas.
 **Registrador**
 Servidores de nombres NS
 **Registros MX**
-**Muestra registros TXT, útiles para verificar la verificación de dominio, la configuración de SPF, etc.**
+**Muestra registros TXT, útiles para verificar la verificación de dominio,**
+**la configuración de SPF, etc.**
 **Registros DMARC**
 **PTR**
 **ASN**
 **Datos DNS exactos, sin desplazamiento**
 
 ### Guía de instalación de DNS Scout
+
 #### Instalación manual de Nerd para MacOS/Linux
+
 Requisitos previos: Go 1.21
 Para aquellos que les gusta ensuciarse las manos:
 
 1. Descargar el binario:
-Descargue el binario compilado para su sistema operativo desde la
-página Releases: https://github.com/careyjames/dns-scout/releases.
+    Descargue el binario compilado para su sistema operativo desde la
+    página Releases: [Release](https://github.com/careyjames/dns-scout/releases).
 
 2. Hazlo ejecutable:
-Después de descargar, navegue al directorio de descarga y ejecute:
+    Después de descargar, navegue al directorio de descarga y ejecute:
 
 ```chmod +x dns-scout-<version>``` (macos-silicon linux-amd64)
 
 3. Mover a PATH:
-Mueva el ejecutable a un directorio en la PATH de su sistema. Por
-ejemplo, puede moverlo a ```/usr/local/bin/``` en un sistema basado en Unix/Mac:
-```sudo mv dns-scout /usr/local/bin/```
+    Mueva el ejecutable a un directorio en la PATH de su sistema. Por
+    ejemplo, puede moverlo a ```/usr/local/bin/``` en un sistema basado en Unix/Mac:
+    ```sudo mv dns-scout /usr/local/bin/```
 
 4. Obtén un token gratuito o de pago de ```https://ipinfo.io```
+    [Website](https://ipinfo.io)
 
 5. Ejecutar DNS Scout:
-Abra una nueva ventana de terminal y escriba dns-scout para comenzar
-a usar la herramienta.
+    Abra una nueva ventana de terminal y escriba dns-scout para comenzar
+    a usar la herramienta.
 
 ¡Eso es! Ha instalado manualmente DNS-Scout como un verdadero nerd.
 
-**Aquí hay un desglose de cómo cada método de almacenamiento del token de API podría ser útil:**
+**Aquí hay un desglose de cómo cada método de almacenamiento del token**
+**de API podría ser útil:**
 
 Variable de entorno: útil para usuarios que ejecutan el programa en un
 entorno controlado como un servidor, donde establecer variables de
