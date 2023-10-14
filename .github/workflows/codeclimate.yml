@@ -19,7 +19,7 @@ jobs:
       
       - name: Print Current Working Directory
         run: |
-          pwd
+          ls -all
         working-directory: ${{ github.workspace }}
 
       - name: Install Code Climate Test Reporter
