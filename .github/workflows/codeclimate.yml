@@ -35,4 +35,6 @@ jobs:
           ln -s $PWD ./github.com/careyjames/DNS-Scout
           go test ./... -coverprofile c.out
           ./cc-test-reporter format-coverage -t gocov -o codeclimate.json c.out
+          pwd
+          ls -all
           ./cc-test-reporter upload-coverage
