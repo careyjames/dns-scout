@@ -63,25 +63,25 @@ For those who like to get their hands dirty:
    Download the compiled binary for your operating system from
    the [Releases](https://github.com/careyjames/dns-scout/releases) page.
 
-1. **Make It Executable:**
+2. **Make It Executable:**
    After downloading, ```cd ~/Downloads/``` to the download directory and run:
 
    ```sudo chmod +x dns-scout```
 
-1. **Move to PATH:**
+3. **Move to PATH:**
    Move the executable to a directory in your system's PATH. For example,
    you can move it to /usr/local/bin/ on a Unix-based system:
    ```sudo mv dns-scout /usr/local/bin/```
 
-1. **Get free or paid token from ipinfo.io**
+4. **Get free or paid token from ipinfo.io**
    [Website](https://ipinfo.io)
 
-1. **Run DNS Scout:**
+5. **Run DNS Scout:**
    Open a new terminal window and type `dns-scout` to start using the tool.
    **If you are on MacOS,** go to System Settings > Security & Privacy and
    give `dns-scout` permissions.
 
-![Example IP records](mac-click-allow.png)
+   ![Example IP records](mac-click-allow.png)
 
 That's it! You've manually installed DNS-Scout like a true nerd.
 
