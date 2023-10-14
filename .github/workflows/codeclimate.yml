@@ -31,7 +31,8 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: d48965e5014ef39430f07bfdbe0e6359cfd470f51564fc6e15cd1c91c4871e74
         run: |
-          cd github.com/careyjames/DNS-Scout
+          mkdir -p ./github.com/careyjames
+          ln -s $PWD ./github.com/careyjames/DNS-Scout
           go test ./... -coverprofile c.out
           ./cc-test-reporter format-coverage -t gocov -o codeclimate.json c.out
           ./cc-test-reporter upload-coverage
