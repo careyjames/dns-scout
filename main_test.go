@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/miekg/dns"
 )
 
 func TestGetRegistrar(t *testing.T) {
@@ -86,10 +88,124 @@ func TestGetASNInfo(t *testing.T) {
 			t.Errorf("Expected %+v, got %+v", expected, info)
 		}
 	})
+	// Test case 2: HTTP request error
+	t.Run("HTTPRequestError", func(t *testing.T) {
+		ip := "8.8.8.8"
+		apiToken := "your-api-token"
+
+		info, err := getASNInfo(ip, apiToken)
+		if info == nil {
+			t.Errorf("Expected nil response, got %+v", info)
+		}
+
+		if err != nil {
+			t.Error("Expected an error, got nil")
+		}
+	})
+
+	// Test case 3: JSON unmarshal error
+	t.Run("JSONUnmarshalError", func(t *testing.T) {
+		// Mock server with an invalid JSON response
+		mock := mockServer(http.StatusOK, `{"invalid": "json"}`)
+		defer mock.Close()
+
+		// Save the original API URL and restore it after the test
+
+		ip := "8.8.8.8"
+		apiToken := "your-api-token"
+
+		info, err := getASNInfo(ip, apiToken)
+		if info == nil {
+			t.Errorf("Expected nil response, got %+v", info)
+		}
+
+		if err != nil {
+			t.Error("Expected an error, got nil")
+		}
+	})
 }
 
 func compareIPInfoResponse(a, b *IPInfoResponse) bool {
 	aJSON, _ := json.Marshal(a)
 	bJSON, _ := json.Marshal(b)
 	return string(aJSON) == string(bJSON)
+}
+
+func TestQueryDNS(t *testing.T) {
+	// Define a mock DNS server for testing
+	mockDNS := "8.8.8.8"
+
+	tt := []struct {
+		name      string
+		domain    string
+		dnsType   uint16
+		server    string
+		expected  []string
+		expectErr bool
+	}{
+		{
+			name:      "Valid A record query",
+			domain:    "example.com",
+			dnsType:   dns.TypeA,
+			server:    mockDNS,
+			expected:  []string{"93.184.216.34"},
+			expectErr: false,
+		},
+		{
+			name:      "Valid NS record query",
+			domain:    "example.com",
+			dnsType:   dns.TypeNS,
+			server:    mockDNS,
+			expected:  []string{"a.iana-servers.net", "b.iana-servers.net"},
+			expectErr: false,
+		},
+		{
+			name:      "Valid MX record query",
+			domain:    "example.com",
+			dnsType:   dns.TypeMX,
+			server:    mockDNS,
+			expected:  []string{"0 aspmx.l.google.com", "5 alt1.aspmx.l.google.com"},
+			expectErr: false,
+		},
+		{
+			name:      "Invalid domain",
+			domain:    "nonexistent.invalid",
+			dnsType:   dns.TypeA,
+			server:    mockDNS,
+			expected:  nil,
+			expectErr: true,
+		},
+		// Add more test cases as needed
+	}
+
+	for _, tc := range tt {
+		t.Run(tc.name, func(t *testing.T) {
+			records, err := queryDNS(tc.domain, tc.dnsType, tc.server)
+
+			if tc.expectErr {
+				if err == nil {
+					t.Errorf("Expected an error, but got nil")
+				}
+			} else {
+				if err == nil {
+					t.Errorf("Expected no error, but got %v", err)
+				}
+				if stringSlicesEqual(records, tc.expected) {
+					t.Errorf("Expected %v, but got %v", tc.expected, records)
+				}
+			}
+		})
+	}
+}
+
+func stringSlicesEqual(a, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i, v := range a {
+		if v != b[i] {
+			return false
+		}
+	}
+	return true
 }
