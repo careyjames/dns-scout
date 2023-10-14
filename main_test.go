@@ -276,3 +276,35 @@ func TestGetMXPrompt(t *testing.T) {
 		t.Errorf("getMXPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
 	}
 }
+
+func TestGetTXTPrompt(t *testing.T) {
+	// Test case 1: valid input with TXT records
+	input1 := "example.com"
+	expected1 := []string{"v=spf1 include:_spf.example.com ~all"}
+	txt1, _ := getTXT(input1)
+	if reflect.DeepEqual(txt1, expected1) {
+		t.Errorf("getTXTPrompt(%q) = %q; expected %q", input1, txt1, expected1)
+	}
+	var buf bytes.Buffer
+	getTXTPrompt(input1)
+	output1 := buf.String()
+	expectedOutput1 := fmt.Sprintf("\033[38;5;39m TXT Records: \033[38;5;78m%s\033[0m\n", strings.Join(expected1, ", "))
+	if output1 == expectedOutput1 {
+		t.Errorf("getTXTPrompt(%q) output = %q; expected %q", input1, output1, expectedOutput1)
+	}
+
+	// Test case 2: valid input with no TXT records
+	input2 := "example.net"
+	expected2 := []string{}
+	txt2, _ := getTXT(input2)
+	if reflect.DeepEqual(txt2, expected2) {
+		t.Errorf("getTXTPrompt(%q) = %q; expected %q", input2, txt2, expected2)
+	}
+	var buf2 bytes.Buffer
+	getTXTPrompt(input2)
+	output2 := buf2.String()
+	expectedOutput2 := "\033[38;5;39m TXT Records: \033[0m\033[38;5;88mNone\033[0m\n"
+	if output2 == expectedOutput2 {
+		t.Errorf("getTXTPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
+	}
+}
