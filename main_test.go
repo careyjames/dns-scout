@@ -593,3 +593,62 @@ func TestColorCodeSPFRecord(t *testing.T) {
 
 	// Add more test cases as needed
 }
+
+func TestGetPTR(t *testing.T) {
+	// Test case 1: Valid domain with PTR records
+	server1 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		ip := r.URL.Path
+		ip = ip[1:] // Remove the leading slash
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusOK)
+		// Simulate PTR records for the IP
+		switch ip {
+		case "192.168.1.1":
+			w.Write([]byte("example.com.\n"))
+		case "8.8.8.8":
+			w.Write([]byte("dns.google.\n"))
+		}
+	}))
+	defer server1.Close()
+
+	domain1 := "192.168.1.1"
+	expected1 := []string{"example.com."}
+	result1, err1 := getPTR(domain1)
+	if err1 != nil {
+		t.Errorf("getPTR(%s) returned an error: %v", domain1, err1)
+	}
+	if compareStringSlices(result1, expected1) {
+		t.Errorf("getPTR(%s) = %v; expected %v", domain1, result1, expected1)
+	}
+
+	// Test case 2: Valid domain with no PTR records
+	server2 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusNoContent)
+	}))
+	defer server2.Close()
+
+	domain2 := "10.0.0.1"
+	expected2 := []string{}
+	result2, err2 := getPTR(domain2)
+	if err2 != nil {
+		t.Errorf("getPTR(%s) returned an error: %v", domain2, err2)
+	}
+	if !compareStringSlices(result2, expected2) {
+		t.Errorf("getPTR(%s) = %v; expected %v", domain2, result2, expected2)
+	}
+
+	// Add more test cases as needed
+}
+
+func compareStringSlices(slice1, slice2 []string) bool {
+	if len(slice1) != len(slice2) {
+		return false
+	}
+	for i := range slice1 {
+		if slice1[i] != slice2[i] {
+			return false
+		}
+	}
+	return true
+}
