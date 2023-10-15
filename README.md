@@ -62,7 +62,7 @@ For those who like to get their hands dirty:
    the [Releases](https://github.com/careyjames/dns-scout/releases) page.
 
 2. **Make It Executable:**
-   After downloading, run:  
+   After downloading, open terminal and run:  
    a. ```cd ~/Downloads/```  
    b. ```sudo chmod +x dns-scout```
 
