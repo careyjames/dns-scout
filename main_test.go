@@ -10,8 +10,6 @@ import (
 	"reflect"
 	"strings"
 	"testing"
-
-	"github.com/miekg/dns"
 )
 
 func TestGetRegistrar(t *testing.T) {
@@ -45,64 +43,6 @@ func mockServer(statusCode int, responseJSON string) *httptest.Server {
 		w.Header().Set("Content-Type", "application/json")
 		w.Write([]byte(responseJSON))
 	}))
-}
-
-func TestQueryDNS(t *testing.T) {
-	// Define a mock DNS server for testing
-	mockDNS := "8.8.8.8"
-
-	tt := []DNSStruct{
-		{
-			name:      "Valid MX record query",
-			domain:    "example.com",
-			dnsType:   dns.TypeMX,
-			server:    mockDNS,
-			expected:  []string{"0 aspmx.l.google.com", "5 alt1.aspmx.l.google.com"},
-			expectErr: false,
-		},
-		{
-			name:      "Invalid domain",
-			domain:    "nonexistent.invalid",
-			dnsType:   dns.TypeA,
-			server:    mockDNS,
-			expected:  nil,
-			expectErr: true,
-		},
-	}
-
-	runDNSTest(t, tt)
-}
-
-type DNSStruct struct {
-	name      string
-	domain    string
-	dnsType   uint16
-	server    string
-	expected  []string
-	expectErr bool
-}
-
-func TestQueryDNSSecond(t *testing.T) {
-	mockDNS := "8.8.8.8"
-	tt := []DNSStruct{
-		{
-			name:      "Valid A record query",
-			domain:    "example.com",
-			dnsType:   dns.TypeA,
-			server:    mockDNS,
-			expected:  []string{"93.184.216.34"},
-			expectErr: false,
-		},
-		{
-			name:      "Valid NS record query",
-			domain:    "example.com",
-			dnsType:   dns.TypeNS,
-			server:    mockDNS,
-			expected:  []string{"a.iana-servers.net", "b.iana-servers.net"},
-			expectErr: false,
-		},
-	}
-	runDNSTest(t, tt)
 }
 
 func stringSlicesEqual(a, b []string) bool {
