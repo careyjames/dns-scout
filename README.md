@@ -57,13 +57,14 @@ SPF settings, etc.
 Prerequisites: Go 1.21
 For those who like to get their hands dirty:
 
-1. **Download the Binary:**
+1. **Download the Binary to your home folder:**
    Download and extract the compiled binary for your operating system from
    the [Releases](https://github.com/careyjames/dns-scout/releases) page.
 
 2. **Make It Executable:**
    After downloading, open terminal and run:  
-   a. ```cd ~/Downloads/dns-scout-<version>``` replace "version" with your version.  
+   a. ```cd ~/Downloads/<unzipped-folder-name>``` unzipped-folder-name
+   is the name of the folder created when extracting the tar file.
    b. ```sudo chmod +x dns-scout```
 
 3. **Move to PATH:**
@@ -74,7 +75,8 @@ For those who like to get their hands dirty:
 
 4. **Get free or paid token from ipinfo.io**
    [Website](https://ipinfo.io) and run the "setup-api-token.sh".  
-   a. ```cd ~/Downloads/```  
+   a. ```cd ~/Downloads/<unzipped-folder-name>``` unzipped-folder-name
+   is the name of the folder created when extracting the tar file.  
    b. ```sudo chmod +x setup-api-token.sh```  
    c. ```./setup-api-token.sh```
 
