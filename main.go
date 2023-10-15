@@ -161,7 +161,7 @@ func fetchAPIToken(apiTokenFlag string) string {
 }
 
 func main() {
-	// Check for "version" argument
+	// Check "version" argument
 	args := os.Args[1:]
 	if len(args) > 0 && args[0] == "version" {
 		fmt.Println("DNS-Scout version:", version)
