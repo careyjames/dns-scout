@@ -393,7 +393,7 @@ func TestGetPTRPrompt(t *testing.T) {
 	input1 := "8.8.8.8"
 	expected1 := "dns.google"
 	ptr1, _ := getPTR(input1)
-	if ptr1[0] == expected1 {
+	if len(ptr1) > 0 && ptr1[0] == expected1 {
 		t.Errorf("getPTRPrompt(%q) = %q; expected %q", input1, ptr1, expected1)
 	}
 	var buf bytes.Buffer
@@ -408,7 +408,7 @@ func TestGetPTRPrompt(t *testing.T) {
 	input2 := "192.168.1.1"
 	expected2 := ""
 	ptr2, _ := getPTR(input2)
-	if ptr2[0] == expected2 {
+	if len(ptr1) > 0 && ptr2[0] == expected2 {
 		t.Errorf("getPTRPrompt(%q) = %q; expected %q", input2, ptr2, expected2)
 	}
 	var buf2 bytes.Buffer
