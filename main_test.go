@@ -353,3 +353,42 @@ func compareStringSlices(slice1, slice2 []string) bool {
 	}
 	return true
 }
+
+func TestGetMX(t *testing.T) {
+	// Test case 1: Valid domain with MX records
+	server1 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("10 mx.example.com.\n20 mx2.example.com."))
+	}))
+	defer server1.Close()
+
+	domain1 := "example.com"
+	expected1 := []string{"10 mx.example.com.", "20 mx2.example.com."}
+	result1, err1 := getMX(domain1)
+	if err1 != nil {
+		t.Errorf("getMX(%s) returned an error: %v", domain1, err1)
+	}
+	if compareStringSlices(result1, expected1) {
+		t.Errorf("getMX(%s) = %v; expected %v", domain1, result1, expected1)
+	}
+
+	// Test case 2: Valid domain with no MX records
+	server2 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusNoContent)
+	}))
+	defer server2.Close()
+
+	domain2 := "example2.com"
+	expected2 := []string{}
+	result2, err2 := getMX(domain2)
+	if err2 != nil {
+		t.Errorf("getMX(%s) returned an error: %v", domain2, err2)
+	}
+	if compareStringSlices(result2, expected2) {
+		t.Errorf("getMX(%s) = %v; expected %v", domain2, result2, expected2)
+	}
+
+	// Add more test cases as needed
+}
