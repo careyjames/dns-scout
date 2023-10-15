@@ -74,12 +74,16 @@ For those who like to get their hands dirty:
    ```sudo mkdir -p /usr/local/bin/ && sudo mv dns-scout /usr/local/bin/```
 
 4. **Get free or paid token from ipinfo.io**
-   [Website](https://ipinfo.io)
+   [Website](https://ipinfo.io) and run the ```setup-api-token.sh```
+   ```cd ~/Downloads/ && ./setup-api-token.sh```
 
 5. **Run DNS Scout:**
    Open a new terminal window and type `dns-scout` to start using the tool.
+
    **If you are on MacOS,** go to System Settings > Security & Privacy and
-   give `dns-scout` permissions.
+   give `dns-scout` permissions. If you have never used terminal and the colors
+   are default "Basic" Terminal>Settings>Profiles and choose "Homebrew",
+   at least until you ![discover oh my zsh.](https://github.com/ohmyzsh/ohmyzsh)
 
    ![Example IP records](mac-click-allow.png)
 
