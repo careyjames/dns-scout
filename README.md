@@ -72,8 +72,8 @@ For those who like to get their hands dirty:
    ```sudo mkdir -p /usr/local/bin/ && sudo mv dns-scout /usr/local/bin/```
 
 4. **Get free or paid token from ipinfo.io**
-   [Website](https://ipinfo.io) and run the ```setup-api-token.sh```
-   ```cd ~/Downloads/ && ./setup-api-token.sh```
+   [Website](https://ipinfo.io) and run the "setup-api-token.sh".
+   ```cd ~/Downloads/ && sudo chmod +x setup-api-token.sh && ./setup-api-token.sh```
 
 5. **Run DNS Scout:**
    Open a new terminal window and type `dns-scout` to start using the tool.
