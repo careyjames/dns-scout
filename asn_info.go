@@ -32,6 +32,7 @@ func GetASNInfo(ip string, apiToken string) (*IPInfoResponse, error) {
 	return &ipInfo, nil
 }
 
+// HandleResponse handles response for asn info
 func HandleResponse(asnInfo *IPInfoResponse, err error) {
 	if err == nil {
 		fmt.Printf("\033[38;5;39m\n ASN Information: \n\033[0m")

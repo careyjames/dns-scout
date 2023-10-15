@@ -64,32 +64,6 @@ func ipsToStrings(ips []net.IP) []string {
 	return strs
 }
 
-// getNS fetches the NS records for a given domain.
-func getNS(domain string) ([]string, error) {
-	googleRecords, err1 := QueryDNS(domain, dns.TypeNS, "8.8.8.8:53")
-	cloudflareRecords, err2 := QueryDNS(domain, dns.TypeNS, "1.1.1.1:53")
-
-	if err1 != nil && err2 != nil {
-		return nil, fmt.Errorf("both DNS queries failed")
-	}
-
-	// Merge and deduplicate records
-	recordMap := make(map[string]bool)
-	for _, record := range googleRecords {
-		recordMap[record] = true
-	}
-	for _, record := range cloudflareRecords {
-		recordMap[record] = true
-	}
-
-	var mergedRecords []string
-	for record := range recordMap {
-		mergedRecords = append(mergedRecords, record)
-	}
-
-	return mergedRecords, nil
-}
-
 // getMX fetches the MX records for a given domain.
 func getMX(domain string) ([]string, error) {
 	return QueryDNS(domain, dns.TypeMX, "8.8.8.8:53")
@@ -268,7 +242,7 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 	if !isIP {
 		resolvedIPPrompt(input)
 
-		getNSPrompt(input)
+		GetNSPrompt(input)
 
 		getMXPrompt(input)
 
@@ -291,15 +265,6 @@ func resolvedIPPrompt(input string) {
 	ips, _ := net.LookupIP(input)
 	if len(ips) > 0 {
 		fmt.Printf("\033[38;5;39m Resolved IPs: \033[38;5;78m%s\033[0m\n", strings.Join(ipsToStrings(ips), ", "))
-	}
-}
-
-func getNSPrompt(input string) {
-	ns, _ := getNS(input)
-	if len(ns) > 0 {
-		fmt.Printf("\033[38;5;39m Name Servers: \033[38;5;78m%s\033[0m\n", strings.Join(ns, ", "))
-	} else {
-		fmt.Printf("\033[38;5;39m Name Servers: \033[0m\033[38;5;88mNone\033[0m\n")
 	}
 }
 
