@@ -52,13 +52,13 @@ SPF settings, etc.
 
 ### Installation Guide for DNS Scout
 
-#### Manual MacOS/Linux Nerd Install
+#### Manual MacOS/Kali, Ubuntu Linux Nerd Install
 
 Prerequisites: Go 1.21
 For those who like to get their hands dirty:
 
 1. **Download the Binary to your home folder:**
-   Download and extract the compiled binary for your operating system from
+   Download and **extract** the compiled binary for your operating system from
    the [Releases](https://github.com/careyjames/dns-scout/releases) page.
 
 2. **Make It Executable:**
@@ -81,7 +81,7 @@ For those who like to get their hands dirty:
    c. ```./setup-api-token.sh```
 
 5. **Run DNS Scout:**
-   Open a new terminal window and type `dns-scout` to start using the tool.
+   Open a **new** terminal window and type `dns-scout` to start using the tool.
 
    **For MacOS users,** go to System Settings > Security & Privacy and
    give `dns-scout` permissions.  
