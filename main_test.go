@@ -221,14 +221,14 @@ func TestQueryDNSSecond(t *testing.T) {
 
 			if tc.expectErr {
 				if err == nil {
-					t.Errorf("Expected an error, but got nil")
+					t.Errorf("Expected an error, we got error as nil")
 				}
 			} else {
 				if err == nil {
-					t.Errorf("Expected no error, but got %v", err)
+					t.Errorf("Expected no error, but got result as %v", err)
 				}
 				if stringSlicesEqual(records, tc.expected) {
-					t.Errorf("Expected %v, but got %v", tc.expected, records)
+					t.Errorf("Expected %v, but got result as %v", tc.expected, records)
 				}
 			}
 		})
