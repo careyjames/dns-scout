@@ -1,12 +1,9 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"fmt"
-	"io"
 	"net"
-	"net/http"
 	"os"
 	"strings"
 	"time"
@@ -58,55 +55,6 @@ func getRegistrar(domain string) string {
 	return "Unknown or Classified"
 }
 
-// getASNInfo fetches ASN information for a given IP address.
-func getASNInfo(ip string, apiToken string) (*IPInfoResponse, error) {
-	// Removed apiToken from here as it's now passed as an argument
-	resp, err := http.Get(IPInfoAPIURL + ip + "?token=" + apiToken)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	var ipInfo IPInfoResponse
-	err = json.Unmarshal(body, &ipInfo)
-	if err != nil {
-		return nil, err
-	}
-	// Add this line for debugging
-	//fmt.Printf("Debug: Received IPInfo API response: %+v\n", ipInfo)
-	return &ipInfo, nil
-}
-
-// queryDNS performs a DNS query for a given domain and DNS record type.
-func queryDNS(domain string, dnsType uint16, server string) ([]string, error) {
-	c := new(dns.Client)
-	m := new(dns.Msg)
-	m.SetQuestion(dns.Fqdn(domain), dnsType)
-
-	r, _, err := c.Exchange(m, server)
-	if err != nil {
-		return nil, err
-	}
-
-	var records []string
-	for _, ans := range r.Answer {
-		switch t := ans.(type) {
-		case *dns.NS:
-			records = append(records, strings.TrimRight(t.Ns, "."))
-		case *dns.MX:
-			records = append(records, strings.TrimRight(t.Mx, "."))
-		case *dns.TXT:
-			records = append(records, t.Txt...)
-		}
-	}
-	return records, nil
-}
-
 // ipsToStrings converts a slice of net.IP to a slice of string.
 func ipsToStrings(ips []net.IP) []string {
 	var strs []string
@@ -118,8 +66,8 @@ func ipsToStrings(ips []net.IP) []string {
 
 // getNS fetches the NS records for a given domain.
 func getNS(domain string) ([]string, error) {
-	googleRecords, err1 := queryDNS(domain, dns.TypeNS, "8.8.8.8:53")
-	cloudflareRecords, err2 := queryDNS(domain, dns.TypeNS, "1.1.1.1:53")
+	googleRecords, err1 := QueryDNS(domain, dns.TypeNS, "8.8.8.8:53")
+	cloudflareRecords, err2 := QueryDNS(domain, dns.TypeNS, "1.1.1.1:53")
 
 	if err1 != nil && err2 != nil {
 		return nil, fmt.Errorf("both DNS queries failed")
@@ -144,12 +92,12 @@ func getNS(domain string) ([]string, error) {
 
 // getMX fetches the MX records for a given domain.
 func getMX(domain string) ([]string, error) {
-	return queryDNS(domain, dns.TypeMX, "8.8.8.8:53")
+	return QueryDNS(domain, dns.TypeMX, "8.8.8.8:53")
 }
 
 // getTXT fetches the TXT records for a given domain.
 func getTXT(domain string) ([]string, error) {
-	return queryDNS(domain, dns.TypeTXT, "8.8.8.8:53")
+	return QueryDNS(domain, dns.TypeTXT, "8.8.8.8:53")
 }
 
 // getSPF fetches and analyzes the SPF record for a given domain.
@@ -334,8 +282,8 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 	getPTRPrompt(input)
 
 	if isIP || isCIDR {
-		asnInfo, err := getASNInfo(input, apiToken)
-		handleResponse(asnInfo, err)
+		asnInfo, err := GetASNInfo(input, apiToken)
+		HandleResponse(asnInfo, err)
 	}
 }
 
@@ -416,29 +364,5 @@ func getPTRPrompt(input string) {
 		fmt.Printf("\033[38;5;39m PTR Records: \033[38;5;78m%s\033[0m\n", ptrStr)
 	} else {
 		fmt.Printf("\033[38;5;39m PTR Records: \033[0m\033[38;5;222mNone\033[0m\n")
-	}
-}
-
-func handleResponse(asnInfo *IPInfoResponse, err error) {
-	if err == nil {
-		fmt.Printf("\033[38;5;39m\n ASN Information: \n\033[0m")
-		fmt.Printf("\033[38;5;39m IP: \033[38;5;78m%s\033[0m\n", asnInfo.IP)
-		fmt.Printf("\033[38;5;39m Domain: \033[38;5;78m%s\033[0m\n", asnInfo.Domain)
-		fmt.Printf("\033[38;5;39m Hostname: \033[38;5;78m%s\033[0m\n", asnInfo.Hostname)
-		fmt.Printf("\033[38;5;39m City: \033[38;5;78m%s\033[0m\n", asnInfo.City)
-		fmt.Printf("\033[38;5;39m Region: \033[38;5;78m%s\033[0m\n", asnInfo.Region)
-		fmt.Printf("\033[38;5;39m Country: \033[38;5;78m%s\033[0m\n", asnInfo.Country)
-		fmt.Printf("\033[38;5;39m Location: \033[38;5;78m%s\033[0m\n", asnInfo.Loc)
-		fmt.Printf("\033[38;5;39m Organization: \033[38;5;78m%s\033[0m\n", asnInfo.Org)
-		fmt.Printf("\033[38;5;39m Postal Code: \033[38;5;78m%s\033[0m\n", asnInfo.Postal)
-		fmt.Printf("\033[38;5;39m Timezone: \033[38;5;78m%s\033[0m\n", asnInfo.Timezone)
-		asnInfoStrs := []string{}
-		for k, v := range asnInfo.ASN {
-			asnInfoStrs = append(asnInfoStrs, fmt.Sprintf("%s: %v", k, v))
-		}
-		fmt.Printf("\033[38;5;39m ASN: \033[38;5;78m%s\033[0m\n", strings.Join(asnInfoStrs, ", "))
-
-	} else {
-		fmt.Println(" Error fetching ASN Information:", err)
 	}
 }

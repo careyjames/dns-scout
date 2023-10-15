@@ -34,7 +34,7 @@ jobs:
       run: go mod tidy  
 
     - name: Build
-      run: go build -v -o ./bin/dns-scout main.go
+      run: go build -v -o ./bin/dns-scout
 
     - name: Test
       run: go test -v ./...
