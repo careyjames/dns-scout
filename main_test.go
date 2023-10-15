@@ -392,3 +392,59 @@ func TestGetMX(t *testing.T) {
 
 	// Add more test cases as needed
 }
+
+func TestGetTXT(t *testing.T) {
+	// Test case 1: Valid domain with TXT records
+	server1 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("v=spf1 include:_spf.example.com -all"))
+	}))
+	defer server1.Close()
+
+	domain1 := "example.com"
+	expected1 := []string{"v=spf1 include:_spf.example.com -all"}
+	result1, err1 := getTXT(domain1)
+	if err1 != nil {
+		t.Errorf("getTXT(%s) returned an error: %v", domain1, err1)
+	}
+	if compareStringSlices(result1, expected1) {
+		t.Errorf("getTXT(%s) = %v; expected %v", domain1, result1, expected1)
+	}
+
+	// Test case 2: Valid domain with multiple TXT records
+	server2 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("v=spf1 include:_spf.example.com -all\n" +
+			"google-site-verification=abcdefg"))
+	}))
+	defer server2.Close()
+
+	domain2 := "example2.com"
+	expected2 := []string{"v=spf1 include:_spf.example.com -all", "google-site-verification=abcdefg"}
+	result2, err2 := getTXT(domain2)
+	if err2 != nil {
+		t.Errorf("getTXT(%s) returned an error: %v", domain2, err2)
+	}
+	if compareStringSlices(result2, expected2) {
+		t.Errorf("getTXT(%s) = %v; expected %v", domain2, result2, expected2)
+	}
+
+	// Test case 3: Valid domain with no TXT records
+	server3 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusNoContent)
+	}))
+	defer server3.Close()
+
+	domain3 := "example3.com"
+	expected3 := []string{}
+	result3, err3 := getTXT(domain3)
+	if err3 != nil {
+		t.Errorf("getTXT(%s) returned an error: %v", domain3, err3)
+	}
+	if compareStringSlices(result3, expected3) {
+		t.Errorf("getTXT(%s) = %v; expected %v", domain3, result3, expected3)
+	}
+}
