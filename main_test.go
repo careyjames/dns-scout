@@ -93,6 +93,9 @@ func TestGetASNInfo(t *testing.T) {
 		}
 	})
 	// Test case 2: HTTP request error
+}
+
+func TestGetASNInfoFailure(t *testing.T) {
 	t.Run("HTTPRequestError", func(t *testing.T) {
 		ip := "8.8.8.8"
 		apiToken := "your-api-token"
@@ -148,22 +151,6 @@ func TestQueryDNS(t *testing.T) {
 		expectErr bool
 	}{
 		{
-			name:      "Valid A record query",
-			domain:    "example.com",
-			dnsType:   dns.TypeA,
-			server:    mockDNS,
-			expected:  []string{"93.184.216.34"},
-			expectErr: false,
-		},
-		{
-			name:      "Valid NS record query",
-			domain:    "example.com",
-			dnsType:   dns.TypeNS,
-			server:    mockDNS,
-			expected:  []string{"a.iana-servers.net", "b.iana-servers.net"},
-			expectErr: false,
-		},
-		{
 			name:      "Valid MX record query",
 			domain:    "example.com",
 			dnsType:   dns.TypeMX,
@@ -179,9 +166,55 @@ func TestQueryDNS(t *testing.T) {
 			expected:  nil,
 			expectErr: true,
 		},
-		// Add more test cases as needed
 	}
 
+	for _, tc := range tt {
+		t.Run(tc.name, func(t *testing.T) {
+			records, err := queryDNS(tc.domain, tc.dnsType, tc.server)
+
+			if tc.expectErr {
+				if err == nil {
+					t.Errorf("Expected an error, but got nil")
+				}
+			} else {
+				if err == nil {
+					t.Errorf("Expected no error, but got %v", err)
+				}
+				if stringSlicesEqual(records, tc.expected) {
+					t.Errorf("Expected %v, but got %v", tc.expected, records)
+				}
+			}
+		})
+	}
+}
+
+func TestQueryDNSSecond(t *testing.T) {
+	mockDNS := "8.8.8.8"
+	tt := []struct {
+		name      string
+		domain    string
+		dnsType   uint16
+		server    string
+		expected  []string
+		expectErr bool
+	}{
+		{
+			name:      "Valid A record query",
+			domain:    "example.com",
+			dnsType:   dns.TypeA,
+			server:    mockDNS,
+			expected:  []string{"93.184.216.34"},
+			expectErr: false,
+		},
+		{
+			name:      "Valid NS record query",
+			domain:    "example.com",
+			dnsType:   dns.TypeNS,
+			server:    mockDNS,
+			expected:  []string{"a.iana-servers.net", "b.iana-servers.net"},
+			expectErr: false,
+		},
+	}
 	for _, tc := range tt {
 		t.Run(tc.name, func(t *testing.T) {
 			records, err := queryDNS(tc.domain, tc.dnsType, tc.server)
