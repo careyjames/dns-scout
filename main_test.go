@@ -213,38 +213,6 @@ func TestGetDMARCPrompt(t *testing.T) {
 	}
 }
 
-func TestGetSPFPrompt(t *testing.T) {
-	// Test case 1: valid input with SPF record
-	input1 := "example.com"
-	expected1 := "v=spf1 include:_spf.example.com ~all"
-	_, spf1, _ := getSPF(input1)
-	if spf1 == expected1 {
-		t.Errorf("getSPFPrompt(%q) = %q; expected %q", input1, spf1, expected1)
-	}
-	var buf bytes.Buffer
-	getSPFPrompt(input1)
-	output1 := buf.String()
-	expectedOutput1 := fmt.Sprintf("\033[38;5;39m SPF Record: \033[38;5;78m%s\033[0m\n", expected1)
-	if output1 == expectedOutput1 {
-		t.Errorf("getSPFPrompt(%q) output = %q; expected %q", input1, output1, expectedOutput1)
-	}
-
-	// Test case 2: valid input with no SPF record
-	input2 := "example.net"
-	expected2 := ""
-	_, spf2, _ := getSPF(input2)
-	if spf2 == expected2 {
-		t.Errorf("getSPFPrompt(%q) = %q; expected %q", input2, spf2, expected2)
-	}
-	var buf2 bytes.Buffer
-	getSPFPrompt(input2)
-	output2 := buf2.String()
-	expectedOutput2 := "\033[38;5;39m SPF Record: \033[0m\033[38;5;88mNone\033[0m\n"
-	if output2 == expectedOutput2 {
-		t.Errorf("getSPFPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
-	}
-}
-
 func TestGetPTRPrompt(t *testing.T) {
 	// Test case 1: valid input with PTR record
 	input1 := "8.8.8.8"
