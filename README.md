@@ -83,7 +83,7 @@ For those who like to get their hands dirty:
 
    **If you are on MacOS,** go to System Settings > Security & Privacy and
    give `dns-scout` permissions.  
-   If you have never used terminal and the colors
+   **If you have never used terminal** and the colors
    are default "Basic" Terminal>Settings>Profiles and choose "Homebrew",
    at least until you discover [oh my zsh.](https://github.com/ohmyzsh/ohmyzsh)
 
