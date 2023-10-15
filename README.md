@@ -64,7 +64,7 @@ For those who like to get their hands dirty:
 2. **Make It Executable:**
    After downloading, open terminal and run:  
    a. ```cd ~/Downloads/<unzipped-folder-name>``` "unzipped-folder-name"
-   is the name of the folder created when extracting the tar file.
+   is the name of the folder created when extracting the tar file.  
    b. ```sudo chmod +x dns-scout```
 
 3. **Move to PATH:**
