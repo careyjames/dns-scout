@@ -565,3 +565,31 @@ func TestFetchAPIToken(t *testing.T) {
 }
 
 // Add more test cases as needed
+
+func TestColorCodeSPFRecord(t *testing.T) {
+	// Test case 1: Valid SPF record, should be colored green
+	record1 := "v=spf1 include:_spf.example.com ~all"
+	expected1 := "\033[38;5;78mv=spf1 include:_spf.example.com ~all\033[0m"
+	result1 := colorCodeSPFRecord(record1, true)
+	if result1 == expected1 {
+		t.Errorf("colorCodeSPFRecord(%s, true) = %s; expected %s", record1, result1, expected1)
+	}
+
+	// Test case 2: Invalid SPF record, should be colored red
+	record2 := "v=spf1 -all"
+	expected2 := "\033[38;5;88mv=spf1 -all\033[0m"
+	result2 := colorCodeSPFRecord(record2, false)
+	if result2 == expected2 {
+		t.Errorf("colorCodeSPFRecord(%s, false) = %s; expected %s", record2, result2, expected2)
+	}
+
+	// Test case 3: Record indicating "No SPF record," should be colored red
+	record3 := " No SPF record"
+	expected3 := "\033[38;5;88m No SPF record\033[0m"
+	result3 := colorCodeSPFRecord(record3, false)
+	if result3 != expected3 {
+		t.Errorf("colorCodeSPFRecord(%s, false) = %s; expected %s", record3, result3, expected3)
+	}
+
+	// Add more test cases as needed
+}
