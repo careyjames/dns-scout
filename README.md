@@ -63,7 +63,7 @@ For those who like to get their hands dirty:
 
 2. **Make It Executable:**
    After downloading, open terminal and run:  
-   a. ```cd ~/Downloads/```  
+   a. ```cd ~/Downloads/dns-scout-<version>``` replace "<version>" with your version.  
    b. ```sudo chmod +x dns-scout```
 
 3. **Move to PATH:**
