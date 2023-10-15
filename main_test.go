@@ -419,3 +419,31 @@ func TestGetPTRPrompt(t *testing.T) {
 		t.Errorf("getPTRPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
 	}
 }
+
+func TestFormatLongText(t *testing.T) {
+	// Test with a text that is shorter than the threshold
+	inputShort := "Short text"
+	thresholdShort := 20
+	formattedShort := formatLongText(inputShort, thresholdShort, "  ")
+	if formattedShort != inputShort {
+		t.Errorf("Expected '%s', got '%s'", inputShort, formattedShort)
+	}
+
+	// Test with a text that is longer than the threshold
+	inputLong := "This is a long text that should be formatted to fit within the specified threshold. This is a long text that should be formatted to fit within the specified threshold."
+	thresholdLong := 40
+	formattedLong := formatLongText(inputLong, thresholdLong, "  ")
+	expectedFormattedLong := "This is a long text that should be\n  formatted to fit within the specified\n  threshold. This is a long text that\n  should be formatted to fit within the\n  specified threshold."
+	if formattedLong != expectedFormattedLong {
+		t.Errorf("Expected '%s', got '%s'", expectedFormattedLong, formattedLong)
+	}
+
+	// Test with a text that contains words longer than the threshold
+	inputLongWords := "This is an extremelylongwordthatneedstobebrokenintopiecesbecauseitissoverylong."
+	thresholdLongWords := 20
+	formattedLongWords := formatLongText(inputLongWords, thresholdLongWords, "  ")
+	expectedFormattedLongWords := "This is an\n  extremelylongwordthatneedstobebrokenintopiecesbecauseitissoverylong."
+	if formattedLongWords == expectedFormattedLongWords {
+		t.Errorf("Expected '%s', got '%s'", expectedFormattedLongWords, formattedLongWords)
+	}
+}
