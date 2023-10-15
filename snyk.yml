@@ -1,0 +1,8 @@
+---
+# Snyk Go Manifest file
+apiVersion: 1
+dependencies:
+  - name: github.com/gin-gonic/gin
+    version: 1.7.4
+  - name: github.com/go-sql-driver/mysql
+    version: 1.6.0

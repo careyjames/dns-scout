@@ -1,8 +1,8 @@
-# DNS-Scout 🇺🇸 Carey James Balboa - Mac Help Nashville, Inc
-
+[![Test Coverage](https://api.codeclimate.com/v1/badges/970a194c160c45855199/test_coverage)](https://codeclimate.com/github/careyjames/DNS-Scout/test_coverage)
 ![Build Status](https://github.com/careyjames/DNS-Scout/actions/workflows/go.yml/badge.svg?branch=main)
 [![Code Climate](https://codeclimate.com/github/careyjames/DNS-Scout/badges/gpa.svg)](https://codeclimate.com/github/careyjames/DNS-Scout)
 [![Go Report Card](https://goreportcard.com/badge/github.com/careyjames/DNS-Scout)](https://goreportcard.com/report/github.com/careyjames/DNS-Scout)
+[![Known Vulnerabilities](https://snyk.io/test/github/careyjames/DNS-Scout/badge.svg)](https://snyk.io/test/github/careyjames/DNS-Scout)
 
 [español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
 
@@ -58,24 +58,36 @@ Prerequisites: Go 1.21
 For those who like to get their hands dirty:
 
 1. **Download the Binary:**
-   Download the compiled binary for your operating system from
+   Download and extract the compiled binary for your operating system from
    the [Releases](https://github.com/careyjames/dns-scout/releases) page.
 
-1. **Make It Executable:**
-   After downloading, navigate to the download directory and run:
+2. **Make It Executable:**
+   After downloading, open terminal and run:  
+   a. ```cd ~/Downloads/dns-scout-<version>``` replace "version" with your version.  
+   b. ```sudo chmod +x dns-scout```
 
-   ```chmod +x dns-scout-<version>``` (macos-silicon linux-amd64)
+3. **Move to PATH:**
+   Move the executable to a directory in your system's PATH.  
+   For example, you can move it to /usr/local/bin/ on a Unix-based system:  
+   a. ```sudo mkdir -p /usr/local/bin/```  
+   b. ```sudo mv dns-scout /usr/local/bin/```
 
-1. **Move to PATH:**
-   Move the executable to a directory in your system's PATH. For example,
-   you can move it to `/usr/local/bin/` on a Unix-based system:
-   ```sudo mv dns-scout /usr/local/bin/```
+4. **Get free or paid token from ipinfo.io**
+   [Website](https://ipinfo.io) and run the "setup-api-token.sh".  
+   a. ```cd ~/Downloads/```  
+   b. ```sudo chmod +x setup-api-token.sh```  
+   c. ```./setup-api-token.sh```
 
-1. **Get free or paid token from ipinfo.io**
-   [Website](ipinfo.io)
-
-1. **Run DNS Scout:**
+5. **Run DNS Scout:**
    Open a new terminal window and type `dns-scout` to start using the tool.
+
+   **For MacOS users,** go to System Settings > Security & Privacy and
+   give `dns-scout` permissions.  
+   **If you have never used terminal** and the colors
+   are default "Basic" Terminal>Settings>Profiles and choose "Homebrew",
+   at least until you discover [oh my zsh.](https://github.com/ohmyzsh/ohmyzsh)
+
+   ![Example IP records](mac-click-allow.png)
 
 That's it! You've manually installed DNS-Scout like a true nerd.
 
@@ -84,7 +96,7 @@ That's it! You've manually installed DNS-Scout like a true nerd.
 Environment Variable: Useful for users running the program in a controlled
 environment like a server,
 where setting environment variables is common practice.
-The ```/share/setup-api-token.sh``` script would be helpful for them.
+The ```/setup-api-token.sh``` script would be helpful for them.
 
 Command-Line Argument: Useful for those who wish to specify different API tokens
 for different runs without changing environment variables.
@@ -95,8 +107,3 @@ token once and forget it.
 The token will be read from a file in the user's home directory,
 making it convenient for them.
 
-**If you are on MacOS,** go to System Settings > Security & Privacy and
-give `dns-scout-<version>` permissions.
-
-![Dev not Verified](dev-not-verified.png)
-![Example IP records](mac-click-allow.png)
