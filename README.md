@@ -60,7 +60,7 @@ Prerequisites: Go 1.21
 For those who like to get their hands dirty:
 
 1. **Download the Binary:**
-   Download the compiled binary for your operating system from
+   Download and extract the compiled binary for your operating system from
    the [Releases](https://github.com/careyjames/dns-scout/releases) page.
 
 2. **Make It Executable:**
@@ -71,7 +71,7 @@ For those who like to get their hands dirty:
 3. **Move to PATH:**
    Move the executable to a directory in your system's PATH. For example,
    you can move it to /usr/local/bin/ on a Unix-based system:
-   ```sudo mv dns-scout /usr/local/bin/```
+   ```sudo mkdir -p /usr/local/bin/ && sudo mv dns-scout /usr/local/bin/```
 
 4. **Get free or paid token from ipinfo.io**
    [Website](https://ipinfo.io)
