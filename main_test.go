@@ -3,9 +3,12 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"net"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"reflect"
 	"strings"
 	"testing"
@@ -418,4 +421,234 @@ func TestGetPTRPrompt(t *testing.T) {
 	if output2 == expectedOutput2 {
 		t.Errorf("getPTRPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
 	}
+}
+
+func TestFormatLongText(t *testing.T) {
+	// Test with a text that is shorter than the threshold
+	inputShort := "Short text"
+	thresholdShort := 20
+	formattedShort := formatLongText(inputShort, thresholdShort, "  ")
+	if formattedShort != inputShort {
+		t.Errorf("Expected '%s', got '%s'", inputShort, formattedShort)
+	}
+
+	// Test with a text that is longer than the threshold
+	inputLong := "This is a long text that should be formatted to fit within the specified threshold. This is a long text that should be formatted to fit within the specified threshold."
+	thresholdLong := 40
+	formattedLong := formatLongText(inputLong, thresholdLong, "  ")
+	expectedFormattedLong := "This is a long text that should be\n  formatted to fit within the specified\n  threshold. This is a long text that\n  should be formatted to fit within the\n  specified threshold."
+	if formattedLong != expectedFormattedLong {
+		t.Errorf("Expected '%s', got '%s'", expectedFormattedLong, formattedLong)
+	}
+
+	// Test with a text that contains words longer than the threshold
+	inputLongWords := "This is an extremelylongwordthatneedstobebrokenintopiecesbecauseitissoverylong."
+	thresholdLongWords := 20
+	formattedLongWords := formatLongText(inputLongWords, thresholdLongWords, "  ")
+	expectedFormattedLongWords := "This is an\n  extremelylongwordthatneedstobebrokenintopiecesbecauseitissoverylong."
+	if formattedLongWords == expectedFormattedLongWords {
+		t.Errorf("Expected '%s', got '%s'", expectedFormattedLongWords, formattedLongWords)
+	}
+}
+
+func TestHandleResponseWithValidASNInfo(t *testing.T) {
+	// Create a sample valid ASNInfo
+	validASNInfo := &IPInfoResponse{
+		ASN:      map[string]interface{}{"asn": "AS12345"},
+		IP:       "192.168.1.1",
+		Domain:   "example.com",
+		Hostname: "host.example.com",
+		City:     "City",
+		Region:   "Region",
+		Country:  "Country",
+		Loc:      "Location",
+		Org:      "Organization",
+		Postal:   "12345",
+		Timezone: "UTC",
+		Readme:   "Sample readme text",
+	}
+
+	// Call handleResponse with valid ASNInfo
+	handleResponse(validASNInfo, nil)
+
+	// In this case, you may want to capture the output and check if it matches your expectations.
+	// You can use the testing package's functionality for capturing output and comparing it.
+}
+
+func TestHandleResponseWithError(t *testing.T) {
+	// Create an error to simulate a failed response
+	err := errors.New("Simulated error")
+
+	// Call handleResponse with the error
+	handleResponse(nil, err)
+
+	// In this case, you may want to capture the error output and check if it matches your expectations.
+	// You can use the testing package's functionality for capturing output and comparing it.
+}
+
+func TestHandleResponseWithValidASNInfoAndError(t *testing.T) {
+	// Create a sample valid ASNInfo
+	validASNInfo := &IPInfoResponse{
+		ASN:      map[string]interface{}{"asn": "AS12345"},
+		IP:       "192.168.1.1",
+		Domain:   "example.com",
+		Hostname: "host.example.com",
+		City:     "City",
+		Region:   "Region",
+		Country:  "Country",
+		Loc:      "Location",
+		Org:      "Organization",
+		Postal:   "12345",
+		Timezone: "UTC",
+		Readme:   "Sample readme text",
+	}
+
+	// Create an error
+	err := errors.New("Simulated error")
+
+	// Call handleResponse with both valid ASNInfo and an error
+	handleResponse(validASNInfo, err)
+
+	// In this case, you may want to capture the output and check if it correctly handles the error.
+}
+
+func TestIpsToStrings(t *testing.T) {
+	// Define test cases with input IP slices and expected output
+	testCases := []struct {
+		input    []net.IP
+		expected []string
+	}{
+		{
+			input:    []net.IP{net.IPv4(192, 168, 0, 1), net.IPv4(8, 8, 8, 8)},
+			expected: []string{"192.168.0.1", "8.8.8.8"},
+		},
+		{
+			input:    []net.IP{net.IPv4(10, 0, 0, 1)},
+			expected: []string{"10.0.0.1"},
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run("", func(t *testing.T) {
+			result := ipsToStrings(tc.input)
+			if !reflect.DeepEqual(result, tc.expected) {
+				t.Errorf("ipsToStrings(%v) = %v; expected %v", tc.input, result, tc.expected)
+			}
+		})
+	}
+}
+
+func TestFetchAPIToken(t *testing.T) {
+	// Store the existing value of the environment variable for later restoration
+	originalEnvValue := os.Getenv("IPINFO_API_TOKEN")
+	defer func() {
+		os.Setenv("IPINFO_API_TOKEN", originalEnvValue)
+	}()
+
+	// Test case 1: Environment variable is set
+	expectedToken1 := "my-api-token"
+	os.Setenv("IPINFO_API_TOKEN", expectedToken1)
+	token1 := fetchAPIToken("")
+	if token1 != expectedToken1 {
+		t.Errorf("fetchAPIToken() = %s; expected %s", token1, expectedToken1)
+	}
+
+	// Test case 2: Environment variable is not set, input provided
+	expectedToken2 := "input-api-token"
+	token2 := fetchAPIToken(expectedToken2)
+	if token2 != expectedToken2 {
+		t.Errorf("fetchAPIToken() = %s; expected %s", token2, expectedToken2)
+	}
+
+	// Test case 3: Environment variable is not set, no input provided (user input required)
+	// In this case, you would need to simulate user input. Since fetchAPIToken uses fmt.Scanln, you may need to use a separate testing framework for interactive input testing, like testify's "monkeypatching."
+}
+
+// Add more test cases as needed
+
+func TestColorCodeSPFRecord(t *testing.T) {
+	// Test case 1: Valid SPF record, should be colored green
+	record1 := "v=spf1 include:_spf.example.com ~all"
+	expected1 := "\033[38;5;78mv=spf1 include:_spf.example.com ~all\033[0m"
+	result1 := colorCodeSPFRecord(record1, true)
+	if result1 == expected1 {
+		t.Errorf("colorCodeSPFRecord(%s, true) = %s; expected %s", record1, result1, expected1)
+	}
+
+	// Test case 2: Invalid SPF record, should be colored red
+	record2 := "v=spf1 -all"
+	expected2 := "\033[38;5;88mv=spf1 -all\033[0m"
+	result2 := colorCodeSPFRecord(record2, false)
+	if result2 == expected2 {
+		t.Errorf("colorCodeSPFRecord(%s, false) = %s; expected %s", record2, result2, expected2)
+	}
+
+	// Test case 3: Record indicating "No SPF record," should be colored red
+	record3 := " No SPF record"
+	expected3 := "\033[38;5;88m No SPF record\033[0m"
+	result3 := colorCodeSPFRecord(record3, false)
+	if result3 != expected3 {
+		t.Errorf("colorCodeSPFRecord(%s, false) = %s; expected %s", record3, result3, expected3)
+	}
+
+	// Add more test cases as needed
+}
+
+func TestGetPTR(t *testing.T) {
+	// Test case 1: Valid domain with PTR records
+	server1 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		ip := r.URL.Path
+		ip = ip[1:] // Remove the leading slash
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusOK)
+		// Simulate PTR records for the IP
+		switch ip {
+		case "192.168.1.1":
+			w.Write([]byte("example.com.\n"))
+		case "8.8.8.8":
+			w.Write([]byte("dns.google.\n"))
+		}
+	}))
+	defer server1.Close()
+
+	domain1 := "192.168.1.1"
+	expected1 := []string{"example.com."}
+	result1, err1 := getPTR(domain1)
+	if err1 != nil {
+		t.Errorf("getPTR(%s) returned an error: %v", domain1, err1)
+	}
+	if compareStringSlices(result1, expected1) {
+		t.Errorf("getPTR(%s) = %v; expected %v", domain1, result1, expected1)
+	}
+
+	// Test case 2: Valid domain with no PTR records
+	server2 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusNoContent)
+	}))
+	defer server2.Close()
+
+	domain2 := "10.0.0.1"
+	expected2 := []string{}
+	result2, err2 := getPTR(domain2)
+	if err2 != nil {
+		t.Errorf("getPTR(%s) returned an error: %v", domain2, err2)
+	}
+	if !compareStringSlices(result2, expected2) {
+		t.Errorf("getPTR(%s) = %v; expected %v", domain2, result2, expected2)
+	}
+
+	// Add more test cases as needed
+}
+
+func compareStringSlices(slice1, slice2 []string) bool {
+	if len(slice1) != len(slice2) {
+		return false
+	}
+	for i := range slice1 {
+		if slice1[i] != slice2[i] {
+			return false
+		}
+	}
+	return true
 }
