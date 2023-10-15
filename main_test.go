@@ -8,6 +8,7 @@ import (
 	"net"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"reflect"
 	"strings"
 	"testing"
@@ -536,3 +537,31 @@ func TestIpsToStrings(t *testing.T) {
 		})
 	}
 }
+
+func TestFetchAPIToken(t *testing.T) {
+	// Store the existing value of the environment variable for later restoration
+	originalEnvValue := os.Getenv("IPINFO_API_TOKEN")
+	defer func() {
+		os.Setenv("IPINFO_API_TOKEN", originalEnvValue)
+	}()
+
+	// Test case 1: Environment variable is set
+	expectedToken1 := "my-api-token"
+	os.Setenv("IPINFO_API_TOKEN", expectedToken1)
+	token1 := fetchAPIToken("")
+	if token1 != expectedToken1 {
+		t.Errorf("fetchAPIToken() = %s; expected %s", token1, expectedToken1)
+	}
+
+	// Test case 2: Environment variable is not set, input provided
+	expectedToken2 := "input-api-token"
+	token2 := fetchAPIToken(expectedToken2)
+	if token2 != expectedToken2 {
+		t.Errorf("fetchAPIToken() = %s; expected %s", token2, expectedToken2)
+	}
+
+	// Test case 3: Environment variable is not set, no input provided (user input required)
+	// In this case, you would need to simulate user input. Since fetchAPIToken uses fmt.Scanln, you may need to use a separate testing framework for interactive input testing, like testify's "monkeypatching."
+}
+
+// Add more test cases as needed
