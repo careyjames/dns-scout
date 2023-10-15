@@ -142,14 +142,7 @@ func TestQueryDNS(t *testing.T) {
 	// Define a mock DNS server for testing
 	mockDNS := "8.8.8.8"
 
-	tt := []struct {
-		name      string
-		domain    string
-		dnsType   uint16
-		server    string
-		expected  []string
-		expectErr bool
-	}{
+	tt := []DNSStruct{
 		{
 			name:      "Valid MX record query",
 			domain:    "example.com",
@@ -168,36 +161,21 @@ func TestQueryDNS(t *testing.T) {
 		},
 	}
 
-	for _, tc := range tt {
-		t.Run(tc.name, func(t *testing.T) {
-			records, err := queryDNS(tc.domain, tc.dnsType, tc.server)
+	runDNSTest(t, tt)
+}
 
-			if tc.expectErr {
-				if err == nil {
-					t.Errorf("Expected an error, but got nil")
-				}
-			} else {
-				if err == nil {
-					t.Errorf("Expected no error, but got %v", err)
-				}
-				if stringSlicesEqual(records, tc.expected) {
-					t.Errorf("Expected %v, but got %v", tc.expected, records)
-				}
-			}
-		})
-	}
+type DNSStruct struct {
+	name      string
+	domain    string
+	dnsType   uint16
+	server    string
+	expected  []string
+	expectErr bool
 }
 
 func TestQueryDNSSecond(t *testing.T) {
 	mockDNS := "8.8.8.8"
-	tt := []struct {
-		name      string
-		domain    string
-		dnsType   uint16
-		server    string
-		expected  []string
-		expectErr bool
-	}{
+	tt := []DNSStruct{
 		{
 			name:      "Valid A record query",
 			domain:    "example.com",
@@ -215,6 +193,10 @@ func TestQueryDNSSecond(t *testing.T) {
 			expectErr: false,
 		},
 	}
+	runDNSTest(t, tt)
+}
+
+func runDNSTest(t *testing.T, tt []DNSStruct) {
 	for _, tc := range tt {
 		t.Run(tc.name, func(t *testing.T) {
 			records, err := queryDNS(tc.domain, tc.dnsType, tc.server)
@@ -228,7 +210,7 @@ func TestQueryDNSSecond(t *testing.T) {
 					t.Errorf("Expected no error, but got result as %v", err)
 				}
 				if stringSlicesEqual(records, tc.expected) {
-					t.Errorf("Expected %v, but got result as %v", tc.expected, records)
+					t.Errorf("Expected %v, but got result %v", tc.expected, records)
 				}
 			}
 		})
