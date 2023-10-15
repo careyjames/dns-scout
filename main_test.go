@@ -3,7 +3,9 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"net"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
@@ -445,5 +447,92 @@ func TestFormatLongText(t *testing.T) {
 	expectedFormattedLongWords := "This is an\n  extremelylongwordthatneedstobebrokenintopiecesbecauseitissoverylong."
 	if formattedLongWords == expectedFormattedLongWords {
 		t.Errorf("Expected '%s', got '%s'", expectedFormattedLongWords, formattedLongWords)
+	}
+}
+
+func TestHandleResponseWithValidASNInfo(t *testing.T) {
+	// Create a sample valid ASNInfo
+	validASNInfo := &IPInfoResponse{
+		ASN:      map[string]interface{}{"asn": "AS12345"},
+		IP:       "192.168.1.1",
+		Domain:   "example.com",
+		Hostname: "host.example.com",
+		City:     "City",
+		Region:   "Region",
+		Country:  "Country",
+		Loc:      "Location",
+		Org:      "Organization",
+		Postal:   "12345",
+		Timezone: "UTC",
+		Readme:   "Sample readme text",
+	}
+
+	// Call handleResponse with valid ASNInfo
+	handleResponse(validASNInfo, nil)
+
+	// In this case, you may want to capture the output and check if it matches your expectations.
+	// You can use the testing package's functionality for capturing output and comparing it.
+}
+
+func TestHandleResponseWithError(t *testing.T) {
+	// Create an error to simulate a failed response
+	err := errors.New("Simulated error")
+
+	// Call handleResponse with the error
+	handleResponse(nil, err)
+
+	// In this case, you may want to capture the error output and check if it matches your expectations.
+	// You can use the testing package's functionality for capturing output and comparing it.
+}
+
+func TestHandleResponseWithValidASNInfoAndError(t *testing.T) {
+	// Create a sample valid ASNInfo
+	validASNInfo := &IPInfoResponse{
+		ASN:      map[string]interface{}{"asn": "AS12345"},
+		IP:       "192.168.1.1",
+		Domain:   "example.com",
+		Hostname: "host.example.com",
+		City:     "City",
+		Region:   "Region",
+		Country:  "Country",
+		Loc:      "Location",
+		Org:      "Organization",
+		Postal:   "12345",
+		Timezone: "UTC",
+		Readme:   "Sample readme text",
+	}
+
+	// Create an error
+	err := errors.New("Simulated error")
+
+	// Call handleResponse with both valid ASNInfo and an error
+	handleResponse(validASNInfo, err)
+
+	// In this case, you may want to capture the output and check if it correctly handles the error.
+}
+
+func TestIpsToStrings(t *testing.T) {
+	// Define test cases with input IP slices and expected output
+	testCases := []struct {
+		input    []net.IP
+		expected []string
+	}{
+		{
+			input:    []net.IP{net.IPv4(192, 168, 0, 1), net.IPv4(8, 8, 8, 8)},
+			expected: []string{"192.168.0.1", "8.8.8.8"},
+		},
+		{
+			input:    []net.IP{net.IPv4(10, 0, 0, 1)},
+			expected: []string{"10.0.0.1"},
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run("", func(t *testing.T) {
+			result := ipsToStrings(tc.input)
+			if !reflect.DeepEqual(result, tc.expected) {
+				t.Errorf("ipsToStrings(%v) = %v; expected %v", tc.input, result, tc.expected)
+			}
+		})
 	}
 }
