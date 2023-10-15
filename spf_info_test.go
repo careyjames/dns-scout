@@ -76,7 +76,11 @@ func TestGetSPF(t *testing.T) {
 		t.Errorf("getSPF(%s) = (valid: %t, record: %s, suffix: %s); expected (valid: %t, record: %s, suffix: %s)",
 			domain2, isValid2, record2, suffix2, expected2Valid, expected2Record, expected2Suffix)
 	}
+}
 
+// Add more test cases as needed
+
+func TestGetSPFSecond(t *testing.T) {
 	// Test case 3: Invalid SPF record
 	server3 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/plain")
@@ -112,5 +116,3 @@ func TestGetSPF(t *testing.T) {
 			domain4, isValid4, record4, suffix4, expected4Valid, expected4Record, expected4Suffix)
 	}
 }
-
-// Add more test cases as needed

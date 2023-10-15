@@ -64,11 +64,6 @@ func ipsToStrings(ips []net.IP) []string {
 	return strs
 }
 
-// getMX fetches the MX records for a given domain.
-func getMX(domain string) ([]string, error) {
-	return QueryDNS(domain, dns.TypeMX, "8.8.8.8:53")
-}
-
 // getTXT fetches the TXT records for a given domain.
 func getTXT(domain string) ([]string, error) {
 	return QueryDNS(domain, dns.TypeTXT, "8.8.8.8:53")
@@ -221,7 +216,7 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 
 		GetNSPrompt(input)
 
-		getMXPrompt(input)
+		GetMXPrompt(input)
 
 		getTXTPrompt(input)
 
@@ -242,15 +237,6 @@ func resolvedIPPrompt(input string) {
 	ips, _ := net.LookupIP(input)
 	if len(ips) > 0 {
 		fmt.Printf("\033[38;5;39m Resolved IPs: \033[38;5;78m%s\033[0m\n", strings.Join(ipsToStrings(ips), ", "))
-	}
-}
-
-func getMXPrompt(input string) {
-	mx, _ := getMX(input)
-	if len(mx) > 0 {
-		fmt.Printf("\033[38;5;39m MX Records: \033[38;5;78m%s\033[0m\n", strings.Join(mx, ", "))
-	} else {
-		fmt.Printf("\033[38;5;39m MX Records: \033[0m\033[38;5;88mNo MX, No email.\033[0m\n")
 	}
 }
 

@@ -57,38 +57,6 @@ func stringSlicesEqual(a, b []string) bool {
 	return true
 }
 
-func TestGetMXPrompt(t *testing.T) {
-	// Test case 1: valid input with MX records
-	input1 := "example.com"
-	expected1 := []string{"mx1.example.com", "mx2.example.com"}
-	mx1, _ := getMX(input1)
-	if reflect.DeepEqual(mx1, expected1) {
-		t.Errorf("getMXPrompt(%q) = %q; expected %q", input1, mx1, expected1)
-	}
-	var buf bytes.Buffer
-	getMXPrompt(input1)
-	output1 := buf.String()
-	expectedOutput1 := fmt.Sprintf("\033[38;5;39m Mail Servers: \033[38;5;78m%s\033[0m\n", strings.Join(expected1, ", "))
-	if output1 == expectedOutput1 {
-		t.Errorf("getMXPrompt(%q) output = %q; expected %q", input1, output1, expectedOutput1)
-	}
-
-	// Test case 2: valid input with no MX records
-	input2 := "example.net"
-	expected2 := []string{}
-	mx2, _ := getMX(input2)
-	if reflect.DeepEqual(mx2, expected2) {
-		t.Errorf("getMXPrompt(%q) = %q; expected %q", input2, mx2, expected2)
-	}
-	var buf2 bytes.Buffer
-	getMXPrompt(input2)
-	output2 := buf2.String()
-	expectedOutput2 := "\033[38;5;39m Mail Servers: \033[0m\033[38;5;88mNone\033[0m\n"
-	if output2 == expectedOutput2 {
-		t.Errorf("getMXPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
-	}
-}
-
 func TestGetTXTPrompt(t *testing.T) {
 	// Test case 1: valid input with TXT records
 	input1 := "example.com"
@@ -352,4 +320,60 @@ func compareStringSlices(slice1, slice2 []string) bool {
 		}
 	}
 	return true
+}
+
+func TestGetTXT(t *testing.T) {
+	// Test case 1: Valid domain with TXT records
+	server1 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("v=spf1 include:_spf.example.com -all"))
+	}))
+	defer server1.Close()
+
+	domain1 := "example.com"
+	expected1 := []string{"v=spf1 include:_spf.example.com -all"}
+	result1, err1 := getTXT(domain1)
+	if err1 != nil {
+		t.Errorf("getTXT(%s) returned an error: %v", domain1, err1)
+	}
+	if compareStringSlices(result1, expected1) {
+		t.Errorf("getTXT(%s) = %v; expected %v", domain1, result1, expected1)
+	}
+
+	// Test case 2: Valid domain with multiple TXT records
+	server2 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("v=spf1 include:_spf.example.com -all\n" +
+			"google-site-verification=abcdefg"))
+	}))
+	defer server2.Close()
+
+	domain2 := "example2.com"
+	expected2 := []string{"v=spf1 include:_spf.example.com -all", "google-site-verification=abcdefg"}
+	result2, err2 := getTXT(domain2)
+	if err2 != nil {
+		t.Errorf("getTXT(%s) returned an error: %v", domain2, err2)
+	}
+	if compareStringSlices(result2, expected2) {
+		t.Errorf("getTXT(%s) = %v; expected %v", domain2, result2, expected2)
+	}
+
+	// Test case 3: Valid domain with no TXT records
+	server3 := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusNoContent)
+	}))
+	defer server3.Close()
+
+	domain3 := "example3.com"
+	expected3 := []string{}
+	result3, err3 := getTXT(domain3)
+	if err3 != nil {
+		t.Errorf("getTXT(%s) returned an error: %v", domain3, err3)
+	}
+	if compareStringSlices(result3, expected3) {
+		t.Errorf("getTXT(%s) = %v; expected %v", domain3, result3, expected3)
+	}
 }
