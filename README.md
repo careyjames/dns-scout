@@ -68,12 +68,12 @@ For those who like to get their hands dirty:
 
 3. **Move to PATH:**
    Move the executable to a directory in your system's PATH. For example,
-   you can move it to /usr/local/bin/ on a Unix-based system:
+   you can move it to /usr/local/bin/ on a Unix-based system:  
    a. ```sudo mkdir -p /usr/local/bin/```  
    b. ```sudo mv dns-scout /usr/local/bin/```
 
 4. **Get free or paid token from ipinfo.io**
-   [Website](https://ipinfo.io) and run the "setup-api-token.sh".
+   [Website](https://ipinfo.io) and run the "setup-api-token.sh".  
    a. ```cd ~/Downloads/```  
    b. ```sudo chmod +x setup-api-token.sh```  
    c. ```./setup-api-token.sh```
