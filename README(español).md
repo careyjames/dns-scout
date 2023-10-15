@@ -61,8 +61,8 @@ Para aquellos que les gusta ensuciarse las manos:
 1. Hazlo ejecutable:
     Después de descargar, navegue al directorio de descarga y ejecute:
 
-    ```chmod +x dns-scout-<version>``` (macos-silicon linux-amd64)
-
+    ```chmod +x dns-scout```  
+    
 1. Mover a PATH:
     Mueva el ejecutable a un directorio en la PATH de su sistema. Por
     ejemplo, puede moverlo a ```/usr/local/bin/``` en un sistema basado en Unix/Mac:
@@ -83,18 +83,14 @@ Para aquellos que les gusta ensuciarse las manos:
 Variable de entorno: útil para usuarios que ejecutan el programa en un
 entorno controlado como un servidor, donde establecer variables de
 entorno es una práctica común.
-La secuencia de comandos ```/share/setup-api-token.sh``` les sería útil.
+La secuencia de comandos ```/setup-api-token.sh``` les sería útil.
 
 Argumento de línea de comandos: útil para aquellos que desean especificar
 diferentes tokens de API para diferentes ejecuciones sin cambiar las
 variables de entorno. Podría ser útil para pruebas.
 
-Almacenado en un archivo: ideal para usuarios habituales que desean establecer
-el token de API una vez y olvidarlo. El token se leerá de un archivo en el
-directorio de inicio del usuario, lo que lo hace conveniente para ellos.
-
 **Si estás en MacOS**, ve a Ajustes del sistema > Seguridad y privacidad
-y dale a ```dns-scout-<version>``` permisos.
+y dale a ```dns-scout``` permisos.
 
 ![Dev not Verified](dev-not-verified.png)
 ![Example IP records](mac-click-allow.png)
