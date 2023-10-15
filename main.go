@@ -19,6 +19,7 @@ import (
 
 // IPInfoAPIURL is and API URL
 const IPInfoAPIURL = "https://ipinfo.io/"
+const version = "5.9"
 
 // IPInfoResponse struct holds the response from the IPInfo API
 type IPInfoResponse struct {
@@ -160,6 +161,12 @@ func fetchAPIToken(apiTokenFlag string) string {
 }
 
 func main() {
+	// Check for "version" argument
+	args := os.Args[1:]
+	if len(args) > 0 && args[0] == "version" {
+		fmt.Println("DNS-Scout version:", version)
+		return
+	}
 	var apiTokenFlag string
 	flag.StringVar(&apiTokenFlag, "api-token", "", "IPInfo API token")
 	flag.Parse()

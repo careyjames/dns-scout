@@ -12,7 +12,7 @@ func getMX(domain string) ([]string, error) {
 	return QueryDNS(domain, dns.TypeMX, "8.8.8.8:53")
 }
 
-// GetMXPrompt is MX promt
+// GetMXPrompt is MX prompt
 func GetMXPrompt(input string) {
 	mx, _ := getMX(input)
 	if len(mx) > 0 {
