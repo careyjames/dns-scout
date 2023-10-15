@@ -387,3 +387,35 @@ func TestGetSPFPrompt(t *testing.T) {
 		t.Errorf("getSPFPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
 	}
 }
+
+func TestGetPTRPrompt(t *testing.T) {
+	// Test case 1: valid input with PTR record
+	input1 := "8.8.8.8"
+	expected1 := "dns.google"
+	ptr1, _ := getPTR(input1)
+	if ptr1[0] == expected1 {
+		t.Errorf("getPTRPrompt(%q) = %q; expected %q", input1, ptr1, expected1)
+	}
+	var buf bytes.Buffer
+	getPTRPrompt(input1)
+	output1 := buf.String()
+	expectedOutput1 := fmt.Sprintf("\033[38;5;39m PTR Record: \033[38;5;78m%s\033[0m\n", expected1)
+	if output1 == expectedOutput1 {
+		t.Errorf("getPTRPrompt(%q) output = %q; expected %q", input1, output1, expectedOutput1)
+	}
+
+	// Test case 2: valid input with no PTR record
+	input2 := "192.168.1.1"
+	expected2 := ""
+	ptr2, _ := getPTR(input2)
+	if ptr2[0] == expected2 {
+		t.Errorf("getPTRPrompt(%q) = %q; expected %q", input2, ptr2, expected2)
+	}
+	var buf2 bytes.Buffer
+	getPTRPrompt(input2)
+	output2 := buf2.String()
+	expectedOutput2 := "\033[38;5;39m PTR Record: \033[0m\033[38;5;88mNone\033[0m\n"
+	if output2 == expectedOutput2 {
+		t.Errorf("getPTRPrompt(%q) output = %q; expected %q", input2, output2, expectedOutput2)
+	}
+}
