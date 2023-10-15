@@ -64,32 +64,6 @@ func ipsToStrings(ips []net.IP) []string {
 	return strs
 }
 
-// getNS fetches the NS records for a given domain.
-func getNS(domain string) ([]string, error) {
-	googleRecords, err1 := QueryDNS(domain, dns.TypeNS, "8.8.8.8:53")
-	cloudflareRecords, err2 := QueryDNS(domain, dns.TypeNS, "1.1.1.1:53")
-
-	if err1 != nil && err2 != nil {
-		return nil, fmt.Errorf("both DNS queries failed")
-	}
-
-	// Merge and deduplicate records
-	recordMap := make(map[string]bool)
-	for _, record := range googleRecords {
-		recordMap[record] = true
-	}
-	for _, record := range cloudflareRecords {
-		recordMap[record] = true
-	}
-
-	var mergedRecords []string
-	for record := range recordMap {
-		mergedRecords = append(mergedRecords, record)
-	}
-
-	return mergedRecords, nil
-}
-
 // getMX fetches the MX records for a given domain.
 func getMX(domain string) ([]string, error) {
 	return QueryDNS(domain, dns.TypeMX, "8.8.8.8:53")
@@ -98,29 +72,6 @@ func getMX(domain string) ([]string, error) {
 // getTXT fetches the TXT records for a given domain.
 func getTXT(domain string) ([]string, error) {
 	return QueryDNS(domain, dns.TypeTXT, "8.8.8.8:53")
-}
-
-// getSPF fetches and analyzes the SPF record for a given domain.
-func getSPF(domain string) (bool, string, string) {
-	txtRecords, err := getTXT(domain)
-	if err != nil {
-		return false, "Error fetching TXT records", ""
-	}
-	for _, record := range txtRecords {
-		suffix := ""
-		if strings.Contains(record, "-all") {
-			suffix = "-all"
-		} else if strings.Contains(record, "~all") {
-			suffix = "~all"
-		}
-
-		if strings.HasPrefix(record, "v=spf1") {
-			return true, record, suffix
-		} else if strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all") {
-			return false, record, suffix
-		}
-	}
-	return false, " No SPF record", ""
 }
 
 // getDMARC fetches the DMARC record for a given domain.
@@ -268,7 +219,7 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 	if !isIP {
 		resolvedIPPrompt(input)
 
-		getNSPrompt(input)
+		GetNSPrompt(input)
 
 		getMXPrompt(input)
 
@@ -291,15 +242,6 @@ func resolvedIPPrompt(input string) {
 	ips, _ := net.LookupIP(input)
 	if len(ips) > 0 {
 		fmt.Printf("\033[38;5;39m Resolved IPs: \033[38;5;78m%s\033[0m\n", strings.Join(ipsToStrings(ips), ", "))
-	}
-}
-
-func getNSPrompt(input string) {
-	ns, _ := getNS(input)
-	if len(ns) > 0 {
-		fmt.Printf("\033[38;5;39m Name Servers: \033[38;5;78m%s\033[0m\n", strings.Join(ns, ", "))
-	} else {
-		fmt.Printf("\033[38;5;39m Name Servers: \033[0m\033[38;5;88mNone\033[0m\n")
 	}
 }
 
@@ -334,18 +276,6 @@ func getDMARCPrompt(input string) {
 		fmt.Printf("\033[38;5;78m %s\033[0m\n", formattedDMARC)
 	} else {
 		fmt.Printf("\033[38;5;39m DMARC Record: \033[0m\033[38;5;88mNone\033[0m\n")
-	}
-}
-
-func getSPFPrompt(input string) {
-	spfValid, spfRecord, _ := getSPF(input)
-
-	if spfValid || spfRecord != "No SPF record" {
-		coloredSPFRecord := colorCodeSPFRecord(spfRecord, spfValid)
-		fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
-	} else {
-		coloredSPFRecord := colorCodeSPFRecord(spfRecord, false) // "No SPF record" will be red
-		fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
 	}
 }
 
