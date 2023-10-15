@@ -62,9 +62,9 @@ For those who like to get their hands dirty:
    the [Releases](https://github.com/careyjames/dns-scout/releases) page.
 
 2. **Make It Executable:**
-   After downloading, ```cd ~/Downloads/``` to the download directory and run:
-
-   ```sudo chmod +x dns-scout```
+   After downloading, run:  
+   a. ```cd ~/Downloads/```  
+   b. ```sudo chmod +x dns-scout```
 
 3. **Move to PATH:**
    Move the executable to a directory in your system's PATH.  
@@ -81,7 +81,7 @@ For those who like to get their hands dirty:
 5. **Run DNS Scout:**
    Open a new terminal window and type `dns-scout` to start using the tool.
 
-   **If you are on MacOS,** go to System Settings > Security & Privacy and
+   **For MacOS users,** go to System Settings > Security & Privacy and
    give `dns-scout` permissions.  
    **If you have never used terminal** and the colors
    are default "Basic" Terminal>Settings>Profiles and choose "Homebrew",
