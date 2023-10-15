@@ -94,7 +94,7 @@ That's it! You've manually installed DNS-Scout like a true nerd.
 Environment Variable: Useful for users running the program in a controlled
 environment like a server,
 where setting environment variables is common practice.
-The ```/share/setup-api-token.sh``` script would be helpful for them.
+The ```/setup-api-token.sh``` script would be helpful for them.
 
 Command-Line Argument: Useful for those who wish to specify different API tokens
 for different runs without changing environment variables.
