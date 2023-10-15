@@ -104,8 +104,3 @@ Command-Line Argument: Useful for those who wish to specify different API tokens
 for different runs without changing environment variables.
 It could be useful for testing.
 
-Stored in a File: Ideal for regular users who want to set the API
-token once and forget it.
-The token will be read from a file in the user's home directory,
-making it convenient for them.
-
