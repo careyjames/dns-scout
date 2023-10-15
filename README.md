@@ -63,7 +63,7 @@ For those who like to get their hands dirty:
 
 2. **Make It Executable:**
    After downloading, open terminal and run:  
-   a. ```cd ~/Downloads/<unzipped-folder-name>``` unzipped-folder-name
+   a. ```cd ~/Downloads/<unzipped-folder-name>``` "unzipped-folder-name"
    is the name of the folder created when extracting the tar file.
    b. ```sudo chmod +x dns-scout```
 
@@ -75,7 +75,7 @@ For those who like to get their hands dirty:
 
 4. **Get free or paid token from ipinfo.io**
    [Website](https://ipinfo.io) and run the "setup-api-token.sh".  
-   a. ```cd ~/Downloads/<unzipped-folder-name>``` unzipped-folder-name
+   a. ```cd ~/Downloads/<unzipped-folder-name>``` "unzipped-folder-name"
    is the name of the folder created when extracting the tar file.  
    b. ```sudo chmod +x setup-api-token.sh```  
    c. ```./setup-api-token.sh```
@@ -85,7 +85,7 @@ For those who like to get their hands dirty:
 
    **For MacOS users,** go to System Settings > Security & Privacy and
    give `dns-scout` permissions.  
-   **If you have never used terminal** and the colors
+   **If you have never used macOS terminal** and the colors
    are default "Basic" Terminal>Settings>Profiles and choose "Homebrew",
    at least until you discover [oh my zsh.](https://github.com/ohmyzsh/ohmyzsh)
 
