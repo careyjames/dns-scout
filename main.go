@@ -131,7 +131,7 @@ func colorCodeSPFRecord(record string, valid bool) string {
 		}
 	}
 
-	if !valid {
+	if !valid && strings.Contains(strings.ToLower(record), "spf") {
 		colorCode = "\033[38;5;88m" // Green for invalid SPF
 	}
 

@@ -31,6 +31,18 @@ func getSPF(domain string) (bool, string, string) {
 // GetSPFPrompt is prompt for spf
 func getSPFPrompt(input string) {
 	spfValid, spfRecord, _ := getSPF(input)
+	txt, _ := getTXT(input)
+	countTxt := 0
+	if len(txt) > 1 {
+		for _, record := range txt {
+			if strings.Contains(strings.ToLower(record), "spf") {
+				countTxt = countTxt + 1
+			}
+		}
+	}
+	if countTxt > 1 {
+		fmt.Printf("\033[38;5;39m TXT Records: \033[0m\033[38;5;88mCan't have two SPF!\033[0m\n")
+	}
 
 	if spfValid || spfRecord != "No SPF record" {
 		coloredSPFRecord := colorCodeSPFRecord(spfRecord, spfValid)
