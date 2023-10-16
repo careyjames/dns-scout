@@ -21,5 +21,3 @@ func GetMXPrompt(input string) {
 		fmt.Printf("\033[38;5;39m MX Records: \033[0m\033[38;5;88mNo MX, No email.\033[0m\n")
 	}
 }
-
-// 44fe32b636b696
