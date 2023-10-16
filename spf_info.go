@@ -41,14 +41,14 @@ func getSPFPrompt(input string) {
 		}
 	}
 	if countTxt > 1 {
-		fmt.Printf("\033[38;5;39m TXT Records: \033[0m\033[38;5;88mCan't have two SPF!\033[0m\n")
-	}
-
-	if spfValid || spfRecord != "No SPF record" {
-		coloredSPFRecord := colorCodeSPFRecord(spfRecord, spfValid)
-		fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
+		fmt.Printf("\033[38;5;39m SPF Records: \033[0m\033[38;5;88mCan't have two SPF!\033[0m\n")
 	} else {
-		coloredSPFRecord := colorCodeSPFRecord(spfRecord, false) // "No SPF record" will be red
-		fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
+		if spfValid || spfRecord != "No SPF record" {
+			coloredSPFRecord := colorCodeSPFRecord(spfRecord, spfValid)
+			fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
+		} else {
+			coloredSPFRecord := colorCodeSPFRecord(spfRecord, false) // "No SPF record" will be red
+			fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
+		}
 	}
 }
