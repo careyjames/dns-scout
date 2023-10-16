@@ -209,9 +209,14 @@ func main() {
 
 		registrar := getRegistrar(input)
 		s.Stop() // Stop the spinner
+		fmt.Println(registrar+" ", isIP)
 
-		if !isIP || (isIP && registrar != "Unknown or Classified") {
-			fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78m%s\033[0m\n", registrar)
+		if registrar == "Unknown or Classified" {
+			fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78mUnknown or \033[0m\033[38;5;222mClassified\033[0m\n")
+		} else {
+			if !isIP || (isIP && registrar != "Unknown or Classified") {
+				fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78m%s\033[0m\n", registrar)
+			}
 		}
 		promptRunner(isIP, isCIDR, input, apiToken)
 	}
