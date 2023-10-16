@@ -130,7 +130,7 @@ func TestGetPTRPrompt(t *testing.T) {
 		t.Errorf("getPTRPrompt(%q) = %q; expected %q", input1, ptr1, expected1)
 	}
 	var buf bytes.Buffer
-	getPTRPrompt(input1)
+	getPTRPrompt(input1, false)
 	output1 := buf.String()
 	expectedOutput1 := fmt.Sprintf("\033[38;5;39m PTR Record: \033[38;5;78m%s\033[0m\n", expected1)
 	if output1 == expectedOutput1 {
@@ -145,7 +145,7 @@ func TestGetPTRPrompt(t *testing.T) {
 		t.Errorf("getPTRPrompt(%q) = %q; expected %q", input2, ptr2, expected2)
 	}
 	var buf2 bytes.Buffer
-	getPTRPrompt(input2)
+	getPTRPrompt(input2, false)
 	output2 := buf2.String()
 	expectedOutput2 := "\033[38;5;39m PTR Record: \033[0m\033[38;5;88mNone\033[0m\n"
 	if output2 == expectedOutput2 {

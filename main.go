@@ -216,22 +216,28 @@ func main() {
 		_, _, err = net.ParseCIDR(input)
 		isCIDR := err == nil
 
-		registrar := getRegistrar(input)
 		s.Stop() // Stop the spinner
 
-		if registrar == "Unknown or Classified" {
-			fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78mUnknown or \033[0m\033[38;5;222mClassified\033[0m\n")
-		} else {
-			if !isIP || (isIP && registrar != "Unknown or Classified") {
-				fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78m%s\033[0m\n", registrar)
-			}
-		}
 		promptRunner(isIP, isCIDR, input, apiToken)
+	}
+}
+
+func getRegistrarPromt(input string, isIP bool) {
+	registrar := getRegistrar(input)
+
+	if registrar == "Unknown or Classified" {
+		fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78mUnknown or \033[0m\033[38;5;222mClassified\033[0m\n")
+	} else {
+		if !isIP || (isIP && registrar != "Unknown or Classified") {
+			fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78m%s\033[0m\n", registrar)
+		}
 	}
 }
 
 func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 	if !isIP {
+		getRegistrarPromt(input, isIP)
+
 		resolvedIPPrompt(input)
 
 		GetNSPrompt(input)
@@ -245,7 +251,7 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 		getSPFPrompt(input)
 	}
 
-	getPTRPrompt(input)
+	getPTRPrompt(input, isIP)
 
 	if isIP || isCIDR {
 		asnInfo, err := GetASNInfo(input, apiToken)
@@ -306,7 +312,7 @@ func getDMARCPrompt(input string) {
 	}
 }
 
-func getPTRPrompt(input string) {
+func getPTRPrompt(input string, isIp bool) {
 	ptr, _ := getPTR(input)
 	if len(ptr) > 0 {
 		// Remove the trailing period from each PTR record
@@ -318,8 +324,16 @@ func getPTRPrompt(input string) {
 		// Join the records with a comma and a space, then replace ", " at the end of each line with a line break followed by a space
 		ptrStr := strings.Join(ptr, ", ")
 		ptrStr = strings.ReplaceAll(ptrStr, ", ", ",\n ")
-		fmt.Printf("\033[38;5;39m PTR Records: \033[38;5;78m%s\033[0m\n", ptrStr)
+		if !isIp {
+			fmt.Printf("\033[38;5;39m PTR Records: \033[38;5;78m%s\033[0m\n", ptrStr)
+		} else {
+			fmt.Printf("\033[38;5;39m PTR Records: \033[38;5;78m%s\033[0m", ptrStr)
+		}
 	} else {
-		fmt.Printf("\033[38;5;39m PTR Records: \033[0m\033[38;5;222mNone\033[0m\n")
+		if !isIp {
+			fmt.Printf("\033[38;5;39m PTR Records: \033[0m\033[38;5;222mNone\033[0m\n")
+		} else {
+			fmt.Printf("\033[38;5;39m PTR Records: \033[0m\033[38;5;222mNone\033[0m")
+		}
 	}
 }
