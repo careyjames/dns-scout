@@ -15,9 +15,11 @@ func getMX(domain string) ([]string, error) {
 // GetMXPrompt is MX prompt
 func GetMXPrompt(input string) {
 	mx, _ := getMX(input)
-	if len(mx) > 0 && (len(mx) == 1 && mx[0] != "") {
+	if len(mx) > 1 || len(mx) == 1 && mx[0] != "" {
 		fmt.Printf("\033[38;5;39m MX Records: \033[38;5;78m%s\033[0m\n", strings.Join(mx, ", "))
 	} else {
 		fmt.Printf("\033[38;5;39m MX Records: \033[0m\033[38;5;88mNo MX, No email.\033[0m\n")
 	}
 }
+
+// 44fe32b636b696
