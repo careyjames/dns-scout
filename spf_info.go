@@ -11,6 +11,9 @@ func getSPF(domain string) (bool, string, string) {
 	if err != nil {
 		return false, "Error fetching TXT records", ""
 	}
+	if len(txtRecords) <= 0 {
+		txtRecords, _ = GetTXTRecordNSLookup(domain)
+	}
 	for _, record := range txtRecords {
 		suffix := ""
 		if strings.Contains(record, "-all") {
