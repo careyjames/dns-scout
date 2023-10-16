@@ -131,6 +131,10 @@ func colorCodeSPFRecord(record string, valid bool) string {
 		}
 	}
 
+	if !valid {
+		colorCode = "\033[38;5;88m" // Green for invalid SPF
+	}
+
 	if record == " No SPF record" {
 		colorCode = "\033[38;5;88m" // Red for "No SPF record"
 	}
@@ -209,7 +213,6 @@ func main() {
 
 		registrar := getRegistrar(input)
 		s.Stop() // Stop the spinner
-		fmt.Println(registrar+" ", isIP)
 
 		if registrar == "Unknown or Classified" {
 			fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78mUnknown or \033[0m\033[38;5;222mClassified\033[0m\n")
