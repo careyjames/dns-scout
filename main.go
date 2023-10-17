@@ -15,19 +15,13 @@ import (
 
 	"github.com/briandowns/spinner"
 	"github.com/chzyer/readline"
-	"github.com/miekg/dns"
 )
-
-// getTXT fetches the TXT records for a given domain.
-func getTXT(domain string) ([]string, error) {
-	return QueryDNS(domain, dns.TypeTXT, "8.8.8.8:53")
-}
 
 // getDMARC fetches the DMARC record for a given domain.
 func getDMARC(domain string) (string, error) {
-	txtRecords, err := getTXT("_dmarc." + domain)
+	txtRecords, err := dnsinformation.GetTXT("_dmarc." + domain)
 	if len(txtRecords) <= 0 {
-		txtRecords, _ = GetDMARCRecordNSLookup(domain)
+		txtRecords, _ = dnsinformation.GetDMARCRecordNSLookup(domain)
 	}
 	if err != nil {
 		return "", err
@@ -165,15 +159,15 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 
 		dnsinformation.ResolvedIPPrompt(input)
 
-		GetNSPrompt(input)
+		dnsinformation.GetNSPrompt(input)
 
-		GetMXPrompt(input)
+		dnsinformation.GetMXPrompt(input)
 
 		getTXTPrompt(input)
 
 		getDMARCPrompt(input)
 
-		getSPFPrompt(input)
+		dnsinformation.GetSPFPrompt(input)
 	}
 
 	getPTRPrompt(input, isIP)
@@ -185,7 +179,7 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 }
 
 func getTXTPrompt(input string) {
-	txt, _ := getTXT(input)
+	txt, _ := dnsinformation.GetTXT(input)
 	if len(txt) > 0 {
 		fmt.Printf("\033[38;5;39m TXT Records:\033[0m\n")
 		for _, record := range txt {
@@ -194,7 +188,7 @@ func getTXTPrompt(input string) {
 			fmt.Printf(" %s\n", coloredRecord)
 		}
 	} else {
-		txt, _ = GetTXTRecordNSLookup(input)
+		txt, _ = dnsinformation.GetDMARCRecordNSLookup(input)
 		if len(txt) > 0 {
 			fmt.Printf("\033[38;5;39m TXT Records:\033[0m\n")
 			for _, record := range txt {
