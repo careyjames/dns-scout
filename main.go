@@ -159,21 +159,9 @@ func main() {
 	}
 }
 
-func getRegistrarPromt(input string, isIP bool) {
-	registrar := dnsinformation.GetRegistrar(input)
-
-	if registrar == "Unknown or Classified" {
-		fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78mUnknown or \033[0m\033[38;5;222mClassified\033[0m\n")
-	} else {
-		if !isIP || (isIP && registrar != "Unknown or Classified") {
-			fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78m%s\033[0m\n", registrar)
-		}
-	}
-}
-
 func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 	if !isIP {
-		getRegistrarPromt(input, isIP)
+		dnsinformation.GetRegistrarPromt(input, isIP)
 
 		dnsinformation.ResolvedIPPrompt(input)
 
