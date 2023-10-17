@@ -5,6 +5,8 @@ import (
 	"errors"
 	"net/http"
 	"testing"
+
+	"github.com/careyjames/DNS-Scout/dto"
 )
 
 func TestGetASNInfo(t *testing.T) {
@@ -43,7 +45,7 @@ func TestGetASNInfo(t *testing.T) {
 			t.Errorf("Expected non-nil IPInfoResponse, got nil")
 		}
 
-		expected := &IPInfoResponse{
+		expected := &dto.IPInfoResponse{
 			ASN: map[string]interface{}{"asn": "AS12345", "name": "Example ASN"},
 			IP:  "8.8.8.8", Domain: "example.com", Hostname: "host.example.com",
 			City: "City", Region: "Region", Country: "US", Loc: "0.0,0.0",
@@ -93,7 +95,7 @@ func TestGetASNInfoFailure(t *testing.T) {
 	})
 }
 
-func compareIPInfoResponse(a, b *IPInfoResponse) bool {
+func compareIPInfoResponse(a, b *dto.IPInfoResponse) bool {
 	aJSON, _ := json.Marshal(a)
 	bJSON, _ := json.Marshal(b)
 	return string(aJSON) == string(bJSON)
@@ -101,7 +103,7 @@ func compareIPInfoResponse(a, b *IPInfoResponse) bool {
 
 func TestHandleResponseWithValidASNInfo(t *testing.T) {
 	// Create a sample valid ASNInfo
-	validASNInfo := &IPInfoResponse{
+	validASNInfo := &dto.IPInfoResponse{
 		ASN:      map[string]interface{}{"asn": "AS12345"},
 		IP:       "192.168.1.1",
 		Domain:   "example.com",
@@ -136,7 +138,7 @@ func TestHandleResponseWithError(t *testing.T) {
 
 func TestHandleResponseWithValidASNInfoAndError(t *testing.T) {
 	// Create a sample valid ASNInfo
-	validASNInfo := &IPInfoResponse{
+	validASNInfo := &dto.IPInfoResponse{
 		ASN:      map[string]interface{}{"asn": "AS12345"},
 		IP:       "192.168.1.1",
 		Domain:   "example.com",

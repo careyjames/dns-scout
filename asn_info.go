@@ -6,10 +6,12 @@ import (
 	"io"
 	"net/http"
 	"strings"
+
+	"github.com/careyjames/DNS-Scout/dto"
 )
 
 // GetASNInfo fetches ASN information for a given IP address.
-func GetASNInfo(ip string, apiToken string) (*IPInfoResponse, error) {
+func GetASNInfo(ip string, apiToken string) (*dto.IPInfoResponse, error) {
 	// Removed apiToken from here as it's now passed as an argument
 	resp, err := http.Get(IPInfoAPIURL + ip + "?token=" + apiToken)
 	if err != nil {
@@ -22,7 +24,7 @@ func GetASNInfo(ip string, apiToken string) (*IPInfoResponse, error) {
 		return nil, err
 	}
 
-	var ipInfo IPInfoResponse
+	var ipInfo dto.IPInfoResponse
 	err = json.Unmarshal(body, &ipInfo)
 	if err != nil {
 		return nil, err
@@ -33,7 +35,7 @@ func GetASNInfo(ip string, apiToken string) (*IPInfoResponse, error) {
 }
 
 // HandleResponse handles response for asn info
-func HandleResponse(asnInfo *IPInfoResponse, err error) {
+func HandleResponse(asnInfo *dto.IPInfoResponse, err error) {
 	if err == nil {
 		fmt.Printf("\033[38;5;39m\n ASN Information: \n\033[0m")
 		fmt.Printf("\033[38;5;39m IP: \033[38;5;78m%s\033[0m\n", asnInfo.IP)
