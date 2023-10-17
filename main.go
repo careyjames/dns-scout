@@ -18,15 +18,6 @@ import (
 	"github.com/miekg/dns"
 )
 
-// ipsToStrings converts a slice of net.IP to a slice of string.
-func ipsToStrings(ips []net.IP) []string {
-	var strs []string
-	for _, ip := range ips {
-		strs = append(strs, ip.String())
-	}
-	return strs
-}
-
 // getTXT fetches the TXT records for a given domain.
 func getTXT(domain string) ([]string, error) {
 	return QueryDNS(domain, dns.TypeTXT, "8.8.8.8:53")
@@ -184,7 +175,7 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 	if !isIP {
 		getRegistrarPromt(input, isIP)
 
-		resolvedIPPrompt(input)
+		dnsinformation.ResolvedIPPrompt(input)
 
 		GetNSPrompt(input)
 
@@ -202,13 +193,6 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 	if isIP || isCIDR {
 		asnInfo, err := GetASNInfo(input, apiToken)
 		HandleResponse(asnInfo, err)
-	}
-}
-
-func resolvedIPPrompt(input string) {
-	ips, _ := net.LookupIP(input)
-	if len(ips) > 0 {
-		fmt.Printf("\033[38;5;39m Resolved IPs: \033[38;5;78m%s\033[0m\n", strings.Join(ipsToStrings(ips), ", "))
 	}
 }
 
