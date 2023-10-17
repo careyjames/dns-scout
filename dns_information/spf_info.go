@@ -3,6 +3,9 @@ package dnsinformation
 import (
 	"fmt"
 	"strings"
+
+	"github.com/careyjames/DNS-Scout/color"
+	constants "github.com/careyjames/DNS-Scout/constant"
 )
 
 // getSPF fetches and analyzes the SPF record for a given domain.
@@ -25,17 +28,11 @@ func getSPF(domain string) (bool, string) {
 // GetSPFPrompt is prompt for spf
 func GetSPFPrompt(input string) {
 	spfValid, spfRecord := getSPF(input)
-	txt, _ := GetTXT(input)
-	countTxt := 0
-	if len(txt) > 1 {
-		for _, record := range txt {
-			if strings.Contains(strings.ToLower(record), "spf") {
-				countTxt = countTxt + 1
-			}
-		}
-	}
+	txt, _ := GetTXTFromAllOption(input)
+	countTxt := totalSPFRecords(txt)
+
 	if countTxt > 1 {
-		fmt.Printf("\033[38;5;39m SPF Records: \033[0m\033[38;5;88mCan't have two SPF!\033[0m\n")
+		fmt.Printf(color.Blue(" SPF Records: ") + color.Red("Can't have two SPF!") + constants.Newline)
 	} else {
 		if spfValid || spfRecord != "No SPF record" {
 			coloredSPFRecord := colorCodeSPFRecord(spfRecord, spfValid)
@@ -72,6 +69,18 @@ func colorCodeSPFRecord(record string, valid bool) string {
 	}
 
 	return fmt.Sprintf("%s%s\033[0m", colorCode, record)
+}
+
+func totalSPFRecords(records []string) int {
+	countTxt := 0
+	if len(records) > 1 {
+		for _, record := range records {
+			if strings.Contains(strings.ToLower(record), "spf") {
+				countTxt = countTxt + 1
+			}
+		}
+	}
+	return countTxt
 }
 
 func IsValidSPF(record string) bool {
