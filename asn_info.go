@@ -7,13 +7,14 @@ import (
 	"net/http"
 	"strings"
 
+	constants "github.com/careyjames/DNS-Scout/constant"
 	"github.com/careyjames/DNS-Scout/dto"
 )
 
 // GetASNInfo fetches ASN information for a given IP address.
 func GetASNInfo(ip string, apiToken string) (*dto.IPInfoResponse, error) {
 	// Removed apiToken from here as it's now passed as an argument
-	resp, err := http.Get(IPInfoAPIURL + ip + "?token=" + apiToken)
+	resp, err := http.Get(constants.IPInfoAPIURL + ip + "?token=" + apiToken)
 	if err != nil {
 		return nil, err
 	}
