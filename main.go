@@ -73,33 +73,6 @@ func getPTR(domain string) ([]string, error) {
 	return ptrRecords, nil
 }
 
-func colorCodeSPFRecord(record string, valid bool) string {
-	colorCode := "\033[38;5;78m" // Default to green for non-SPF records
-
-	if strings.HasPrefix(record, "v=spf1") || strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all") {
-		colorCode = "\033[38;5;88m" // Default to red for malformed or misspelled SPF
-		if valid {
-			colorCode = "\033[38;5;78m" // Green for valid SPF
-		}
-	}
-
-	if !valid && strings.Contains(strings.ToLower(record), "spf") {
-		colorCode = "\033[38;5;88m" // Green for invalid SPF
-	}
-
-	if record == " No SPF record" {
-		colorCode = "\033[38;5;88m" // Red for "No SPF record"
-	}
-
-	if strings.Contains(record, "-all") {
-		record = strings.ReplaceAll(record, "-all", "\033[38;5;222m-all\033[0m")
-	} else if strings.Contains(record, "~all") {
-		record = strings.ReplaceAll(record, "~all", "\033[38;5;78m~all\033[0m")
-	}
-
-	return fmt.Sprintf("%s%s\033[0m", colorCode, record)
-}
-
 func main() {
 	// Check "version" argument
 	args := os.Args[1:]

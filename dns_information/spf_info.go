@@ -7,13 +7,11 @@ import (
 
 // getSPF fetches and analyzes the SPF record for a given domain.
 func getSPF(domain string) (bool, string, string) {
-	txtRecords, err := GetTXT(domain)
+	txtRecords, err := GetTXTFromAllOption(domain)
 	if err != nil {
 		return false, "Error fetching TXT records", ""
 	}
-	if len(txtRecords) <= 0 {
-		txtRecords, _ = GetTXTRecordNSLookup(domain)
-	}
+
 	for _, record := range txtRecords {
 		suffix := ""
 		if strings.Contains(record, "-all") {
@@ -22,9 +20,9 @@ func getSPF(domain string) (bool, string, string) {
 			suffix = "~all"
 		}
 
-		if strings.HasPrefix(record, "v=spf1") {
+		if IsValidSPF(record) {
 			return true, record, suffix
-		} else if strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all") {
+		} else if HasInvalidSPFRecord(record) {
 			return false, record, suffix
 		}
 	}
@@ -81,4 +79,12 @@ func colorCodeSPFRecord(record string, valid bool) string {
 	}
 
 	return fmt.Sprintf("%s%s\033[0m", colorCode, record)
+}
+
+func IsValidSPF(record string) bool {
+	return strings.HasPrefix(record, "v=spf1")
+}
+
+func HasInvalidSPFRecord(record string) bool {
+	return strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all")
 }
