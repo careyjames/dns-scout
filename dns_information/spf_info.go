@@ -6,32 +6,25 @@ import (
 )
 
 // getSPF fetches and analyzes the SPF record for a given domain.
-func getSPF(domain string) (bool, string, string) {
+func getSPF(domain string) (bool, string) {
 	txtRecords, err := GetTXTFromAllOption(domain)
 	if err != nil {
-		return false, "Error fetching TXT records", ""
+		return false, "Error fetching TXT records"
 	}
 
 	for _, record := range txtRecords {
-		suffix := ""
-		if strings.Contains(record, "-all") {
-			suffix = "-all"
-		} else if strings.Contains(record, "~all") {
-			suffix = "~all"
-		}
-
 		if IsValidSPF(record) {
-			return true, record, suffix
+			return true, record
 		} else if HasInvalidSPFRecord(record) {
-			return false, record, suffix
+			return false, record
 		}
 	}
-	return false, " No SPF record", ""
+	return false, " No SPF record"
 }
 
 // GetSPFPrompt is prompt for spf
 func GetSPFPrompt(input string) {
-	spfValid, spfRecord, _ := getSPF(input)
+	spfValid, spfRecord := getSPF(input)
 	txt, _ := GetTXT(input)
 	countTxt := 0
 	if len(txt) > 1 {
