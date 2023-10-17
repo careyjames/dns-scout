@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/careyjames/DNS-Scout/color"
+	constants "github.com/careyjames/DNS-Scout/constant"
 	"github.com/likexian/whois"
 	whoisparser "github.com/likexian/whois-parser"
 )
@@ -32,10 +33,10 @@ func GetRegistrarPromt(input string, isIP bool) {
 	registrar := getRegistrar(input)
 
 	if registrar == ErrorMessage {
-		fmt.Printf(color.Blue(" Registrar: ") + color.Green("Unknown or ") + color.Yellow("Classified"))
+		fmt.Printf(color.Blue(" Registrar: ") + color.Green("Unknown or ") + color.Yellow("Classified") + constants.Newline)
 	} else {
 		if !isIP || (isIP && registrar != ErrorMessage) {
-			fmt.Printf(color.Blue(" Registrar: ") + color.Green(registrar))
+			fmt.Printf(color.Blue(" Registrar: ") + color.Green(registrar) + constants.Newline)
 		}
 	}
 }

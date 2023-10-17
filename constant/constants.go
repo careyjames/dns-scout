@@ -4,4 +4,5 @@ package constants
 const (
 	IPInfoAPIURL = "https://ipinfo.io/"
 	Version      = "5.9"
+	Newline      = "\n"
 )

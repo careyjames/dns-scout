@@ -163,7 +163,7 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 
 		dnsinformation.GetMXPrompt(input)
 
-		getTXTPrompt(input)
+		dnsinformation.GetTXTPrompt(input)
 
 		getDMARCPrompt(input)
 
@@ -175,30 +175,6 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 	if isIP || isCIDR {
 		asnInfo, err := GetASNInfo(input, apiToken)
 		HandleResponse(asnInfo, err)
-	}
-}
-
-func getTXTPrompt(input string) {
-	txt, _ := dnsinformation.GetTXT(input)
-	if len(txt) > 0 {
-		fmt.Printf("\033[38;5;39m TXT Records:\033[0m\n")
-		for _, record := range txt {
-			isValidSPF := strings.HasPrefix(record, "v=spf1")
-			coloredRecord := colorCodeSPFRecord(record, isValidSPF)
-			fmt.Printf(" %s\n", coloredRecord)
-		}
-	} else {
-		txt, _ = dnsinformation.GetDMARCRecordNSLookup(input)
-		if len(txt) > 0 {
-			fmt.Printf("\033[38;5;39m TXT Records:\033[0m\n")
-			for _, record := range txt {
-				isValidSPF := strings.HasPrefix(record, "v=spf1")
-				coloredRecord := colorCodeSPFRecord(record, isValidSPF)
-				fmt.Printf(" %s\n", coloredRecord)
-			}
-		} else {
-			fmt.Printf("\033[38;5;39m TXT Records: \033[0m\033[38;5;88mNone\033[0m\n")
-		}
 	}
 }
 

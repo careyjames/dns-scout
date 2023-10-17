@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/careyjames/DNS-Scout/color"
+	constants "github.com/careyjames/DNS-Scout/constant"
 )
 
 // IpsToStrings converts a slice of net.IP to a slice of string.
@@ -20,6 +21,6 @@ func ipsToStrings(ips []net.IP) []string {
 func ResolvedIPPrompt(input string) {
 	ips, _ := net.LookupIP(input)
 	if len(ips) > 0 {
-		fmt.Printf(color.Blue(" Resolved IPs: ") + color.Green(strings.Join(ipsToStrings(ips), ", ")))
+		fmt.Printf(color.Blue(" Resolved IPs: ") + color.Green(strings.Join(ipsToStrings(ips), ", ")) + constants.Newline)
 	}
 }
