@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/careyjames/DNS-Scout/color"
+	constants "github.com/careyjames/DNS-Scout/constant"
 	"github.com/miekg/dns"
 )
 
@@ -30,7 +32,7 @@ func GetTXTFromAllOption(domain string) ([]string, error) {
 func GetTXTPrompt(input string) {
 	txt, _ := GetTXTFromAllOption(input)
 	if len(txt) > 0 {
-		fmt.Printf("\033[38;5;39m TXT Records:\033[0m\n")
+		fmt.Printf(color.Blue(" TXT Records: ") + constants.Newline)
 		for _, record := range txt {
 			isValidSPF := strings.HasPrefix(record, "v=spf1")
 			coloredRecord := colorCodeSPFRecord(record, isValidSPF)

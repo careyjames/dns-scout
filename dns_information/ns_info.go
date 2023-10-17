@@ -4,13 +4,15 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/careyjames/DNS-Scout/color"
+	constants "github.com/careyjames/DNS-Scout/constant"
 	"github.com/miekg/dns"
 )
 
 // GetNS fetches the NS records for a given domain.
 func GetNS(domain string) ([]string, error) {
-	googleRecords, err1 := QueryDNS(domain, dns.TypeNS, "8.8.8.8:53")
-	cloudflareRecords, err2 := QueryDNS(domain, dns.TypeNS, "1.1.1.1:53")
+	googleRecords, err1 := QueryDNS(domain, dns.TypeNS, constants.GooglePublicDNS)
+	cloudflareRecords, err2 := QueryDNS(domain, dns.TypeNS, constants.CloudflarePublicDNS)
 
 	if err1 != nil && err2 != nil {
 		return nil, fmt.Errorf("both DNS queries failed")
@@ -37,8 +39,8 @@ func GetNS(domain string) ([]string, error) {
 func GetNSPrompt(input string) {
 	ns, _ := GetNS(input)
 	if len(ns) > 0 {
-		fmt.Printf("\033[38;5;39m Name Servers: \033[38;5;78m%s\033[0m\n", strings.Join(ns, ", "))
+		fmt.Printf(color.Blue(" Name Servers: ") + color.Green(strings.Join(ns, ", ")) + constants.Newline)
 	} else {
-		fmt.Printf("\033[38;5;39m Name Servers: \033[0m\033[38;5;88mNone\033[0m\n")
+		fmt.Printf(color.Blue(" Name Servers: ") + color.Red("None") + constants.Newline)
 	}
 }
