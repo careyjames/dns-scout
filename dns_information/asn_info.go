@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/careyjames/DNS-Scout/color"
 	constants "github.com/careyjames/DNS-Scout/constant"
 	"github.com/careyjames/DNS-Scout/dto"
 )
@@ -39,23 +40,22 @@ func GetASNInfo(ip string, apiToken string) (*dto.IPInfoResponse, error) {
 func GetASNInfoPrompt(input string, apiToken string) {
 	asnInfo, err := GetASNInfo(input, apiToken)
 	if err == nil {
-		fmt.Printf("\033[38;5;39m\n ASN Information: \n\033[0m")
-		fmt.Printf("\033[38;5;39m IP: \033[38;5;78m%s\033[0m\n", asnInfo.IP)
-		fmt.Printf("\033[38;5;39m Domain: \033[38;5;78m%s\033[0m\n", asnInfo.Domain)
-		fmt.Printf("\033[38;5;39m Hostname: \033[38;5;78m%s\033[0m\n", asnInfo.Hostname)
-		fmt.Printf("\033[38;5;39m City: \033[38;5;78m%s\033[0m\n", asnInfo.City)
-		fmt.Printf("\033[38;5;39m Region: \033[38;5;78m%s\033[0m\n", asnInfo.Region)
-		fmt.Printf("\033[38;5;39m Country: \033[38;5;78m%s\033[0m\n", asnInfo.Country)
-		fmt.Printf("\033[38;5;39m Location: \033[38;5;78m%s\033[0m\n", asnInfo.Loc)
-		fmt.Printf("\033[38;5;39m Organization: \033[38;5;78m%s\033[0m\n", asnInfo.Org)
-		fmt.Printf("\033[38;5;39m Postal Code: \033[38;5;78m%s\033[0m\n", asnInfo.Postal)
-		fmt.Printf("\033[38;5;39m Timezone: \033[38;5;78m%s\033[0m\n", asnInfo.Timezone)
+		fmt.Printf(color.Blue(" ASN Information: ") + constants.Newline)
+		fmt.Printf(color.Blue(" IP: ") + constants.Newline)
+		fmt.Printf(color.Blue(" Domain: ") + color.Green(asnInfo.Domain) + constants.Newline)
+		fmt.Printf(color.Blue(" HostName: ") + color.Green(asnInfo.Hostname) + constants.Newline)
+		fmt.Printf(color.Blue(" City: ") + color.Green(asnInfo.City) + constants.Newline)
+		fmt.Printf(color.Blue(" Region: ") + color.Green(asnInfo.Region) + constants.Newline)
+		fmt.Printf(color.Blue(" Country: ") + color.Green(asnInfo.Country) + constants.Newline)
+		fmt.Printf(color.Blue(" Location: ") + color.Green(asnInfo.Loc) + constants.Newline)
+		fmt.Printf(color.Blue(" Organization: ") + color.Green(asnInfo.Org) + constants.Newline)
+		fmt.Printf(color.Blue(" Postal Code: ") + color.Green(asnInfo.Postal) + constants.Newline)
+		fmt.Printf(color.Blue(" Timezone: ") + color.Green(asnInfo.Timezone) + constants.Newline)
 		asnInfoStrs := []string{}
 		for k, v := range asnInfo.ASN {
 			asnInfoStrs = append(asnInfoStrs, fmt.Sprintf("%s: %v", k, v))
 		}
-		fmt.Printf("\033[38;5;39m ASN: \033[38;5;78m%s\033[0m\n", strings.Join(asnInfoStrs, ", "))
-
+		fmt.Printf(color.Blue(" ASN: ") + color.Green(strings.Join(asnInfoStrs, ", ")) + constants.Newline)
 	} else {
 		fmt.Println(" Error fetching ASN Information:", err)
 	}
