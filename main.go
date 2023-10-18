@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net"
 	"os"
-	"strings"
 	"time"
 
 	clients "github.com/careyjames/DNS-Scout/clients"
@@ -16,24 +15,6 @@ import (
 	"github.com/briandowns/spinner"
 	"github.com/chzyer/readline"
 )
-
-// getPTR fetches the PTR records for a given domain.
-func getPTR(domain string) ([]string, error) {
-	ips, err := net.LookupIP(domain)
-	if err != nil {
-		return nil, err
-	}
-
-	var ptrRecords []string
-	for _, ip := range ips {
-		ptrs, err := net.LookupAddr(ip.String())
-		if err != nil {
-			continue
-		}
-		ptrRecords = append(ptrRecords, ptrs...)
-	}
-	return ptrRecords, nil
-}
 
 func main() {
 	// Check "version" argument
@@ -105,36 +86,9 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 		dnsinformation.GetSPFPrompt(input)
 	}
 
-	getPTRPrompt(input, isIP)
+	dnsinformation.GetPTRPrompt(input, isIP)
 
 	if isIP || isCIDR {
-		asnInfo, err := GetASNInfo(input, apiToken)
-		HandleResponse(asnInfo, err)
-	}
-}
-
-func getPTRPrompt(input string, isIp bool) {
-	ptr, _ := getPTR(input)
-	if len(ptr) > 0 {
-		// Remove the trailing period from each PTR record
-		for i, record := range ptr {
-			if strings.HasSuffix(record, ".") {
-				ptr[i] = record[:len(record)-1]
-			}
-		}
-		// Join the records with a comma and a space, then replace ", " at the end of each line with a line break followed by a space
-		ptrStr := strings.Join(ptr, ", ")
-		ptrStr = strings.ReplaceAll(ptrStr, ", ", ",\n ")
-		if !isIp {
-			fmt.Printf("\033[38;5;39m PTR Records: \033[38;5;78m%s\033[0m\n", ptrStr)
-		} else {
-			fmt.Printf("\033[38;5;39m PTR Records: \033[38;5;78m%s\033[0m", ptrStr)
-		}
-	} else {
-		if !isIp {
-			fmt.Printf("\033[38;5;39m PTR Records: \033[0m\033[38;5;222mNone\033[0m\n")
-		} else {
-			fmt.Printf("\033[38;5;39m PTR Records: \033[0m\033[38;5;222mNone\033[0m")
-		}
+		dnsinformation.GetASNInfoPrompt(input, apiToken)
 	}
 }

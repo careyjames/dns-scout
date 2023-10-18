@@ -1,4 +1,4 @@
-package main
+package dnsinformation
 
 import (
 	"encoding/json"
@@ -35,8 +35,9 @@ func GetASNInfo(ip string, apiToken string) (*dto.IPInfoResponse, error) {
 	return &ipInfo, nil
 }
 
-// HandleResponse handles response for asn info
-func HandleResponse(asnInfo *dto.IPInfoResponse, err error) {
+// GetASNInfoPrompt handles response for asn info
+func GetASNInfoPrompt(input string, apiToken string) {
+	asnInfo, err := GetASNInfo(input, apiToken)
 	if err == nil {
 		fmt.Printf("\033[38;5;39m\n ASN Information: \n\033[0m")
 		fmt.Printf("\033[38;5;39m IP: \033[38;5;78m%s\033[0m\n", asnInfo.IP)
