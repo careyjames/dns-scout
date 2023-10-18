@@ -45,27 +45,27 @@ func GetSPFPrompt(input string) {
 }
 
 func colorCodeSPFRecord(record string) string {
-	colorCode := "\033[38;5;78m" // Default to green for non-SPF records
+	colorCode := constants.GreenColorEncoding
 
 	if strings.HasPrefix(record, "v=spf1") || strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all") {
-		colorCode = "\033[38;5;88m" // Default to red for malformed or misspelled SPF
+		colorCode = constants.RedColorEncoding
 		if IsValidSPF(record) {
-			colorCode = "\033[38;5;78m" // Green for valid SPF
+			colorCode = constants.GreenColorEncoding
 		}
 	}
 
 	if !IsValidSPF(record) && strings.Contains(strings.ToLower(record), "spf") {
-		colorCode = "\033[38;5;88m" // Green for invalid SPF
+		colorCode = constants.RedColorEncoding
 	}
 
 	if record == " No SPF record" {
-		colorCode = "\033[38;5;88m" // Red for "No SPF record"
+		colorCode = constants.RedColorEncoding
 	}
 
 	if strings.Contains(record, "-all") {
-		record = strings.ReplaceAll(record, "-all", "\033[38;5;222m-all\033[0m")
+		record = strings.ReplaceAll(record, "-all", color.Yellow("-all"))
 	} else if strings.Contains(record, "~all") {
-		record = strings.ReplaceAll(record, "~all", "\033[38;5;78m~all\033[0m")
+		record = strings.ReplaceAll(record, "~all", color.Yellow("~all"))
 	}
 
 	return fmt.Sprintf("%s%s\033[0m", colorCode, record)
@@ -83,14 +83,17 @@ func totalSPFRecords(records []string) int {
 	return countTxt
 }
 
+// IsValidSPF is valid spf
 func IsValidSPF(record string) bool {
 	return strings.HasPrefix(record, "v=spf1")
 }
 
+// HasInvalidSPFRecord is invalid spf
 func HasInvalidSPFRecord(record string) bool {
 	return strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all")
 }
 
+// HasSPFRecord has spf
 func HasSPFRecord(record string) bool {
 	return strings.HasPrefix(record, "v=spf1") || strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all")
 }

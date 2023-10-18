@@ -31,8 +31,6 @@ func GetASNInfo(ip string, apiToken string) (*dto.IPInfoResponse, error) {
 	if err != nil {
 		return nil, err
 	}
-	// Add this line for debugging
-	//fmt.Printf("Debug: Received IPInfo API response: %+v\n", ipInfo)
 	return &ipInfo, nil
 }
 
