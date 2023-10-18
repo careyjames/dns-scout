@@ -65,7 +65,7 @@ func colorCodeSPFRecord(record string) string {
 	if strings.Contains(record, "-all") {
 		record = strings.ReplaceAll(record, "-all", color.Yellow("-all"))
 	} else if strings.Contains(record, "~all") {
-		record = strings.ReplaceAll(record, "~all", color.Yellow("~all"))
+		record = strings.ReplaceAll(record, "~all", color.Green("~all"))
 	}
 
 	return fmt.Sprintf("%s%s\033[0m", colorCode, record)
