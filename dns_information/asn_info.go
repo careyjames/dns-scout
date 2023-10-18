@@ -39,7 +39,7 @@ func GetASNInfoPrompt(input string, apiToken string) {
 	asnInfo, err := GetASNInfo(input, apiToken)
 	if err == nil {
 		fmt.Printf(color.Blue(" ASN Information: ") + constants.Newline)
-		fmt.Printf(color.Blue(" IP: ") + constants.Newline)
+		fmt.Printf(color.Blue(" IP: ") + color.Green(asnInfo.IP) + constants.Newline)
 		fmt.Printf(color.Blue(" Domain: ") + color.Green(asnInfo.Domain) + constants.Newline)
 		fmt.Printf(color.Blue(" HostName: ") + color.Green(asnInfo.Hostname) + constants.Newline)
 		fmt.Printf(color.Blue(" City: ") + color.Green(asnInfo.City) + constants.Newline)

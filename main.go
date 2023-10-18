@@ -39,32 +39,23 @@ func main() {
 		panic(err)
 	}
 	defer rl.Close()
-
 	apiToken := clients.FetchAPIToken(apiTokenFlag)
-
 	s := spinner.New(spinner.CharSets[9], 100*time.Millisecond) // Use the dots character set and update every 100ms
-
 	for {
 		color.New(color.FgHiWhite).Println(" Enter domain, IP (or 'exit' to quit): ")
 		fmt.Println("\033[38;5;39m ------------------------------------\033[0m")
-
 		input, err := rl.Readline()
-
 		if err != nil { // io.EOF, readline.ErrInterrupt
 			break
 		}
 		if input == "exit" {
 			return
 		}
-
 		s.Start() // Start the spinner
-
 		isIP := net.ParseIP(input) != nil
 		_, _, err = net.ParseCIDR(input)
 		isCIDR := err == nil
-
 		s.Stop() // Stop the spinner
-
 		promptRunner(isIP, isCIDR, input, apiToken)
 	}
 }
@@ -72,22 +63,14 @@ func main() {
 func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 	if !isIP {
 		dnsinformation.GetRegistrarPromt(input, isIP)
-
 		dnsinformation.ResolvedIPPrompt(input)
-
 		dnsinformation.GetNSPrompt(input)
-
 		dnsinformation.GetMXPrompt(input)
-
 		dnsinformation.GetTXTPrompt(input)
-
 		dnsinformation.GetDMARCPrompt(input)
-
 		dnsinformation.GetSPFPrompt(input)
 	}
-
 	dnsinformation.GetPTRPrompt(input, isIP)
-
 	if isIP || isCIDR {
 		dnsinformation.GetASNInfoPrompt(input, apiToken)
 	}
