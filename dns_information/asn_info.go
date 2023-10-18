@@ -12,10 +12,14 @@ import (
 	"github.com/careyjames/DNS-Scout/dto"
 )
 
+func getURL() string {
+	return constants.IPInfoAPIURL
+}
+
 // GetASNInfo fetches ASN information for a given IP address.
 func GetASNInfo(ip string, apiToken string) (*dto.IPInfoResponse, error) {
 	// Removed apiToken from here as it's now passed as an argument
-	resp, err := http.Get(constants.IPInfoAPIURL + ip + "?token=" + apiToken)
+	resp, err := http.Get(getURL() + ip + "?token=" + apiToken)
 	if err != nil {
 		return nil, err
 	}
