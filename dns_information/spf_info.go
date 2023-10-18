@@ -34,27 +34,27 @@ func GetSPFPrompt(input string) {
 	if countTxt > 1 {
 		fmt.Printf(color.Blue(" SPF Records: ") + color.Red("Can't have two SPF!") + constants.Newline)
 	} else {
-		if spfValid || spfRecord != "No SPF record" {
-			coloredSPFRecord := colorCodeSPFRecord(spfRecord, spfValid)
+		if spfValid {
+			coloredSPFRecord := colorCodeSPFRecord(spfRecord)
 			fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
 		} else {
-			coloredSPFRecord := colorCodeSPFRecord(spfRecord, false) // "No SPF record" will be red
+			coloredSPFRecord := colorCodeSPFRecord(spfRecord) // "No SPF record" will be red
 			fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
 		}
 	}
 }
 
-func colorCodeSPFRecord(record string, valid bool) string {
+func colorCodeSPFRecord(record string) string {
 	colorCode := "\033[38;5;78m" // Default to green for non-SPF records
 
 	if strings.HasPrefix(record, "v=spf1") || strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all") {
 		colorCode = "\033[38;5;88m" // Default to red for malformed or misspelled SPF
-		if valid {
+		if IsValidSPF(record) {
 			colorCode = "\033[38;5;78m" // Green for valid SPF
 		}
 	}
 
-	if !valid && strings.Contains(strings.ToLower(record), "spf") {
+	if !IsValidSPF(record) && strings.Contains(strings.ToLower(record), "spf") {
 		colorCode = "\033[38;5;88m" // Green for invalid SPF
 	}
 
@@ -89,4 +89,8 @@ func IsValidSPF(record string) bool {
 
 func HasInvalidSPFRecord(record string) bool {
 	return strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all")
+}
+
+func HasSPFRecord(record string) bool {
+	return strings.HasPrefix(record, "v=spf1") || strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all")
 }
