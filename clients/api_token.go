@@ -5,9 +5,13 @@ import (
 	"os"
 )
 
+const (
+	IPINFO_API_TOKEN = "IPINFO_API_TOKEN"
+)
+
 // FetchAPIToken fetches the IPInfo API token from environment variable or user input.
 func FetchAPIToken(apiTokenFlag string) string {
-	apiToken := os.Getenv("IPINFO_API_TOKEN")
+	apiToken := os.Getenv(IPINFO_API_TOKEN)
 	if apiTokenFlag != "" {
 		apiToken = apiTokenFlag
 	}
