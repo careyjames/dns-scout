@@ -18,6 +18,7 @@ func ipsToStrings(ips []net.IP) []string {
 	return strs
 }
 
+// ResolvedIPPrompt...
 func ResolvedIPPrompt(input string) {
 	ips, _ := net.LookupIP(input)
 	if len(ips) > 0 {
