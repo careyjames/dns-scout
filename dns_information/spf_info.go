@@ -36,10 +36,10 @@ func GetSPFPrompt(input string) {
 	} else {
 		if spfValid {
 			coloredSPFRecord := colorCodeSPFRecord(spfRecord)
-			fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
+			fmt.Printf(color.Blue(" SPF Records: ") + coloredSPFRecord)
 		} else {
 			coloredSPFRecord := colorCodeSPFRecord(spfRecord) // "No SPF record" will be red
-			fmt.Printf("\033[38;5;39m SPF Record: %s\033[0m\n", coloredSPFRecord)
+			fmt.Printf(color.Blue(" SPF Records: ") + coloredSPFRecord)
 		}
 	}
 }
