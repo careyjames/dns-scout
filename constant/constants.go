@@ -8,3 +8,10 @@ const (
 	GooglePublicDNS     = "8.8.8.8:53"
 	CloudflarePublicDNS = "1.1.1.1:53"
 )
+
+const (
+	RedColorEncoding    = "\033[38;5;88m"
+	YellowColorEncoding = "\033[38;5;222m"
+	BlueColorEncoding   = "\033[38;5;39m"
+	GreenColorEncoding  = "\033[38;5;78m"
+)
