@@ -3,7 +3,6 @@ package dnsinformation
 import (
 	"fmt"
 	"strings"
-	"testing"
 
 	"github.com/careyjames/DNS-Scout/color"
 	constants "github.com/careyjames/DNS-Scout/constant"
@@ -74,60 +73,4 @@ func formatLongText(text string, threshold int, indent string) string {
 	}
 	result.WriteString(text)
 	return result.String()
-}
-
-func TestFormatLongText(t *testing.T) {
-	// Define test cases
-	testCases := []struct {
-		description string
-		text        string
-		threshold   int
-		indent      string
-		expected    string
-	}{
-		{
-			description: "Text is shorter than the threshold",
-			text:        "Short text",
-			threshold:   20,
-			indent:      "  ",
-			expected:    "Short text",
-		},
-		{
-			description: "Text exactly matches the threshold",
-			text:        "Exactly 20 characters",
-			threshold:   20,
-			indent:      "  ",
-			expected:    "Exactly 20 characters",
-		},
-		{
-			description: "Text longer than the threshold",
-			text:        "This is a long text that needs to be formatted for better readability.",
-			threshold:   20,
-			indent:      "  ",
-			expected:    "This is a long text\n  that needs to be\n  formatted for better\n  readability.",
-		},
-		{
-			description: "Text with no spaces to split",
-			text:        "ThisIsALongTextWithNoSpacesToSplit",
-			threshold:   20,
-			indent:      "  ",
-			expected:    "ThisIsALongTextWithNoSpacesToSplit",
-		},
-		{
-			description: "Empty text",
-			text:        "",
-			threshold:   20,
-			indent:      "  ",
-			expected:    "",
-		},
-	}
-
-	for _, tc := range testCases {
-		t.Run(tc.description, func(t *testing.T) {
-			result := formatLongText(tc.text, tc.threshold, tc.indent)
-			if result != tc.expected {
-				t.Errorf("Expected result:\n%s\nGot:\n%s", tc.expected, result)
-			}
-		})
-	}
 }

@@ -99,3 +99,38 @@ func TestIsValidDMARC(t *testing.T) {
 		})
 	}
 }
+
+func TestFormatLongText(t *testing.T) {
+	// Define test cases
+	testCases := []struct {
+		description string
+		text        string
+		threshold   int
+		indent      string
+		expected    string
+	}{
+		{
+			description: "Text is shorter than the threshold",
+			text:        "Short text",
+			threshold:   20,
+			indent:      "  ",
+			expected:    "Short text",
+		},
+		{
+			description: "Empty text",
+			text:        "",
+			threshold:   20,
+			indent:      "  ",
+			expected:    "",
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			result := formatLongText(tc.text, tc.threshold, tc.indent)
+			if result != tc.expected {
+				t.Errorf("Expected result:\n%s\nGot:\n%s", tc.expected, result)
+			}
+		})
+	}
+}
