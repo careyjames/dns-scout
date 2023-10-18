@@ -8,73 +8,20 @@ import (
 	"strings"
 	"time"
 
+	clients "github.com/careyjames/DNS-Scout/clients"
+	constants "github.com/careyjames/DNS-Scout/constant"
+	dnsinformation "github.com/careyjames/DNS-Scout/dns_information"
 	color "github.com/fatih/color"
 
 	"github.com/briandowns/spinner"
 	"github.com/chzyer/readline"
-	"github.com/likexian/whois"
-	whoisparser "github.com/likexian/whois-parser"
-	"github.com/miekg/dns"
 )
-
-// IPInfoAPIURL is and API URL
-const IPInfoAPIURL = "https://ipinfo.io/"
-const version = "5.9"
-
-// IPInfoResponse struct holds the response from the IPInfo API
-type IPInfoResponse struct {
-	ASN      map[string]interface{} `json:"asn"`
-	IP       string                 `json:"ip"`
-	Domain   string                 `json:"domain"`
-	Hostname string                 `json:"hostname"`
-	City     string                 `json:"city"`
-	Region   string                 `json:"region"`
-	Country  string                 `json:"country"`
-	Loc      string                 `json:"loc"`
-	Org      string                 `json:"org"`
-	Postal   string                 `json:"postal"`
-	Timezone string                 `json:"timezone"`
-	Readme   string                 `json:"readme"`
-}
-
-// getRegistrar fetches the registrar information for a given domain.
-func getRegistrar(domain string) string {
-	result, err := whois.Whois(domain)
-	if err != nil {
-		return "Unknown or Classified"
-	}
-
-	parsed, err := whoisparser.Parse(result)
-	if err != nil {
-		return "Unknown or Classified"
-	}
-
-	if parsed.Registrar != nil {
-		return parsed.Registrar.Name
-	}
-
-	return "Unknown or Classified"
-}
-
-// ipsToStrings converts a slice of net.IP to a slice of string.
-func ipsToStrings(ips []net.IP) []string {
-	var strs []string
-	for _, ip := range ips {
-		strs = append(strs, ip.String())
-	}
-	return strs
-}
-
-// getTXT fetches the TXT records for a given domain.
-func getTXT(domain string) ([]string, error) {
-	return QueryDNS(domain, dns.TypeTXT, "8.8.8.8:53")
-}
 
 // getDMARC fetches the DMARC record for a given domain.
 func getDMARC(domain string) (string, error) {
-	txtRecords, err := getTXT("_dmarc." + domain)
+	txtRecords, err := dnsinformation.GetTXT("_dmarc." + domain)
 	if len(txtRecords) <= 0 {
-		txtRecords, _ = GetDMARCRecordNSLookup(domain)
+		txtRecords, _ = dnsinformation.GetDMARCRecordNSLookup(domain)
 	}
 	if err != nil {
 		return "", err
@@ -126,54 +73,11 @@ func getPTR(domain string) ([]string, error) {
 	return ptrRecords, nil
 }
 
-func colorCodeSPFRecord(record string, valid bool) string {
-	colorCode := "\033[38;5;78m" // Default to green for non-SPF records
-
-	if strings.HasPrefix(record, "v=spf1") || strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all") {
-		colorCode = "\033[38;5;88m" // Default to red for malformed or misspelled SPF
-		if valid {
-			colorCode = "\033[38;5;78m" // Green for valid SPF
-		}
-	}
-
-	if !valid && strings.Contains(strings.ToLower(record), "spf") {
-		colorCode = "\033[38;5;88m" // Green for invalid SPF
-	}
-
-	if record == " No SPF record" {
-		colorCode = "\033[38;5;88m" // Red for "No SPF record"
-	}
-
-	if strings.Contains(record, "-all") {
-		record = strings.ReplaceAll(record, "-all", "\033[38;5;222m-all\033[0m")
-	} else if strings.Contains(record, "~all") {
-		record = strings.ReplaceAll(record, "~all", "\033[38;5;78m~all\033[0m")
-	}
-
-	return fmt.Sprintf("%s%s\033[0m", colorCode, record)
-}
-
-// fetchAPIToken fetches the IPInfo API token from environment variable or user input.
-func fetchAPIToken(apiTokenFlag string) string {
-	apiToken := os.Getenv("IPINFO_API_TOKEN")
-
-	if apiTokenFlag != "" {
-		apiToken = apiTokenFlag
-	}
-
-	if apiToken == "" {
-		fmt.Print("IPINFO_API_TOKEN environment variable is not set.\nPlease enter your IPInfo API token: ")
-		fmt.Scanln(&apiToken)
-	}
-
-	return apiToken
-}
-
 func main() {
 	// Check "version" argument
 	args := os.Args[1:]
 	if len(args) > 0 && args[0] == "version" {
-		fmt.Println("DNS-Scout version:", version)
+		fmt.Println("DNS-Scout version:", constants.Version)
 		return
 	}
 	var apiTokenFlag string
@@ -193,7 +97,7 @@ func main() {
 	}
 	defer rl.Close()
 
-	apiToken := fetchAPIToken(apiTokenFlag)
+	apiToken := clients.FetchAPIToken(apiTokenFlag)
 
 	s := spinner.New(spinner.CharSets[9], 100*time.Millisecond) // Use the dots character set and update every 100ms
 
@@ -222,33 +126,21 @@ func main() {
 	}
 }
 
-func getRegistrarPromt(input string, isIP bool) {
-	registrar := getRegistrar(input)
-
-	if registrar == "Unknown or Classified" {
-		fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78mUnknown or \033[0m\033[38;5;222mClassified\033[0m\n")
-	} else {
-		if !isIP || (isIP && registrar != "Unknown or Classified") {
-			fmt.Printf("\033[38;5;39m Registrar: \033[38;5;78m%s\033[0m\n", registrar)
-		}
-	}
-}
-
 func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 	if !isIP {
-		getRegistrarPromt(input, isIP)
+		dnsinformation.GetRegistrarPromt(input, isIP)
 
-		resolvedIPPrompt(input)
+		dnsinformation.ResolvedIPPrompt(input)
 
-		GetNSPrompt(input)
+		dnsinformation.GetNSPrompt(input)
 
-		GetMXPrompt(input)
+		dnsinformation.GetMXPrompt(input)
 
-		getTXTPrompt(input)
+		dnsinformation.GetTXTPrompt(input)
 
 		getDMARCPrompt(input)
 
-		getSPFPrompt(input)
+		dnsinformation.GetSPFPrompt(input)
 	}
 
 	getPTRPrompt(input, isIP)
@@ -256,37 +148,6 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 	if isIP || isCIDR {
 		asnInfo, err := GetASNInfo(input, apiToken)
 		HandleResponse(asnInfo, err)
-	}
-}
-
-func resolvedIPPrompt(input string) {
-	ips, _ := net.LookupIP(input)
-	if len(ips) > 0 {
-		fmt.Printf("\033[38;5;39m Resolved IPs: \033[38;5;78m%s\033[0m\n", strings.Join(ipsToStrings(ips), ", "))
-	}
-}
-
-func getTXTPrompt(input string) {
-	txt, _ := getTXT(input)
-	if len(txt) > 0 {
-		fmt.Printf("\033[38;5;39m TXT Records:\033[0m\n")
-		for _, record := range txt {
-			isValidSPF := strings.HasPrefix(record, "v=spf1")
-			coloredRecord := colorCodeSPFRecord(record, isValidSPF)
-			fmt.Printf(" %s\n", coloredRecord)
-		}
-	} else {
-		txt, _ = GetTXTRecordNSLookup(input)
-		if len(txt) > 0 {
-			fmt.Printf("\033[38;5;39m TXT Records:\033[0m\n")
-			for _, record := range txt {
-				isValidSPF := strings.HasPrefix(record, "v=spf1")
-				coloredRecord := colorCodeSPFRecord(record, isValidSPF)
-				fmt.Printf(" %s\n", coloredRecord)
-			}
-		} else {
-			fmt.Printf("\033[38;5;39m TXT Records: \033[0m\033[38;5;88mNone\033[0m\n")
-		}
 	}
 }
 
