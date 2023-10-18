@@ -3,11 +3,19 @@ package dnsinformation
 import (
 	"fmt"
 	"strings"
+
+	"github.com/careyjames/DNS-Scout/color"
+	constants "github.com/careyjames/DNS-Scout/constant"
+)
+
+const (
+	DMARCLookupString = "_dmarc."
+	DMARCValid        = "v=DMARC1"
 )
 
 // getDMARC fetches the DMARC record for a given domain.
 func getDMARC(domain string) (string, error) {
-	txtRecords, err := GetTXT("_dmarc." + domain)
+	txtRecords, err := GetTXT(DMARCLookupString + domain)
 	if len(txtRecords) <= 0 {
 		txtRecords, _ = GetDMARCRecordNSLookup(domain)
 	}
@@ -15,13 +23,15 @@ func getDMARC(domain string) (string, error) {
 		return "", err
 	}
 	for _, record := range txtRecords {
-		if len(record) > 8 && record[:8] == "v=DMARC1" {
-			return record, nil
-		} else if record[:6] == "vDMARC" {
+		if hasDMARCRecod(record) {
 			return record, nil
 		}
 	}
 	return "", nil
+}
+
+func hasDMARCRecod(record string) bool {
+	return (len(record) > 8 && record[:8] == DMARCValid) || (len(record) > 6 && record[:6] == "vDMARC")
 }
 
 // GetDMARCPrompt fetches the DMARC record for a given domain.
@@ -30,18 +40,17 @@ func GetDMARCPrompt(input string) {
 	if dmarc != "" {
 		if isValidDMARC(dmarc) {
 			formattedDMARC := formatLongText(dmarc, 80, " ")
-			fmt.Printf("\033[38;5;39m DMARC Record:\033[0m\n")
-			fmt.Printf("\033[38;5;78m %s\033[0m\n", formattedDMARC)
+			fmt.Printf(color.Blue(" DMARC Record: ") + color.Green(formattedDMARC) + constants.Newline)
 		} else {
-			fmt.Printf("\033[38;5;39m DMARC Record: \033[0m\033[38;5;88m%s\033[0m\n", dmarc[8:])
+			fmt.Printf(color.Blue(" DMARC Record: ") + color.Green(dmarc[8:]) + constants.Newline)
 		}
 	} else {
-		fmt.Printf("\033[38;5;39m DMARC Record: \033[0m\033[38;5;88mNone\033[0m\n")
+		fmt.Printf(color.Blue(" DMARC Record: ") + color.Red("None") + constants.Newline)
 	}
 }
 
 func isValidDMARC(record string) bool {
-	if len(record) > 8 && record[:8] == "v=DMARC1" {
+	if len(record) > 8 && record[:8] == DMARCValid {
 		return true
 	}
 	return false
