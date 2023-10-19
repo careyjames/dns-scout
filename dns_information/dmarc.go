@@ -42,7 +42,7 @@ func GetDMARCPrompt(input string) {
 			formattedDMARC := formatLongText(dmarc, 80, " ")
 			fmt.Printf(color.Blue(" DMARC Record: ") + color.Green(formattedDMARC) + constants.Newline)
 		} else {
-			fmt.Printf(color.Blue(" DMARC Record: ") + color.Green(dmarc[8:]) + constants.Newline)
+			fmt.Printf(color.Blue(" DMARC Record: ") + color.Red(dmarc[8:]) + constants.Newline)
 		}
 	} else {
 		fmt.Printf(color.Blue(" DMARC Record: ") + color.Red("None") + constants.Newline)

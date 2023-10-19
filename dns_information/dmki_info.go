@@ -36,13 +36,17 @@ func getDKIM(domain string, selector string) (string, error) {
 func GetDKIMPrompt(input string) {
 	flag := false
 	dkimPrompt := ""
-	for _, selector := range DKIMSelectors {
+	for index, selector := range DKIMSelectors {
 		dkim, _ := getDKIM(input, selector)
 		if dkim != "" {
 			flag = true
 			if isValidDKIM(dkim) {
 				formattedDMARC := formatLongText(dkim, 80, " ")
-				dkimPrompt += color.Green(selector+".") + color.Green(formattedDMARC) + constants.Newline
+				if index > 0 {
+					dkimPrompt += " " + color.Green(selector+".") + color.Green(formattedDMARC) + constants.Newline
+				} else {
+					dkimPrompt += color.Green(selector+".") + color.Green(formattedDMARC) + constants.Newline
+				}
 			} else {
 				dkimPrompt += color.Green(selector+".") + color.Red(dkim[7:]) + constants.Newline
 			}
@@ -53,9 +57,9 @@ func GetDKIMPrompt(input string) {
 		}
 	}
 	if flag {
-		fmt.Printf(color.Blue(" DKIM Record: ") + dkimPrompt)
+		fmt.Printf(color.Blue(" DKIM Records: ") + dkimPrompt)
 	} else {
-		fmt.Printf(color.Blue(" DKIM Record: ") + dkimPrompt)
+		fmt.Printf(color.Blue(" DKIM Records: ") + dkimPrompt)
 	}
 }
 
