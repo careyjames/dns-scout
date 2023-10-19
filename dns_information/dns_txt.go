@@ -38,6 +38,6 @@ func GetTXTPrompt(input string) {
 			fmt.Printf(" %s\n", coloredRecord)
 		}
 	} else {
-		fmt.Printf("\033[38;5;39m TXT Records: \033[0m\033[38;5;88mNone\033[0m\n")
+		fmt.Printf(color.Blue(" TXT Records: ") + color.Red("None") + constants.Newline)
 	}
 }

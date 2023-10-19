@@ -9,9 +9,7 @@ func GetTXTRecordNSLookup(domain string) ([]string, error) {
 	dns_txt_records, err := net.LookupTXT(domain)
 	records := []string{}
 	if err == nil && len(dns_txt_records) > 0 {
-		for _, record := range dns_txt_records {
-			records = append(records, record)
-		}
+		records = append(records, dns_txt_records...)
 	} else {
 		return records, err
 	}
@@ -20,12 +18,10 @@ func GetTXTRecordNSLookup(domain string) ([]string, error) {
 
 // GetTXTRecordNSLookup fetch txt ns lookup
 func GetDMARCRecordNSLookup(domain string) ([]string, error) {
-	dns_txt_records, err := net.LookupTXT("_dmarc." + domain)
+	dns_txt_records, err := net.LookupTXT(DMARCLookupString + domain)
 	records := []string{}
 	if err == nil && len(dns_txt_records) > 0 {
-		for _, record := range dns_txt_records {
-			records = append(records, record)
-		}
+		records = append(records, dns_txt_records...)
 	} else {
 		return records, err
 	}
