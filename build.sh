@@ -16,6 +16,9 @@ GOOS=darwin GOARCH=arm64 go build -v -o ./dns-scout-macos-arm64-silicon-v5.9/dns
 GOOS=linux GOARCH=amd64 go build -v -o ./dns-scout-linux-amd64-ubuntu-kali-v5.9/dns-scout
 # This will generate a binary (dns-scout-linux-amd64) that is suitable for most Kali and Ubuntu installations on AMD64/x86_64 hardware.
 
+GOOS=linux GOARCH=arm64 go build -v -o ./dns-scout-linux-arm64-raspberry-pi-v5.9/dns-scout
+# Raspberry Pi 64-bit ARM
+
 GOOS=linux GOARCH=386 go build -v -o ./dns-scout-linux-386-v5.9/dns-scout
 # If you want to support older 32-bit machines or other architectures, you'll need to specify different GOARCH values. For example, for 32-bit x86:
 
@@ -25,8 +28,10 @@ tar czvf dns-scout-macos-arm64-silicon-v5.9.tar.gz --transform 's,^./dns-scout-m
 
 tar czvf dns-scout-linux-amd64-ubuntu-kali-v5.9.tar.gz --transform 's,^./dns-scout-linux-amd64-ubuntu-kali-v5.9/dns-scout,dns-scout,' ./dns-scout-linux-amd64-ubuntu-kali-v5.9/dns-scout ./README.md ./setup-api-token.sh
 
+tar czvf dns-scout-linux-arm64-raspberry-pi-v5.9.tar.gz --transform 's,^./dns-scout-linux-arm64-raspberry-pi-v5.9/dns-scout,dns-scout,' ./dns-scout-linux-arm64-raspberry-pi-v5.9/dns-scout ./README.md ./setup-api-token.sh
+
 tar czvf dns-scout-linux-386-v5.9.tar.gz --transform 's,^./dns-scout-linux-386-v5.9/dns-scout,dns-scout,' ./dns-scout-linux-386-v5.9/dns-scout ./README.md ./setup-api-token.sh
 
-shasum -a 256 ./dns-scout-macos-amd64-intel-v5.9/dns-scout ./dns-scout-macos-arm64-silicon-v5.9/dns-scout ./dns-scout-linux-amd64-ubuntu-kali-v5.9/dns-scout ./dns-scout-linux-386-v5.9/dns-scout
+shasum -a 256 ./dns-scout-macos-amd64-intel-v5.9/dns-scout ./dns-scout-macos-arm64-silicon-v5.9/dns-scout ./dns-scout-linux-amd64-ubuntu-kali-v5.9/dns-scout ./dns-scout-linux-386-v5.9/dns-scout ./dns-scout-linux-arm64-raspberry-pi-v5.9/dns-scout
 
 echo "Build complete."
