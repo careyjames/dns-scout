@@ -47,9 +47,9 @@ func GetPTRPrompt(input string, isIp bool) {
 		}
 	} else {
 		if !isIp {
-			fmt.Printf(color.Blue(" PTR Records: ") + color.Green("None") + constants.Newline)
+			fmt.Printf(color.Blue(" PTR Records: ") + color.Yellow("None") + constants.Newline)
 		} else {
-			fmt.Printf(color.Blue(" PTR Records: ") + color.Green("None"))
+			fmt.Printf(color.Blue(" PTR Records: ") + color.Yellow("None"))
 		}
 	}
 }
