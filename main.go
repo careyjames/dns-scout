@@ -67,9 +67,9 @@ func promptRunner(isIP bool, isCIDR bool, input string, apiToken string) {
 		dnsinformation.GetNSPrompt(input)
 		dnsinformation.GetMXPrompt(input)
 		dnsinformation.GetTXTPrompt(input)
+		dnsinformation.GetSPFPrompt(input)
 		dnsinformation.GetDMARCPrompt(input)
 		dnsinformation.GetDKIMPrompt(input)
-		dnsinformation.GetSPFPrompt(input)
 	}
 	dnsinformation.GetPTRPrompt(input, isIP)
 	if isIP || isCIDR {
