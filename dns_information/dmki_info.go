@@ -39,10 +39,13 @@ func GetDKIMPrompt(input string) {
 	for index, selector := range DKIMSelectors {
 		dkim, _ := getDKIM(input, selector)
 		if dkim != "" {
+			if !flag {
+				dkimPrompt = ""
+			}
 			flag = true
 			if isValidDKIM(dkim) {
 				formattedDMARC := formatLongText(dkim, 80, " ")
-				if index > 0 {
+				if index > 0 && len(dkimPrompt) > 0 {
 					dkimPrompt += " " + color.Green(selector+".") + color.Green(formattedDMARC) + constants.Newline
 				} else {
 					dkimPrompt += color.Green(selector+".") + color.Green(formattedDMARC) + constants.Newline
