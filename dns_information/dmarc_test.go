@@ -1,6 +1,14 @@
 package dnsinformation
 
-import "testing"
+import (
+	"io/ioutil"
+	"os"
+	"strings"
+	"testing"
+
+	"github.com/careyjames/DNS-Scout/color"
+	constants "github.com/careyjames/DNS-Scout/constant"
+)
 
 func TestHasDMARCRecod(t *testing.T) {
 	// Define test cases
@@ -157,4 +165,50 @@ func TestGetDMARC(t *testing.T) {
 			t.Error("Expected an empty string, but got a DMARC record")
 		}
 	})
+}
+
+func TestGetDMARCPrompt(t *testing.T) {
+	// Redirect stdout for testing the output
+	originalStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	t.Run("Valid DMARC Record", func(t *testing.T) {
+		input := "google.com"
+		GetDMARCPrompt(input)
+		w.Close()
+		capturedOutput, _ := ioutil.ReadAll(r)
+
+		expectedOutput := color.Blue(" DMARC Record: ")
+		if strings.Contains(string(capturedOutput)[:15], expectedOutput) {
+			t.Errorf("Expected output containing a valid DMARC record, but got: %s", string(capturedOutput))
+		}
+	})
+
+	t.Run("Invalid DMARC Record", func(t *testing.T) {
+		input := "invalid.com"
+		GetDMARCPrompt(input)
+		w.Close()
+		capturedOutput, _ := ioutil.ReadAll(r)
+
+		expectedOutput := color.Blue(" DMARC Record: ") + color.Red("Invalid DMARC Record") + constants.Newline
+		if strings.Contains(string(capturedOutput), expectedOutput) {
+			t.Errorf("Expected output containing an invalid DMARC record, but got: %s", string(capturedOutput))
+		}
+	})
+
+	t.Run("No DMARC Record", func(t *testing.T) {
+		input := "nodmarc.com"
+		GetDMARCPrompt(input)
+		w.Close()
+		capturedOutput, _ := ioutil.ReadAll(r)
+
+		expectedOutput := color.Blue(" DMARC Record: ") + color.Red("None") + constants.Newline
+		if strings.Contains(string(capturedOutput), expectedOutput) {
+			t.Errorf("Expected output containing 'None' for no DMARC record, but got: %s", string(capturedOutput))
+		}
+	})
+
+	// Restore the original stdout
+	os.Stdout = originalStdout
 }
