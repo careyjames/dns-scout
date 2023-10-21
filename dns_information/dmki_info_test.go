@@ -71,3 +71,26 @@ func TestIsValidDKIM(t *testing.T) {
 		}
 	})
 }
+
+func TestGetDKIM(t *testing.T) {
+	t.Run("Valid DKIM Record", func(t *testing.T) {
+		domain := "example.com"
+		selector := "valid"
+		_, err := getDKIM(domain, selector)
+		if err != nil {
+			t.Errorf("Expected no error, but got an error: %v", err)
+		}
+	})
+
+	t.Run("No DKIM Record", func(t *testing.T) {
+		domain := "example.com"
+		selector := "nodkim"
+		record, err := getDKIM(domain, selector)
+		if err != nil {
+			t.Errorf("Expected no error, but got an error: %v", err)
+		}
+		if record != "" {
+			t.Error("Expected an empty string, but got a DKIM record")
+		}
+	})
+}
