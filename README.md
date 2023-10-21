@@ -52,7 +52,7 @@ SPF settings, etc.
 
 ### Installation Guide for DNS Scout
 
-#### Manual MacOS/Kali, Ubuntu Linux Nerd Install
+#### Manual MacOS, Kali, Ubuntu Linux Nerd Install
 
 Prerequisites: Go 1.21
 
