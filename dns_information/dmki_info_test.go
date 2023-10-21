@@ -1,6 +1,14 @@
 package dnsinformation
 
-import "testing"
+import (
+	"io/ioutil"
+	"os"
+	"strings"
+	"testing"
+
+	"github.com/careyjames/DNS-Scout/color"
+	constants "github.com/careyjames/DNS-Scout/constant"
+)
 
 func TestHasDKIMRecord(t *testing.T) {
 	// Test cases for hasDKIMRecord function
@@ -93,4 +101,54 @@ func TestGetDKIM(t *testing.T) {
 			t.Error("Expected an empty string, but got a DKIM record")
 		}
 	})
+}
+
+func TestGetDKIMPrompt(t *testing.T) {
+	// Redirect stdout for testing the output
+	originalStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	t.Run("Valid DKIM Records", func(t *testing.T) {
+		input := "example.com"
+		GetDKIMPrompt(input)
+		w.Close()
+		capturedOutput, _ := ioutil.ReadAll(r)
+
+		// Customize the expected output based on your formatting and colors
+		expectedOutput := color.Blue(" DKIM Records: ") + color.Green("selector1.") + color.Green("Valid DKIM Record1") + constants.Newline +
+			color.Green("selector2.") + color.Green("Valid DKIM Record2") + constants.Newline
+		if strings.Contains(string(capturedOutput), expectedOutput) {
+			t.Errorf("Expected output containing valid DKIM records, but got: %s", string(capturedOutput))
+		}
+	})
+
+	t.Run("Invalid DKIM Records", func(t *testing.T) {
+		input := "invalid.com"
+		GetDKIMPrompt(input)
+		w.Close()
+		capturedOutput, _ := ioutil.ReadAll(r)
+
+		// Customize the expected output based on your formatting and colors
+		expectedOutput := color.Blue(" DKIM Records: ") + color.Green("selector1.") + color.Red("Invalid DKIM Record1") + constants.Newline +
+			color.Green("selector2.") + color.Red("Invalid DKIM Record2") + constants.Newline
+		if strings.Contains(string(capturedOutput), expectedOutput) {
+			t.Errorf("Expected output containing invalid DKIM records, but got: %s", string(capturedOutput))
+		}
+	})
+
+	t.Run("No DKIM Records", func(t *testing.T) {
+		input := "nodkim.com"
+		GetDKIMPrompt(input)
+		w.Close()
+		capturedOutput, _ := ioutil.ReadAll(r)
+
+		expectedOutput := color.Blue(" DKIM Records: ") + color.Red("None") + constants.Newline
+		if strings.Contains(string(capturedOutput), expectedOutput) {
+			t.Errorf("Expected output containing 'None' for no DKIM records, but got: %s", string(capturedOutput))
+		}
+	})
+
+	// Restore the original stdout
+	os.Stdout = originalStdout
 }
