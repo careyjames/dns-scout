@@ -91,7 +91,7 @@ Prerequisites: Go 1.21
    at least until you discover [oh my zsh.](https://github.com/ohmyzsh/ohmyzsh)
 
    ![Example IP records](mac-click-allow.png)![Dev not verified](dev-not-verified.png)  
-   If you see a popup when you launch DNS Scout, click "Allow" or "Open".  
+   If you see a popup when you launch DNS Scout, click "**Allow**" or "**Open**".  
 
 That's it! You've manually installed DNS-Scout like a true nerd.
 
