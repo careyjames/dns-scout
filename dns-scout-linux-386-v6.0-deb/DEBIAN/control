@@ -1,0 +1,14 @@
+Package: dns-scout
+Version: 6.0
+Section: net
+Priority: optional
+Architecture: 386
+Essential: no
+Installed-Size: 9120
+Maintainer: Carey Balboa
+Description: DNS Scout for Linux/MacOS
+ DNS Scout pulls and displays DNS records in a color-coded console output.
+ It stands out by filtering out non-essential information, presenting users
+ with a cleaner, more focused view of the DNS data. The tool is optimized
+ for clarity and relevance, making it ideal for easy DNS reconnaissance
+ and troubleshooting.
