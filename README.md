@@ -81,7 +81,7 @@ Prerequisites: Go 1.21
 
 5. **Run DNS Scout:**
    Open a **new** terminal window and type `dns-scout` to launch the tool.  
-   Enter "your-domain.com" or a raw IP address like "1.1.1.1" to get started.
+   Enter "your-domain.com" or a raw IP address like "1.1.1.1" to get started.  
    No need to enter "https://" or subdomains like "www" unless you are looking for specific custom records or DKIM selectors for example, so you would enter mycustomemailselector._domainkey.yourdomain.com  
 
    **For MacOS users,** go to System Settings > Security & Privacy and
