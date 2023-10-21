@@ -88,7 +88,7 @@ Prerequisites: Go 1.21
    are default "Basic" Terminal>Settings>Profiles and choose "Homebrew",
    at least until you discover [oh my zsh.](https://github.com/ohmyzsh/ohmyzsh)
 
-   ![Example IP records](mac-click-allow.png)
+   ![Example IP records](mac-click-allow.png)![Dev not verified](dev-not-verified.png)
 
 That's it! You've manually installed DNS-Scout like a true nerd.
 
