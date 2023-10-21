@@ -92,6 +92,7 @@ Prerequisites: Go 1.21
 
 That's it! You've manually installed DNS-Scout like a true nerd.
 
+Check out [this article](https://www.machelpnashville.com/dns-security-with-dmarc-and-spf-a-comprehensive-guide-to-stop-hackers/) to learn more about email deliverability and DMARC.
 **Here's a breakdown of how each method of storing the API token could be useful:**
 
 Environment Variable: Useful for users running the program in a controlled
