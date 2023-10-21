@@ -88,8 +88,9 @@ Prerequisites: Go 1.21
    are default "Basic" Terminal>Settings>Profiles and choose "Homebrew",
    at least until you discover [oh my zsh.](https://github.com/ohmyzsh/ohmyzsh)
 
-   ![Example IP records](mac-click-allow.png)![Dev not verified](dev-not-verified.png)
-
+   ![Example IP records](mac-click-allow.png)![Dev not verified](dev-not-verified.png)  
+   If you an popup when you launch DNS Scout, click "Allow" or "Open".  
+   
 That's it! You've manually installed DNS-Scout like a true nerd.
 
 Check out [this article](https://www.machelpnashville.com/dns-security-with-dmarc-and-spf-a-comprehensive-guide-to-stop-hackers/) to learn more about email deliverability and DMARC.  
