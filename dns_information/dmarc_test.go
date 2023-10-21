@@ -134,3 +134,27 @@ func TestFormatLongText(t *testing.T) {
 		})
 	}
 }
+
+func TestGetDMARC(t *testing.T) {
+	t.Run("Valid DMARC Record", func(t *testing.T) {
+		domain := "google.com"
+		record, err := getDMARC(domain)
+		if err != nil {
+			t.Errorf("Expected no error, but got an error: %v", err)
+		}
+		if record == "" {
+			t.Error("Expected a valid DMARC record, but got an empty string")
+		}
+	})
+
+	t.Run("No DMARC Record", func(t *testing.T) {
+		domain := "example.com"
+		record, err := getDMARC(domain)
+		if err != nil {
+			t.Errorf("Expected no error, but got an error: %v", err)
+		}
+		if record != "" {
+			t.Error("Expected an empty string, but got a DMARC record")
+		}
+	})
+}
