@@ -1,7 +1,13 @@
 package dnsinformation
 
 import (
+	"io/ioutil"
+	"os"
+	"strings"
 	"testing"
+
+	"github.com/careyjames/DNS-Scout/color"
+	constants "github.com/careyjames/DNS-Scout/constant"
 )
 
 func TestGetTXT(t *testing.T) {
@@ -106,4 +112,42 @@ func TestGetTXTFromAllOption(t *testing.T) {
 	})
 
 	// Add more test cases as needed.
+}
+
+func TestGetTXTPrompt(t *testing.T) {
+	// Redirect stdout for testing the output
+	originalStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	t.Run("Display TXT Records", func(t *testing.T) {
+		input := "example.com"
+		GetTXTPrompt(input)
+		w.Close()
+		capturedOutput, _ := ioutil.ReadAll(r)
+
+		// Customize the expected output based on your formatting and colors
+		expectedOutput := color.Blue(" TXT Records: ") + constants.Newline +
+			" Colored TXT Record 1" + constants.Newline +
+			" Colored TXT Record 2" + constants.Newline
+
+		if strings.Contains(string(capturedOutput), expectedOutput) {
+			t.Errorf("Expected output displaying TXT records, but got: %s", string(capturedOutput))
+		}
+	})
+
+	t.Run("No TXT Records", func(t *testing.T) {
+		input := "nodata.com"
+		GetTXTPrompt(input)
+		w.Close()
+		capturedOutput, _ := ioutil.ReadAll(r)
+
+		expectedOutput := color.Blue(" TXT Records: ") + color.Red("None") + constants.Newline
+		if strings.Contains(string(capturedOutput), expectedOutput) {
+			t.Errorf("Expected output containing 'None' for no TXT records, but got: %s", string(capturedOutput))
+		}
+	})
+
+	// Restore the original stdout
+	os.Stdout = originalStdout
 }
