@@ -6,7 +6,7 @@ import (
 
 func TestYellow(t *testing.T) {
 	text := "Hello, Yellow!"
-	expected := "\033[38;5;222mHello, Yellow!\033[0m"
+	expected := "\033[38;5;3mHello, Yellow!\033[0m"
 	result := Yellow(text)
 
 	if result != expected {
@@ -16,7 +16,7 @@ func TestYellow(t *testing.T) {
 
 func TestGreen(t *testing.T) {
 	text := "Hello, Green!"
-	expected := "\033[38;5;78mHello, Green!\033[0m"
+	expected := "\033[38;5;2mHello, Green!\033[0m"
 	result := Green(text)
 
 	if result != expected {
@@ -36,7 +36,7 @@ func TestBlue(t *testing.T) {
 
 func TestRed(t *testing.T) {
 	text := "Hello, Red!"
-	expected := "\033[38;5;88mHello, Red!\033[0m"
+	expected := "\033[38;5;1mHello, Red!\033[0m"
 	result := Red(text)
 
 	if result != expected {
