@@ -6,6 +6,8 @@
 GPG_KEY_ID="EF536354988BF362947FC6FDBEB7932396E8FB23"
 # Define the project root directory
 project_root="/home/carey/DNS-Scout"
+# Remove existing upstream tarball if it exists
+[ -f "${project_root}/../dns-scout_6.0.orig.tar.gz" ] && rm "${project_root}/../dns-scout_6.0.orig.tar.gz"
 
 # Create the upstream tarball and place it in the parent directory
 echo "Creating upstream tarball..."
