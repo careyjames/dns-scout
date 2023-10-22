@@ -2,30 +2,38 @@
 
 # Make sure to install Go 1.21 before running this script
 # or update the path to the Go binary accordingly.
+# Define the GPG key ID
+GPG_KEY_ID="EF536354988BF362947FC6FDBEB7932396E8FB23"
+# Define the project root directory
+project_root="/home/carey/DNS-Scout"
+
+# Create the upstream tarball and place it in the parent directory
+echo "Creating upstream tarball..."
+tar czvf "${project_root}/../dns-scout_6.0.orig.tar.gz" -C "${project_root}" .
 
 # Step 1: Compile the Go code
 echo "Compiling Go code..."
-go build -v -o ./bin/dns-scout
+go build -v -o "${project_root}/bin/dns-scout"
 
-GOOS=darwin GOARCH=amd64 go build -v -o ./dns-scout-macos-amd64-intel-v6.0/dns-scout
+GOOS=darwin GOARCH=amd64 go build -v -o "${project_root}/dns-scout-macos-amd64-intel-v6.0/dns-scout"
 # produces a binary for macOS running on Intel x86_64 architecture (Intel Macs). It does not produce a binary for the newer Apple Silicon Macs, which use the ARM64 architecture.
 
-GOOS=darwin GOARCH=arm64 go build -v -o ./dns-scout-macos-arm64-silicon-v6.0/dns-scout
+GOOS=darwin GOARCH=arm64 go build -v -o "${project_root}/dns-scout-macos-arm64-silicon-v6.0/dns-scout"
 # This will produce a binary (dns-scout-macos-arm64) that runs on macOS systems with ARM64 architecture (Apple Silicon).
 
-GOOS=linux GOARCH=amd64 go build -v -o ./dns-scout-linux-amd64-ubuntu-kali-v6.0/dns-scout
+GOOS=linux GOARCH=amd64 go build -v -o "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v6.0/dns-scout"
 # This will generate a binary (dns-scout-linux-amd64) that is suitable for most Kali and Ubuntu installations on AMD64/x86_64 hardware.
 
-GOOS=linux GOARCH=arm64 go build -v -o ./dns-scout-linux-arm64-raspberry-pi-v6.0/dns-scout
+GOOS=linux GOARCH=arm64 go build -v -o "${project_root}/dns-scout-linux-arm64-raspberry-pi-v6.0/dns-scout"
 # Raspberry Pi 64-bit ARM
 
-GOOS=linux GOARCH=386 go build -v -o ./dns-scout-linux-386-v6.0/dns-scout
+GOOS=linux GOARCH=386 go build -v -o "${project_root}/dns-scout-linux-386-v6.0/dns-scout"
 # If you want to support older 32-bit machines or other architectures, you'll need to specify different GOARCH values. For example, for 32-bit x86:
 
 # Create Debian packages for Linux builds
 for arch in amd64 arm64 386; do
-  deb_folder="./dns-scout-linux-${arch}-v6.0-deb"
-  deb_name="dns-scout-linux-${arch}-v6.0-deb.deb"  # Initialize with a default name
+  deb_folder="${project_root}/dns-scout-linux-${arch}-v6.0-deb"
+  deb_name="dns-scout-linux-${arch}-v6.0-1debian1.deb"
 
   mkdir -p "${deb_folder}/usr/local/bin"
   mkdir -p "${deb_folder}/usr/share/doc/dns-scout"
@@ -66,16 +74,23 @@ Description: DNS Scout for Linux/MacOS
   dpkg-deb --build "${deb_folder}" "${deb_name}"
 done
 
-tar czvf dns-scout-macos-amd64-intel-v6.0.tar.gz --transform 's,^./dns-scout-macos-amd64-intel-v6.0/dns-scout,dns-scout,' ./dns-scout-macos-amd64-intel-v6.0/dns-scout ./README.md ./setup-api-token.sh
+tar czvf "${project_root}/dns-scout-macos-amd64-intel-v6.0.tar.gz" --transform 's,^./dns-scout-macos-amd64-intel-v6.0/dns-scout,dns-scout,' ./dns-scout-macos-amd64-intel-v6.0/dns-scout ./README.md ./setup-api-token.sh
 
-tar czvf dns-scout-macos-arm64-silicon-v6.0.tar.gz --transform 's,^./dns-scout-macos-arm64-silicon-v6.0/dns-scout,dns-scout,' ./dns-scout-macos-arm64-silicon-v6.0/dns-scout ./README.md ./setup-api-token.sh
+tar czvf "${project_root}/dns-scout-macos-arm64-silicon-v6.0.tar.gz" --transform 's,^./dns-scout-macos-arm64-silicon-v6.0/dns-scout,dns-scout,' ./dns-scout-macos-arm64-silicon-v6.0/dns-scout ./README.md ./setup-api-token.sh
 
-tar czvf dns-scout-linux-amd64-ubuntu-kali-v6.0.tar.gz --transform 's,^./dns-scout-linux-amd64-ubuntu-kali-v6.0/dns-scout,dns-scout,' ./dns-scout-linux-amd64-ubuntu-kali-v6.0/dns-scout ./README.md ./setup-api-token.sh
+tar czvf "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v6.0.tar.gz" --transform 's,^./dns-scout-linux-amd64-ubuntu-kali-v6.0/dns-scout,dns-scout,' ./dns-scout-linux-amd64-ubuntu-kali-v6.0/dns-scout ./README.md ./setup-api-token.sh
 
-tar czvf dns-scout-linux-arm64-raspberry-pi-v6.0.tar.gz --transform 's,^./dns-scout-linux-arm64-raspberry-pi-v6.0/dns-scout,dns-scout,' ./dns-scout-linux-arm64-raspberry-pi-v6.0/dns-scout ./README.md ./setup-api-token.sh
+tar czvf "${project_root}/dns-scout-linux-arm64-raspberry-pi-v6.0.tar.gz" --transform 's,^./dns-scout-linux-arm64-raspberry-pi-v6.0/dns-scout,dns-scout,' ./dns-scout-linux-arm64-raspberry-pi-v6.0/dns-scout ./README.md ./setup-api-token.sh
 
-tar czvf dns-scout-linux-386-v6.0.tar.gz --transform 's,^./dns-scout-linux-386-v6.0/dns-scout,dns-scout,' ./dns-scout-linux-386-v6.0/dns-scout ./README.md ./setup-api-token.sh
+tar czvf "${project_root}/dns-scout-linux-386-v6.0.tar.gz" --transform 's,^./dns-scout-linux-386-v6.0/dns-scout,dns-scout,' ./dns-scout-linux-386-v6.0/dns-scout ./README.md ./setup-api-token.sh
 
-shasum -a 256 ./dns-scout-macos-amd64-intel-v6.0/dns-scout ./dns-scout-macos-arm64-silicon-v6.0/dns-scout ./dns-scout-linux-amd64-ubuntu-kali-v6.0/dns-scout ./dns-scout-linux-386-v6.0/dns-scout ./dns-scout-linux-arm64-raspberry-pi-v6.0/dns-scout ./dns-scout-linux-amd64-ubuntu-kali-v6.0.deb ./dns-scout-linux-arm64-raspberry-pi-v6.0.deb ./dns-scout-linux-386-v6.0.deb
+shasum -a 256 "${project_root}/dns-scout-macos-amd64-intel-v6.0/dns-scout" "${project_root}/dns-scout-macos-arm64-silicon-v6.0/dns-scout" "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v6.0/dns-scout" "${project_root}/dns-scout-linux-386-v6.0/dns-scout" "${project_root}/dns-scout-linux-arm64-raspberry-pi-v6.0/dns-scout" "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v6.0-1debian1.deb" "${project_root}/dns-scout-linux-arm64-raspberry-pi-v6.0-1debian1.deb" "${project_root}/dns-scout-linux-386-v6.0-1debian1.deb"
+
+# Clean up generated binaries and artifacts
+echo "Cleaning up generated binaries and artifacts..."
+rm -f "${project_root}/dns-scout-linux-*.tar.gz"
+# Run dpkg-buildpackage
+echo "Running dpkg-buildpackage..."
+dpkg-buildpackage -k${GPG_KEY_ID}
 
 echo "Build complete."
