@@ -78,7 +78,7 @@ Prerequisites: Go 1.21
    a. ```cd ~/Downloads/<unzipped-folder-name>``` "unzipped-folder-name"
    is the name of the folder created when extracting the tar file.  
    b. ```sudo chmod +x setup-api-token.sh```  
-   c. ```./setup-api-token.sh```
+   c. ```./setup-api-token.sh```  
    d. if you downloaded the .deb for Linux the setup-api-token.sh is in /usr/share/doc/dns-scout/  
    
 5. **Run DNS Scout:**
