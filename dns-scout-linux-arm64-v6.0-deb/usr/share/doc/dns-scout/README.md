@@ -40,15 +40,16 @@ eliminating the clutter typically seen in raw WHOIS outputs.
 DNS Scout lists TXT records in an easily digestible format,
 making tasks like SPF or DMARC verification review more straightforward.
 
-**Registrar**
-**NS Name Servers**
-**MX Records**
+**Registrar**  
+**NS Name Servers**  
+**MX Records**  
 **Displays TXT Records**, useful for checking domain verification,
-SPF settings, etc.
-**DMARC Records**
-**PTR**
-**ASN**
-**Exact DNS data, no scrolling**
+SPF settings, etc.  
+**DMARC Records**  
+**DKIM** google default and 365 defaults present, just enter domain.com  
+**PTR**  
+**ASN**  
+**Exact DNS data, no scrolling**  
 
 ### Installation Guide for DNS Scout
 
@@ -107,4 +108,3 @@ The ```/setup-api-token.sh``` script would be helpful for them.
 Command-Line Argument: Useful for those who wish to specify different API tokens
 for different runs without changing environment variables.
 It could be useful for testing.
-
