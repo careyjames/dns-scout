@@ -1,7 +1,13 @@
 package dnsinformation
 
 import (
+	"io/ioutil"
+	"os"
+	"strings"
 	"testing"
+
+	"github.com/careyjames/DNS-Scout/color"
+	constants "github.com/careyjames/DNS-Scout/constant"
 )
 
 func TestGetNS(t *testing.T) {
@@ -64,4 +70,38 @@ func TestGetNS(t *testing.T) {
 	})
 
 	// Add more test cases as needed.
+}
+
+func TestGetNSPrompt(t *testing.T) {
+	// Redirect stdout for testing the output
+	originalStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	t.Run("Display NS Records", func(t *testing.T) {
+		input := "example.com"
+		GetNSPrompt(input)
+		w.Close()
+		capturedOutput, _ := ioutil.ReadAll(r)
+
+		expectedOutput := color.Blue(" Name Servers: ") + color.Green("ns1.example.com, ns2.example.com") + constants.Newline
+		if strings.Contains(string(capturedOutput), expectedOutput) {
+			t.Errorf("Expected output displaying NS records, but got: %s", string(capturedOutput))
+		}
+	})
+
+	t.Run("No NS Records", func(t *testing.T) {
+		input := "nodata.com"
+		GetNSPrompt(input)
+		w.Close()
+		capturedOutput, _ := ioutil.ReadAll(r)
+
+		expectedOutput := color.Blue(" Name Servers: ") + color.Red("None") + constants.Newline
+		if strings.Contains(string(capturedOutput), expectedOutput) {
+			t.Errorf("Expected output containing 'None' for no NS records, but got: %s", string(capturedOutput))
+		}
+	})
+
+	// Restore the original stdout
+	os.Stdout = originalStdout
 }
