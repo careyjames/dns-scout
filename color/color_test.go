@@ -26,7 +26,7 @@ func TestGreen(t *testing.T) {
 
 func TestBlue(t *testing.T) {
 	text := "Hello, Blue!"
-	expected := "\033[38;5;39mHello, Blue!\033[0m"
+	expected := "\033[38;5;4mHello, Blue!\033[0m"
 	result := Blue(text)
 
 	if result != expected {

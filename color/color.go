@@ -14,7 +14,7 @@ func Green(text string) string {
 
 // Blue color
 func Blue(text string) string {
-	return fmt.Sprintf("\033[38;5;39m%s\033[0m", text)
+	return fmt.Sprintf("\033[38;5;4m%s\033[0m", text)
 }
 
 // Red color
