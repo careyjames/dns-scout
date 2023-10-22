@@ -10,8 +10,8 @@ const (
 )
 
 const (
-	RedColorEncoding    = "\033[38;5;88m"
-	YellowColorEncoding = "\033[38;5;222m"
-	BlueColorEncoding   = "\033[38;5;39m"
-	GreenColorEncoding  = "\033[38;5;78m"
+	RedColorEncoding    = "\033[38;5;1m"
+	YellowColorEncoding = "\033[38;5;3m"
+	BlueColorEncoding   = "\033[38;5;4m"
+	GreenColorEncoding  = "\033[38;5;2m"
 )

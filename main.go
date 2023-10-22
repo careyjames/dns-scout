@@ -27,7 +27,7 @@ func main() {
 	flag.StringVar(&apiTokenFlag, "api-token", "", "IPInfo API token")
 	flag.Parse()
 	rl, err := readline.NewEx(&readline.Config{
-		Prompt:              " \033[38;5;4m🌎\033[38;5;39m ",
+		Prompt:              " \033[38;5;8m\033[38;5;4m",
 		HistoryFile:         ".tmp-history",
 		AutoComplete:        nil,
 		InterruptPrompt:     "^C",
@@ -43,7 +43,7 @@ func main() {
 	s := spinner.New(spinner.CharSets[9], 100*time.Millisecond) // Use the dots character set and update every 100ms
 	for {
 		color.New(color.FgWhite).Println(" Enter domain, IP (or 'exit' to quit): ")
-		fmt.Println("\033[38;5;4m ------------------------------------\033[0m")
+		fmt.Println("\033[38;5;8m ------------------------------------\033[0m")
 		input, err := rl.Readline()
 		if err != nil { // io.EOF, readline.ErrInterrupt
 			break
