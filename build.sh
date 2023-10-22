@@ -11,7 +11,7 @@ project_root="/home/carey/DNS-Scout"
 
 # Create the upstream tarball and place it in the parent directory
 echo "Creating upstream tarball..."
-tar czvf "${project_root}/../dns-scout_6.0.orig.tar.gz" --exclude='./bin/*' --exclude='./dns-scout-linux-*' -C "${project_root}" .
+tar czvf "${project_root}/../dns-scout_6.0.orig.tar.gz" --exclude='.git' --exclude='./bin/*' --exclude='./dns-scout-linux-*' -C "${project_root}" .
 
 # Step 1: Compile the Go code
 echo "Compiling Go code..."
