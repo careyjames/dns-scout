@@ -42,7 +42,7 @@ func main() {
 	apiToken := clients.FetchAPIToken(apiTokenFlag)
 	s := spinner.New(spinner.CharSets[9], 100*time.Millisecond) // Use the dots character set and update every 100ms
 	for {
-		color.New(color.FgHiWhite).Println(" Enter domain, IP (or 'exit' to quit): ")
+		color.New(color.FgWhite).Println(" Enter domain, IP (or 'exit' to quit): ")
 		fmt.Println("\033[38;5;4m ------------------------------------\033[0m")
 		input, err := rl.Readline()
 		if err != nil { // io.EOF, readline.ErrInterrupt
