@@ -86,7 +86,7 @@ tar czvf "${project_root}/dns-scout-linux-386-v6.0.tar.gz" --transform 's,^./dns
 
 shasum -a 256 "${project_root}/dns-scout-macos-amd64-intel-v6.0/dns-scout" "${project_root}/dns-scout-macos-arm64-silicon-v6.0/dns-scout" "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v6.0/dns-scout" "${project_root}/dns-scout-linux-386-v6.0/dns-scout" "${project_root}/dns-scout-linux-arm64-raspberry-pi-v6.0/dns-scout" "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v6.0-1debian1.deb" "${project_root}/dns-scout-linux-arm64-raspberry-pi-v6.0-1debian1.deb" "${project_root}/dns-scout-linux-386-v6.0-1debian1.deb"
 
-# Clean up generated binaries and artifacts
+# Clean up the generated binaries and artifacts
 echo "Cleaning up generated binaries and artifacts..."
 rm -f "${project_root}/dns-scout-linux-*.tar.gz"
 # Run dpkg-buildpackage
