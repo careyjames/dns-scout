@@ -53,13 +53,13 @@ Description: DNS Scout for Linux/MacOS
   # Rename the Debian packages for specific distributions
   case "${arch}" in
     amd64)
-      deb_name="dns-scout-linux-amd64-ubuntu-kali-v6.0-1debian1.deb"
+      deb_name="dns-scout-linux-amd64-ubuntu-kali-v6.0.deb"
       ;;
     arm64)
-      deb_name="dns-scout-linux-arm64-raspberry-pi-v6.0-1debian1.deb"
+      deb_name="dns-scout-linux-arm64-raspberry-pi-v6.0.deb"
       ;;
     386)
-      deb_name="dns-scout-linux-386-v6.0-1debian1.deb"
+      deb_name="dns-scout-linux-386-v6.0.deb"
       ;;
   esac
 
