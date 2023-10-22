@@ -29,6 +29,7 @@ func getRegistrar(domain string) string {
 	return ErrorMessage
 }
 
+// GetRegistrarPromt ...
 func GetRegistrarPromt(input string, isIP bool) {
 	registrar := getRegistrar(input)
 
