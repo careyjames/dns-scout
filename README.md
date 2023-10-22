@@ -45,11 +45,11 @@ making tasks like SPF or DMARC verification review more straightforward.
 **MX Records**  
 **Displays TXT Records**, useful for checking domain verification,
 SPF settings, etc.  
-**DMARC Records**
-**DKIM** google default and 365 defaults present, just enter domain.com
-**PTR**
-**ASN**
-**Exact DNS data, no scrolling**
+**DMARC Records**  
+**DKIM** google default and 365 defaults present, just enter domain.com  
+**PTR**  
+**ASN**  
+**Exact DNS data, no scrolling**  
 
 ### Installation Guide for DNS Scout
 
