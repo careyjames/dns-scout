@@ -1,0 +1,19 @@
+# Ignore object files
+*.o
+
+# Ignore temporary files
+*.swp
+*.swo
+*.bak
+
+# Ignore user-specific files
+.gitignore
+.vscode/
+
+# Ignore logs and dumps
+*.log
+*.dmp
+
+# Ignore test cache
+.test_cache/
+.git/
