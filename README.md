@@ -40,11 +40,11 @@ eliminating the clutter typically seen in raw WHOIS outputs.
 DNS Scout lists TXT records in an easily digestible format,
 making tasks like SPF or DMARC verification review more straightforward.
 
-**Registrar**
-**NS Name Servers**
-**MX Records**
+**Registrar**  
+**NS Name Servers**  
+**MX Records**  
 **Displays TXT Records**, useful for checking domain verification,
-SPF settings, etc.
+SPF settings, etc.  
 **DMARC Records**
 **DKIM** google default and 365 defaults present, just enter domain.com
 **PTR**
