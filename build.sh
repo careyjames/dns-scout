@@ -6,6 +6,9 @@
 GPG_KEY_ID="EF536354988BF362947FC6FDBEB7932396E8FB23"
 # Define the project root directory
 project_root="/home/carey/DNS-Scout"
+# Move out binary files
+mkdir -p "${project_root}/../binaries"
+mv "${project_root}/bin/dns-scout" "${project_root}/../binaries/"
 # Remove existing upstream tarball if it exists
 [ -f "${project_root}/../dns-scout_6.0.orig.tar.gz" ] && rm "${project_root}/../dns-scout_6.0.orig.tar.gz"
 
@@ -91,8 +94,22 @@ shasum -a 256 "${project_root}/dns-scout-macos-amd64-intel-v6.0/dns-scout" "${pr
 # Clean up the generated binaries and artifacts
 echo "Cleaning up generated binaries and artifacts..."
 rm -f "${project_root}/dns-scout-linux-*.tar.gz"
+# Move generated binaries and packages to ../binaries/
+echo "Moving generated binaries and packages to ../binaries/"
+mv "${project_root}/dns-scout-linux-386-v6.0-1debian1.deb" "${project_root}/../binaries/"
+mv "${project_root}/dns-scout-linux-386-v6.0.tar.gz" "${project_root}/../binaries/"
+mv "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v6.0-1debian1.deb" "${project_root}/../binaries/"
+mv "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v6.0.tar.gz" "${project_root}/../binaries/"
+mv "${project_root}/dns-scout-linux-arm64-raspberry-pi-v6.0-1debian1.deb" "${project_root}/../binaries/"
+mv "${project_root}/dns-scout-linux-arm64-raspberry-pi-v6.0.tar.gz" "${project_root}/../binaries/"
+mv "${project_root}/dns-scout-macos-amd64-intel-v6.0.tar.gz" "${project_root}/../binaries/"
+mv "${project_root}/dns-scout-macos-arm64-silicon-v6.0.tar.gz" "${project_root}/../binaries/"
+# Before running dpkg-buildpackage, update debian/source/options to include --include-removal
+echo "--include-removal" >> "${project_root}/debian/source/options"
 # Run dpkg-buildpackage
 echo "Running dpkg-buildpackage..."
 dpkg-buildpackage -k${GPG_KEY_ID}
-
+# Move back go binary
+mv "${project_root}/../dns-scout_6.0.orig.tar.gz" "${project_root}/../binaries/"
+mv "${project_root}/../binaries/dns-scout" "${project_root}/bin/"
 echo "Build complete."
