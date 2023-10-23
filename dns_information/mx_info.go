@@ -20,6 +20,6 @@ func GetMXPrompt(input string) {
 	if len(mx) > 1 || len(mx) == 1 && mx[0] != "" {
 		fmt.Printf(color.Blue(" MX Records: ") + "✅ " + strings.Join(mx, ", ") + constants.Newline)
 	} else {
-		fmt.Printf(color.Blue(" MX Records: ") + "❌ No MX, No email." + constants.Newline)
+		fmt.Printf(color.Blue(" MX Records: ") + "❌ None" + constants.Newline)
 	}
 }
