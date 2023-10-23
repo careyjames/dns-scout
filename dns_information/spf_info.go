@@ -35,7 +35,7 @@ func GetSPFPrompt(input string) {
 		fmt.Printf(color.Blue(" SPF   ❌: ") + color.Red("There can only be ONE!") + constants.Newline)
 	} else {
 		if spfValid {
-			coloredSPFRecord := " " + spfRecord // Ensuring valid SPF records are green
+			coloredSPFRecord := " " + spfRecord // Ensuring valid SPF records are grey
 			fmt.Printf(color.Blue(" SPF   ✅:") + coloredSPFRecord + constants.Newline)
 		} else {
 			coloredSPFRecord := " " + spfRecord // Ensuring invalid SPF records are red
@@ -45,7 +45,7 @@ func GetSPFPrompt(input string) {
 }
 
 func colorCodeSPFRecord(record string) string {
-	colorCode := constants.GreyColorEncoding // Default color is green
+	colorCode := constants.GreyColorEncoding // Default color is grey
 
 	// Check if it's a valid SPF record
 	if IsValidSPF(record) {
@@ -58,7 +58,7 @@ func colorCodeSPFRecord(record string) string {
 		return fmt.Sprintf("%s%s\033[0m", colorCode, colorCodeSPFModifiers(record))
 	}
 
-	// For other TXT records, keep them green
+	// For other TXT records, keep them grey
 	return fmt.Sprintf("%s%s\033[0m", constants.GreyColorEncoding, record)
 }
 
