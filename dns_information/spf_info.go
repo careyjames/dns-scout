@@ -35,10 +35,10 @@ func GetSPFPrompt(input string) {
 		fmt.Printf(color.Blue(" SPF Record: ❌ ") + color.Red("There can only be ONE!") + constants.Newline)
 	} else {
 		if spfValid {
-			coloredSPFRecord := "✅ " + spfRecord
+			coloredSPFRecord := "✅ " + spfRecord // Ensuring valid SPF records are green
 			fmt.Printf(color.Blue(" SPF Record: ") + coloredSPFRecord + constants.Newline)
 		} else {
-			coloredSPFRecord := "❌ " + spfRecord
+			coloredSPFRecord := "❌ " + spfRecord // Ensuring invalid SPF records are red
 			fmt.Printf(color.Blue(" SPF Record: ") + coloredSPFRecord + constants.Newline)
 		}
 	}

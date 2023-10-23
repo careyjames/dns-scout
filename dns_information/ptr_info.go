@@ -47,9 +47,9 @@ func GetPTRPrompt(input string, isIp bool) {
 		}
 	} else {
 		if !isIp {
-			fmt.Printf(color.Blue(" PTR Records: ✅🟡 ") + color.Yellow("None, Google and Microsoft 365 use shared IPs, this is ok.") + constants.Newline)
+			fmt.Printf(color.Blue(" PTR Records: ✅ ") + color.Green("None, Google and Microsoft 365 use shared IPs, this is ok.") + constants.Newline)
 		} else {
-			fmt.Printf(color.Blue(" PTR Records: ✅🟡 ") + color.Yellow("None, Google and Microsoft 365 use shared IPs, this is ok."))
+			fmt.Printf(color.Blue(" PTR Records: ❌ ") + color.Red("None"))
 		}
 	}
 }
