@@ -34,10 +34,10 @@ func GetRegistrarPromt(input string, isIP bool) {
 	registrar := getRegistrar(input)
 
 	if registrar == ErrorMessage {
-		fmt.Printf(color.Blue(" Registrar: ") + color.Green("Unknown or ") + color.Yellow("Classified") + constants.Newline)
+		fmt.Printf(color.Blue(" Reg   🟡: ") + color.Grey("Unknown or ") + color.Yellow("Classified") + constants.Newline)
 	} else {
 		if !isIP || (isIP && registrar != ErrorMessage) {
-			fmt.Printf(color.Blue(" Registrar: ") + color.Green(registrar) + constants.Newline)
+			fmt.Printf(color.Blue(" Reg   🟢: ") + color.Grey(registrar) + constants.Newline)
 		}
 	}
 }

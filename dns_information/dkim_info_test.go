@@ -116,8 +116,8 @@ func TestGetDKIMPrompt(t *testing.T) {
 		capturedOutput, _ := ioutil.ReadAll(r)
 
 		// Customize the expected output based on your formatting and colors
-		expectedOutput := color.Blue(" DKIM Records: ") + color.Green("selector1.") + color.Green("Valid DKIM Record1") + constants.Newline +
-			color.Green("selector2.") + color.Green("Valid DKIM Record2") + constants.Newline
+		expectedOutput := color.Blue(" DKIM Records: ") + color.Grey("selector1.") + color.Grey("Valid DKIM Record1") + constants.Newline +
+			color.Grey("selector2.") + color.Grey("Valid DKIM Record2") + constants.Newline
 		if strings.Contains(string(capturedOutput), expectedOutput) {
 			t.Errorf("Expected output containing valid DKIM records, but got: %s", string(capturedOutput))
 		}
@@ -130,8 +130,8 @@ func TestGetDKIMPrompt(t *testing.T) {
 		capturedOutput, _ := ioutil.ReadAll(r)
 
 		// Customize the expected output based on your formatting and colors
-		expectedOutput := color.Blue(" DKIM Records: ") + color.Green("selector1.") + color.Red("Invalid DKIM Record1") + constants.Newline +
-			color.Green("selector2.") + color.Red("Invalid DKIM Record2") + constants.Newline
+		expectedOutput := color.Blue(" DKIM Records: ") + color.Grey("selector1.") + color.Red("Invalid DKIM Record1") + constants.Newline +
+			color.Grey("selector2.") + color.Red("Invalid DKIM Record2") + constants.Newline
 		if strings.Contains(string(capturedOutput), expectedOutput) {
 			t.Errorf("Expected output containing invalid DKIM records, but got: %s", string(capturedOutput))
 		}

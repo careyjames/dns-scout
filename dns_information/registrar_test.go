@@ -67,7 +67,7 @@ func TestGetRegistrarPrompt(t *testing.T) {
 		w.Close()
 		capturedOutput, _ := ioutil.ReadAll(r)
 
-		expectedOutput := color.Blue(" Registrar: ") + color.Green("Example Registrar") + constants.Newline
+		expectedOutput := color.Blue(" Registrar: ") + color.Grey("Example Registrar") + constants.Newline
 		if strings.Contains(string(capturedOutput), expectedOutput) {
 			t.Errorf("Expected output displaying registrar information, but got: %s", string(capturedOutput))
 		}
@@ -79,7 +79,7 @@ func TestGetRegistrarPrompt(t *testing.T) {
 		w.Close()
 		capturedOutput, _ := ioutil.ReadAll(r)
 
-		expectedOutput := color.Blue(" Registrar: ") + color.Green("Unknown or ") + color.Yellow("Classified") + constants.Newline
+		expectedOutput := color.Blue(" Registrar: ") + color.Grey("Unknown or ") + color.Yellow("Classified") + constants.Newline
 		if strings.Contains(string(capturedOutput), expectedOutput) {
 			t.Errorf("Expected output displaying 'Unknown or Classified', but got: %s", string(capturedOutput))
 		}
@@ -91,7 +91,7 @@ func TestGetRegistrarPrompt(t *testing.T) {
 		w.Close()
 		capturedOutput, _ := ioutil.ReadAll(r)
 
-		expectedOutput := color.Blue(" Registrar: ") + color.Green("Registrar for IP addresses not available") + constants.Newline
+		expectedOutput := color.Blue(" Registrar: ") + color.Grey("Registrar for IP addresses not available") + constants.Newline
 		if strings.Contains(string(capturedOutput), expectedOutput) {
 			t.Errorf("Expected output displaying registrar information for IP, but got: %s", string(capturedOutput))
 		}

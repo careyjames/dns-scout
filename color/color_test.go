@@ -15,9 +15,9 @@ func TestYellow(t *testing.T) {
 }
 
 func TestGreen(t *testing.T) {
-	text := "Hello, Green!"
-	expected := "\033[38;5;2mHello, Green!\033[0m"
-	result := Green(text)
+	text := "Hello, Grey!"
+	expected := "\033[38;5;2mHello, Grey!\033[0m"
+	result := Grey(text)
 
 	if result != expected {
 		t.Errorf("Expected: %s, Got: %s", expected, result)

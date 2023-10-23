@@ -39,8 +39,8 @@ func GetNS(domain string) ([]string, error) {
 func GetNSPrompt(input string) {
 	ns, _ := GetNS(input)
 	if len(ns) > 0 {
-		fmt.Printf(color.Blue(" Name Servers: ") + color.Green(strings.Join(ns, ", ")) + constants.Newline)
+		fmt.Printf(color.Blue(" NS    🟢: ") + color.Grey(strings.Join(ns, ", ")) + constants.Newline)
 	} else {
-		fmt.Printf(color.Blue(" Name Servers: ") + color.Red("None") + constants.Newline)
+		fmt.Printf(color.Blue(" NS    ❌: ") + color.Red("None") + constants.Newline)
 	}
 }

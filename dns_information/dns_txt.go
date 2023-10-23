@@ -32,12 +32,12 @@ func GetTXTFromAllOption(domain string) ([]string, error) {
 func GetTXTPrompt(input string) {
 	txt, _ := GetTXTFromAllOption(input)
 	if len(txt) > 0 {
-		fmt.Printf(color.Blue(" TXT Records: ") + constants.Newline)
+		fmt.Printf(color.Blue(" TXT   🟢: ") + constants.Newline)
 		for _, record := range txt {
 			coloredRecord := colorCodeSPFRecord(record)
 			fmt.Printf(" %s\n", coloredRecord)
 		}
 	} else {
-		fmt.Printf(color.Blue(" TXT Records: ") + color.Red("None") + constants.Newline)
+		fmt.Printf(color.Blue(" TXT   ❌: ") + color.Red("None") + constants.Newline)
 	}
 }

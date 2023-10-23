@@ -13,5 +13,5 @@ const (
 	RedColorEncoding    = "\033[38;5;1m"
 	YellowColorEncoding = "\033[38;5;3m"
 	BlueColorEncoding   = "\033[38;5;4m"
-	GreenColorEncoding  = "\033[38;5;242m"
+	GreyColorEncoding   = "\033[38;5;242m"
 )

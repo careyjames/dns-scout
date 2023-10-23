@@ -22,6 +22,8 @@ func ipsToStrings(ips []net.IP) []string {
 func ResolvedIPPrompt(input string) {
 	ips, _ := net.LookupIP(input)
 	if len(ips) > 0 {
-		fmt.Printf(color.Blue(" Resolved IPs: ") + color.Green(strings.Join(ipsToStrings(ips), ", ")) + constants.Newline)
+		fmt.Printf(color.Blue(" IPs   🟢: ") + color.Grey(strings.Join(ipsToStrings(ips), ", ")) + constants.Newline)
+	} else {
+		fmt.Printf(color.Blue(" IPs   ❌: ") + color.Red("None") + constants.Newline)
 	}
 }

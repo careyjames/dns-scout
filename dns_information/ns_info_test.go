@@ -84,7 +84,7 @@ func TestGetNSPrompt(t *testing.T) {
 		w.Close()
 		capturedOutput, _ := ioutil.ReadAll(r)
 
-		expectedOutput := color.Blue(" Name Servers: ") + color.Green("ns1.example.com, ns2.example.com") + constants.Newline
+		expectedOutput := color.Blue(" Name Servers: ") + color.Grey("ns1.example.com, ns2.example.com") + constants.Newline
 		if strings.Contains(string(capturedOutput), expectedOutput) {
 			t.Errorf("Expected output displaying NS records, but got: %s", string(capturedOutput))
 		}

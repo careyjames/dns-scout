@@ -7,8 +7,8 @@ func Yellow(text string) string {
 	return fmt.Sprintf("\033[38;5;3m%s\033[0m", text)
 }
 
-// Green 2 color light grey 242 testing
-func Green(text string) string {
+// Light Grey 242
+func Grey(text string) string {
 	return fmt.Sprintf("\033[38;5;242m%s\033[0m", text)
 }
 
