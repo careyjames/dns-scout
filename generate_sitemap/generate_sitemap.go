@@ -44,3 +44,7 @@ func GenerateSitemap() {
 	file.WriteString(xml.Header)
 	file.Write(output)
 }
+
+func main() {
+	GenerateSitemap()
+}
