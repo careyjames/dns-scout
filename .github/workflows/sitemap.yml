@@ -19,7 +19,7 @@ jobs:
           go-version: '1.17'  # Specify Go version
 
       - name: Generate Sitemap
-        run: go run generate_sitemap.go
+        run: go run generate_sitemap/generate_sitemap.go
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
