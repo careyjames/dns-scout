@@ -12,6 +12,7 @@ DNS Scout is compatible with macOS, Ubuntu, and Kali Linux.
 
 ![Example DNS records](example-domain.png)
 ![Example IP records](example-IP.png)
+![Example Misconfiguration](example-misconfiguration.png)
 
 ## Features
 
