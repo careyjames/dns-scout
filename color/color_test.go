@@ -14,9 +14,9 @@ func TestYellow(t *testing.T) {
 	}
 }
 
-func TestGreen(t *testing.T) {
+func TestGrey(t *testing.T) { // Changed the function name to TestGrey
 	text := "Hello, Grey!"
-	expected := "\033[38;5;2mHello, Grey!\033[0m"
+	expected := "\033[38;5;242mHello, Grey!\033[0m" // Updated ANSI code for grey
 	result := Grey(text)
 
 	if result != expected {
