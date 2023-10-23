@@ -10,7 +10,7 @@ import (
 	constants "github.com/careyjames/DNS-Scout/constant"
 )
 
-func TestHasDMARCRecod(t *testing.T) {
+func TestHasDMARCRecord(t *testing.T) {
 	// Define test cases
 	testCases := []struct {
 		description string
@@ -51,7 +51,7 @@ func TestHasDMARCRecod(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			result := hasDMARCRecod(tc.record)
+			result := HasDMARCRecord(tc.record)
 			if result != tc.expected {
 				t.Errorf("Expected result: %v, got: %v", tc.expected, result)
 			}

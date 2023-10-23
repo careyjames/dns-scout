@@ -23,14 +23,14 @@ func getDMARC(domain string) (string, error) {
 		return "", err
 	}
 	for _, record := range txtRecords {
-		if hasDMARCRecod(record) {
+		if HasDMARCRecord(record) {
 			return record, nil
 		}
 	}
 	return "", nil
 }
 
-func hasDMARCRecod(record string) bool {
+func HasDMARCRecord(record string) bool {
 	return (len(record) > 8 && record[:8] == DMARCValid) || (len(record) > 6 && record[:6] == "vDMARC")
 }
 
