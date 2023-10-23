@@ -76,6 +76,7 @@ Para aquellos que les gusta ensuciarse las manos:
     a usar la herramienta.
 
 ¡Eso es! Ha instalado manualmente DNS-Scout como un verdadero nerd.
+ahora hay .deb también para los nerds de Debian.
 
 **Aquí hay un desglose de cómo cada método de almacenamiento del token**
 **de API podría ser útil:**
