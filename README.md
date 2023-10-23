@@ -6,9 +6,7 @@
 
 [español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
 
-DNS Scout is a DNS troubleshooting tool that helps you get your email to the inbox.
-It checks SPF, DMARC, and MX records, and it is for both pros and beginners.
-DNS Scout is compatible with macOS, Ubuntu, and Kali Linux.
+DNS Scout is a DNS troubleshooting tool that helps you get your email to the inbox. It checks SPF, DMARC, DKIM and MX records, and it is for both InfoSec pros and beginners. DNS Scout is compatible with macOS, Ubuntu, Raspberry Pi and Kali Linux.
 
 ![Example DNS records](example-domain.png)
 ![Example IP records](example-IP.png)
@@ -80,7 +78,7 @@ Prerequisites: Go 1.21
    is the name of the folder created when extracting the tar file.  
    b. ```sudo chmod +x setup-api-token.sh```  
    c. ```./setup-api-token.sh```  
-   d. if you downloaded the .deb for Linux the setup-api-token.sh is in /usr/share/doc/dns-scout/  
+   d. if you downloaded the **.deb for Linux** the setup-api-token.sh is in /usr/share/doc/dns-scout/  
    
 5. **Run DNS Scout:**
    Open a **new** terminal window and type `dns-scout` to launch the tool.  
