@@ -41,15 +41,15 @@ func GetPTRPrompt(input string, isIp bool) {
 		ptrStr := strings.Join(ptr, ", ")
 		ptrStr = strings.ReplaceAll(ptrStr, ", ", ",\n ")
 		if !isIp {
-			fmt.Printf(color.Blue(" PTR Records: ") + color.Green(ptrStr) + constants.Newline)
+			fmt.Printf(color.Blue(" PTR Records: ✅ ") + color.Green(ptrStr) + constants.Newline)
 		} else {
-			fmt.Printf(color.Blue(" PTR Records: ") + color.Green(ptrStr))
+			fmt.Printf(color.Blue(" PTR Records: ✅ ") + color.Green(ptrStr))
 		}
 	} else {
 		if !isIp {
-			fmt.Printf(color.Blue(" PTR Records: ") + color.Yellow("None") + constants.Newline)
+			fmt.Printf(color.Blue(" PTR Records: ✅🟡 ") + color.Yellow("None, Google and Microsoft 365 use shared IPs, this is ok.") + constants.Newline)
 		} else {
-			fmt.Printf(color.Blue(" PTR Records: ") + color.Yellow("None"))
+			fmt.Printf(color.Blue(" PTR Records: ✅🟡 ") + color.Yellow("None, Google and Microsoft 365 use shared IPs, this is ok."))
 		}
 	}
 }

@@ -32,43 +32,36 @@ func GetSPFPrompt(input string) {
 	countTxt := totalSPFRecords(txt)
 
 	if countTxt > 1 {
-		fmt.Printf(color.Blue(" SPF Records: ") + color.Red("Can't have two SPF!") + constants.Newline)
+		fmt.Printf(color.Blue(" SPF Records: ❌ ") + color.Red("There can only be ONE!") + constants.Newline)
 	} else {
 		if spfValid {
-			coloredSPFRecord := colorCodeSPFRecord(spfRecord)
-			fmt.Printf(color.Blue(" SPF Records: ") + coloredSPFRecord + constants.Newline)
+			coloredSPFRecord := "✅ " + spfRecord
+			fmt.Printf(color.Blue(" SPF Record: ") + coloredSPFRecord + constants.Newline)
 		} else {
-			coloredSPFRecord := colorCodeSPFRecord(spfRecord) // "No SPF record" will be red
-			fmt.Printf(color.Blue(" SPF Records: ") + coloredSPFRecord + constants.Newline)
+			coloredSPFRecord := "❌ " + spfRecord
+			fmt.Printf(color.Blue(" SPF Record: ") + coloredSPFRecord + constants.Newline)
 		}
 	}
 }
 
 func colorCodeSPFRecord(record string) string {
 	colorCode := constants.GreenColorEncoding
-
 	if strings.HasPrefix(record, "v=spf1") || strings.Contains(record, "spf") || strings.Contains(record, "-all") || strings.Contains(record, "~all") {
 		colorCode = constants.RedColorEncoding
 		if IsValidSPF(record) {
 			colorCode = constants.GreenColorEncoding
 		}
 	}
+	return fmt.Sprintf("%s%s\033[0m", colorCode, colorCodeSPFModifiers(record))
+}
 
-	if !IsValidSPF(record) && strings.Contains(strings.ToLower(record), "spf") {
-		colorCode = constants.RedColorEncoding
-	}
-
-	if record == " No SPF record" {
-		colorCode = constants.RedColorEncoding
-	}
-
+func colorCodeSPFModifiers(record string) string {
 	if strings.Contains(record, "-all") {
 		record = strings.ReplaceAll(record, "-all", color.Yellow("-all"))
 	} else if strings.Contains(record, "~all") {
 		record = strings.ReplaceAll(record, "~all", color.Green("~all"))
 	}
-
-	return fmt.Sprintf("%s%s\033[0m", colorCode, record)
+	return record
 }
 
 func totalSPFRecords(records []string) int {

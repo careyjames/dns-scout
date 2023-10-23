@@ -18,8 +18,8 @@ func getMX(domain string) ([]string, error) {
 func GetMXPrompt(input string) {
 	mx, _ := getMX(input)
 	if len(mx) > 1 || len(mx) == 1 && mx[0] != "" {
-		fmt.Printf(color.Blue(" MX Records: ") + color.Green(strings.Join(mx, ", ")) + constants.Newline)
+		fmt.Printf(color.Blue(" MX Records: ") + "✅ " + strings.Join(mx, ", ") + constants.Newline)
 	} else {
-		fmt.Printf(color.Blue(" MX Records: ") + color.Red("No MX, No email.") + constants.Newline)
+		fmt.Printf(color.Blue(" MX Records: ") + "❌ No MX, No email." + constants.Newline)
 	}
 }

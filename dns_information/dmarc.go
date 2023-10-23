@@ -40,12 +40,12 @@ func GetDMARCPrompt(input string) {
 	if dmarc != "" {
 		if isValidDMARC(dmarc) {
 			formattedDMARC := formatLongText(dmarc, 80, " ")
-			fmt.Printf(color.Blue(" DMARC Record: ") + color.Green(formattedDMARC) + constants.Newline)
+			fmt.Printf(color.Blue(" DMARC Record: ") + "✅ " + formattedDMARC + constants.Newline)
 		} else {
-			fmt.Printf(color.Blue(" DMARC Record: ") + color.Red(dmarc[8:]) + constants.Newline)
+			fmt.Printf(color.Blue(" DMARC Record: ") + "❌ " + dmarc[8:] + constants.Newline)
 		}
 	} else {
-		fmt.Printf(color.Blue(" DMARC Record: ") + color.Red("None") + constants.Newline)
+		fmt.Printf(color.Blue(" DMARC Record: ") + "❌ None" + constants.Newline)
 	}
 }
 
