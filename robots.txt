@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /private/
+Disallow: /restricted/
+Allow: /public/
+Sitemap: https://dns-scout.com/sitemap.xml
