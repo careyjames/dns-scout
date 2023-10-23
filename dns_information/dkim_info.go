@@ -55,7 +55,7 @@ func GetDKIMPrompt(input string) {
 			}
 		} else {
 			if !flag {
-				dkimPrompt = "❌ None" + constants.Newline
+				dkimPrompt = color.Red("❌ None") + constants.Newline
 			}
 		}
 	}
