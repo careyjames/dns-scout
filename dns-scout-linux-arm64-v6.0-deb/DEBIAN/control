@@ -4,7 +4,7 @@ Section: net
 Priority: optional
 Architecture: arm64
 Essential: no
-Installed-Size: 9120
+Installed-Size: 9124
 Maintainer: Carey Balboa
 Description: DNS Scout for Linux/MacOS
  DNS Scout pulls and displays DNS records in a color-coded console output.
