@@ -2,7 +2,7 @@ Package: dns-scout
 Version: 6.0-1debian1
 Architecture: amd64
 Maintainer: Carey James Balboa <carey.balboa@machelpnashville.com>
-Installed-Size: 7
+Installed-Size: 14
 Depends: libc6
 Section: net
 Priority: optional
