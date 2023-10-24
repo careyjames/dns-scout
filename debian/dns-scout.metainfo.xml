@@ -9,10 +9,6 @@
   <url type="homepage">https://github.com/careyjames/DNS-Scout/</url>
   <developer_name>Carey James Balboa - Mac Help Nashville, Inc.</developer_name>
   <launchable type="desktop-id">dns-scout.desktop</launchable>
-  <provides>
-    <binary>dns-scout</binary>
-    <binary>setup-api-token.sh</binary>
-  </provides>
   <keywords>
     <keyword>macos</keyword>
     <keyword>raspberry pi</keyword>
@@ -51,6 +47,15 @@
     <p>DNS Scout is a DNS troubleshooting tool designed to ensure your email reaches the inbox. It performs comprehensive checks on SPF, DMARC, DKIM, and MX records, making it an indispensable tool for both InfoSec professionals and general users.</p>
     <p>The application is compatible with a wide range of platforms including macOS, Ubuntu, Raspberry Pi, and Kali Linux, offering flexibility and ease of use.</p>
   </description>
+  
+    <permissions>
+      <permission>network</permission>
+      <permission>file</permission>
+    </permissions>
+  
+    <releases>
+      <release version="6.0" date="2023-10-23"/>
+    </releases>
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">none</content_attribute>
     <content_attribute id="violence-fantasy">none</content_attribute>
@@ -73,7 +78,4 @@
     <content_attribute id="money-purchasing">none</content_attribute>
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
-  <releases>
-    <release version="6.0" date="2023-10-23"/>
-  </releases>
 </component>
