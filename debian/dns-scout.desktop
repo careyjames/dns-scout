@@ -1,0 +1,9 @@
+
+[Desktop Entry]
+Type=Application
+Name=DNS Scout
+Exec=/usr/local/bin/dns-scout
+Icon=utilities-terminal
+Comment=DNS troubleshooting tool that gets your email to the inbox.
+Terminal=true
+Categories=Network;Security;
