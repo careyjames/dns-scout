@@ -1,0 +1,4 @@
+
+# This file specifies which files should be installed in which directories.
+# Syntax: <source file> <destination directory>
+dns-scout.metainfo.xml /usr/share/metainfo/
