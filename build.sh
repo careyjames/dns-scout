@@ -44,7 +44,18 @@ for arch in amd64 arm64 386; do
   mkdir -p "${deb_folder}/usr/share/doc/dns-scout"
   mkdir -p "${deb_folder}/DEBIAN"
 
-  cp "./bin/dns-scout" "${deb_folder}/usr/local/bin/"
+  case "${arch}" in
+  amd64)
+    cp "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v6.0/dns-scout" "${deb_folder}/usr/local/bin/"
+    ;;
+  arm64)
+    cp "${project_root}/dns-scout-linux-arm64-raspberry-pi-v6.0/dns-scout" "${deb_folder}/usr/local/bin/"
+    ;;
+  386)
+    cp "${project_root}/dns-scout-linux-386-v6.0/dns-scout" "${deb_folder}/usr/local/bin/"
+    ;;
+esac
+
   cp README.md "${deb_folder}/usr/share/doc/dns-scout/"
   cp setup-api-token.sh "${deb_folder}/usr/share/doc/dns-scout/"
 
