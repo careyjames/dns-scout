@@ -12,3 +12,7 @@ debian/binaries
 *.tar.gz
 ./bin/**
 dns-scout-**/**/dns-scout
+
+# ignore generate files
+dns-scout.metainfo.xml
+debian/files
