@@ -4,3 +4,11 @@
 .vscode/
 dns-scout_6.0.orig.tar.gz
 .git
+
+
+# ignore binaries
+
+debian/binaries
+*.tar.gz
+./bin/**
+dns-scout-**/**/dns-scout
