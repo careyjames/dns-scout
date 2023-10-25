@@ -5,7 +5,7 @@
 # Define the GPG key ID
 GPG_KEY_ID="EF536354988BF362947FC6FDBEB7932396E8FB23"
 # Define the project root directory
-project_root="/home/carey/DNS-Scout"
+project_root=$(pwd)
 export VERSION=$(grep Version constant/constants.go  | awk -F '=' '{print $2}'| awk -F'"' '{print $2}')
 
 # Run env subtitute
@@ -143,7 +143,7 @@ dpkg-buildpackage -k${GPG_KEY_ID}
 
 # Run source changes
 echo "======== Running Debian source changes process..."
-debuild -S -k${GPG_KEY_ID}
+dpkg-buildpackage -S -k${GPG_KEY_ID}
 
 # Move back go binary
 mv -f "${project_root}/../dns-scout_${VERSION}.orig.tar.gz" "${project_root}/../binaries/"
