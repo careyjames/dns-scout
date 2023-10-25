@@ -2,12 +2,12 @@ Source: dns-scout
 Section: net
 Priority: optional
 Maintainer: Carey James Balboa <carey.balboa@machelpnashville.com>
-Build-Depends: debhelper (>= 9)
-Standards-Version: 4.6.2.0
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0.1
 
 Package: dns-scout
 Architecture: any
-Depends: libc6, ${misc:Depends}
+Depends: ${misc:Depends}
 Description: DNS Scout for Linux/MacOS
  DNS Scout pulls and displays DNS records in a color-coded console output.
  It stands out by filtering out non-essential information, presenting users

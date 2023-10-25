@@ -56,12 +56,15 @@ for arch in amd64 arm64 386; do
   case "${arch}" in
   amd64)
     cp "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v${VERSION}/dns-scout" "${deb_folder}/usr/local/bin/"
+    chmod 755 "${deb_folder}/usr/local/bin/dns-scout"
     ;;
   arm64)
     cp "${project_root}/dns-scout-linux-arm64-raspberry-pi-v${VERSION}/dns-scout" "${deb_folder}/usr/local/bin/"
+    chmod 755 "${deb_folder}/usr/local/bin/dns-scout"
     ;;
   386)
     cp "${project_root}/dns-scout-linux-386-v${VERSION}/dns-scout" "${deb_folder}/usr/local/bin/"
+    chmod 755 "${deb_folder}/usr/local/bin/dns-scout"
     ;;
 esac
 
@@ -120,16 +123,16 @@ rm -f "${project_root}/dns-scout-linux-*.tar.gz"
 # Move generated binaries and packages to debian/binaries/
 echo "======== Moving generated binaries and packages to debian/binaries/"
 
-mv "${project_root}/dns-scout-linux-386-v${VERSION}-1debian1.deb" "${project_root}/../binaries/"
-mv "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v${VERSION}-1debian1.deb" "${project_root}/../binaries/"
-mv "${project_root}/dns-scout-linux-arm64-raspberry-pi-v${VERSION}-1debian1.deb" "${project_root}/../binaries/"
+mv -f "${project_root}/dns-scout-linux-386-v${VERSION}-1debian1.deb" "${project_root}/../binaries/"
+mv -f "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v${VERSION}-1debian1.deb" "${project_root}/../binaries/"
+mv -f "${project_root}/dns-scout-linux-arm64-raspberry-pi-v${VERSION}-1debian1.deb" "${project_root}/../binaries/"
 
 
-mv "${project_root}/dns-scout-linux-386-v${VERSION}.tar.gz" "${project_root}/../binaries/"
-mv "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v${VERSION}.tar.gz" "${project_root}/../binaries/"
-mv "${project_root}/dns-scout-linux-arm64-raspberry-pi-v${VERSION}.tar.gz" "${project_root}/../binaries/"
-mv "${project_root}/dns-scout-macos-amd64-intel-v${VERSION}.tar.gz" "${project_root}/../binaries/"
-mv "${project_root}/dns-scout-macos-arm64-silicon-v${VERSION}.tar.gz" "${project_root}/../binaries/"
+mv -f "${project_root}/dns-scout-linux-386-v${VERSION}.tar.gz" "${project_root}/../binaries/"
+mv -f "${project_root}/dns-scout-linux-amd64-ubuntu-kali-v${VERSION}.tar.gz" "${project_root}/../binaries/"
+mv -f "${project_root}/dns-scout-linux-arm64-raspberry-pi-v${VERSION}.tar.gz" "${project_root}/../binaries/"
+mv -f "${project_root}/dns-scout-macos-amd64-intel-v${VERSION}.tar.gz" "${project_root}/../binaries/"
+mv -f "${project_root}/dns-scout-macos-arm64-silicon-v${VERSION}.tar.gz" "${project_root}/../binaries/"
 
 # Before running dpkg-buildpackage, update debian/source/options to include --include-removal
 echo "--include-removal" >> "${project_root}/debian/source/options"
@@ -143,18 +146,18 @@ echo "======== Running Debian source changes process..."
 debuild -S -k${GPG_KEY_ID}
 
 # Move back go binary
-mv "${project_root}/../dns-scout_${VERSION}.orig.tar.gz" "${project_root}/../binaries/"
-mv "${project_root}/../dns-scout_${VERSION}-1debian1.debian.tar.xz" "${project_root}/../binaries/"
+mv -f "${project_root}/../dns-scout_${VERSION}.orig.tar.gz" "${project_root}/../binaries/"
+mv -f "${project_root}/../dns-scout_${VERSION}-1debian1.debian.tar.xz" "${project_root}/../binaries/"
 
-mv "${project_root}/../dns-scout_${VERSION}-1debian1_amd64.deb" "${project_root}/../binaries/"
-mv "${project_root}/../dns-scout_${VERSION}-1debian1_amd64.buildinfo" "${project_root}/../binaries/"
-mv "${project_root}/../dns-scout_${VERSION}-1debian1_amd64.changes" "${project_root}/../binaries/"
+mv -f "${project_root}/../dns-scout_${VERSION}-1debian1_amd64.deb" "${project_root}/../binaries/"
+mv -f "${project_root}/../dns-scout_${VERSION}-1debian1_amd64.buildinfo" "${project_root}/../binaries/"
+mv -f "${project_root}/../dns-scout_${VERSION}-1debian1_amd64.changes" "${project_root}/../binaries/"
 
-mv "${project_root}/../dns-scout_${VERSION}-1debian1.dsc" "${project_root}/../binaries/"
-mv "${project_root}/../dns-scout_${VERSION}-1debian1_source.buildinfo" "${project_root}/../binaries/"
-mv "${project_root}/../dns-scout_${VERSION}-1debian1_source.changes" "${project_root}/../binaries/"
-mv "${project_root}/../dns-scout_${VERSION}-1debian1_source.build" "${project_root}/../binaries/"
+mv -f "${project_root}/../dns-scout_${VERSION}-1debian1.dsc" "${project_root}/../binaries/"
+mv -f "${project_root}/../dns-scout_${VERSION}-1debian1_source.buildinfo" "${project_root}/../binaries/"
+mv -f "${project_root}/../dns-scout_${VERSION}-1debian1_source.changes" "${project_root}/../binaries/"
+mv -f "${project_root}/../dns-scout_${VERSION}-1debian1_source.build" "${project_root}/../binaries/"
 
 
-mv "${project_root}/../binaries/dns-scout" "${project_root}/bin/"
+mv -f "${project_root}/../binaries/dns-scout" "${project_root}/bin/"
 echo "Build complete."

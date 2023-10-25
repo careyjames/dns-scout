@@ -1,0 +1,31 @@
+name: dns-scout
+version: '6.4'
+summary: DNS Scout for Linux/MacOS
+description: |
+  DNS Scout for Linux/MacOS pulls and displays DNS records in a color-coded console output.
+  It stands out by filtering out non-essential information, presenting users with a cleaner,
+  more focused view of the DNS data.
+
+grade: stable
+confinement: strict
+
+base: core18
+
+parts:
+  dns-scout:
+    plugin: go
+    source: . 
+    
+    build-packages:
+      - gcc
+    stage-packages:
+      - libssl-dev
+
+apps:
+  dns-scout:
+    command: dns-scout
+    plugs:
+      - network
+      - network-bind
+      - home
+      - removable-media
