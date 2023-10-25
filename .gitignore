@@ -13,6 +13,9 @@ debian/binaries
 ./bin/**
 dns-scout-**/**/dns-scout
 
+# ignore build artifacts
+dns-scout-**-deb/**
+
 # ignore generate files (we commit the .tpl)
 dns-scout.metainfo.xml
 debian/files
