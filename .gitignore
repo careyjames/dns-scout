@@ -15,6 +15,8 @@ dns-scout-**/**/dns-scout
 
 # ignore build artifacts
 dns-scout-**-deb/**
+dns-scout-linux**/**
+dns-scout-macos**/**
 
 # ignore generate files (we commit the .tpl)
 dns-scout.metainfo.xml
