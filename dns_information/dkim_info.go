@@ -59,15 +59,7 @@ func GetDKIMPrompt(input string) {
 			}
 		}
 	}
-<<<<<<< HEAD:dns_information/dkim_info.go
-	if flag {
-		fmt.Printf(color.Blue(" DKIM  ✅:") + dkimPrompt)
-	} else {
-		fmt.Printf(color.Blue(" DKIM  ❌:") + dkimPrompt)
-	}
-=======
 	fmt.Printf(color.Blue(" DKIM Records: ") + dkimPrompt)
->>>>>>> 8983975 (correct code):dns_information/dmki_info.go
 }
 
 func hasDKIMRecord(record string) bool {
