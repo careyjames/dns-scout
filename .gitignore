@@ -18,6 +18,8 @@ dns-scout-**-deb/**
 dns-scout-linux**/**
 dns-scout-macos**/**
 
+bin/dns-scout
+
 # ignore generate files (we commit the .tpl)
 dns-scout.metainfo.xml
 debian/files
