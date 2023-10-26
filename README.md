@@ -76,7 +76,7 @@ Prerequisites: Go 1.21
    a. ```sudo mkdir -p /usr/local/bin/```  
    b. ```sudo mv dns-scout /usr/local/bin/```
 
-4. **Get free or paid token (for ASN) from ipinfo.io**
+4. **Get free token (or paid token for ASN) from ipinfo.io**
    [Website](https://ipinfo.io) and run the "setup-api-token.sh".  
    a. ```cd ~/Downloads/<unzipped-folder-name>``` "unzipped-folder-name"
    is the name of the folder created when extracting the tar file.  
