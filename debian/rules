@@ -1,4 +1,28 @@
 #!/usr/bin/make -f
+#
+# debhelper build system for Go packages
+#
+# Author: Michael Hudson <mwh@debian.org>
 
+export DH_GOPKG=$(shell grep "^XS-Go-Import-Path" debian/control | cut -d: -f2)
+
+# Build the binary
 %:
-	dh $@
+	dh $@ --buildsystem=golang
+
+# Install the binary to the build directory
+build:
+	dh_installdirs
+
+# Install the man page
+install:
+	dh_install
+
+# Clean up
+clean:
+	dh_clean
+
+# Rebuild the package
+rebuild:
+	dh_clean
+	dh $@ --buildsystem=golang

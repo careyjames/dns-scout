@@ -2,8 +2,9 @@ Source: dns-scout
 Section: net
 Priority: optional
 Maintainer: Carey James Balboa <carey.balboa@machelpnashville.com>
-Build-Depends: debhelper-compat (= 13)
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-go
 Standards-Version: 4.6.0.1
+XS-Go-Import-Path: github.com/careyjames/DNS-Scout
 
 Package: dns-scout
 Architecture: any

@@ -20,6 +20,8 @@ dns-scout-macos**/**
 
 bin/dns-scout
 
+obj-**-gnu
+
 # ignore generate files (we commit the .tpl)
 dns-scout.metainfo.xml
 debian/files
