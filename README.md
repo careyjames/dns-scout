@@ -6,7 +6,7 @@
 [![OS - Ubuntu Linux](https://img.shields.io/badge/OS-Ubuntu_Linux-blue?logo=linux&logoColor=white)](https://ubuntu.com/ "Go to Ubuntu homepage")
 [![OS - Kali Linux](https://img.shields.io/badge/OS-Kali_Linux-blue?logo=linux&logoColor=white)](https://www.kali.org/ "Go to Kali homepage")
 [![OS - Raspberry Pi](https://img.shields.io/badge/OS-Raspberry_Pi-blue?logo=raspberry-pi&logoColor=white)](https://www.raspberrypi.org/ "Go to Raspberry Pi homepage")
-[![macOS](https://img.shields.io/badge/OS-Silicon_and_Intel-blue?logo=apple&logoColor=white)](https://www.apple.com/macos/ "Go to Apple homepage")
+[![macOS](https://img.shields.io/badge/OS-macOS-Silicon_and_Intel-blue?logo=apple&logoColor=white)](https://www.apple.com/macos/ "Go to Apple homepage")
 
 [español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
 
