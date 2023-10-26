@@ -2,7 +2,7 @@
 ![Build Status](https://github.com/careyjames/DNS-Scout/actions/workflows/go.yml/badge.svg?branch=main)
 [![Code Climate](https://codeclimate.com/github/careyjames/DNS-Scout/badges/gpa.svg)](https://codeclimate.com/github/careyjames/DNS-Scout)
 [![Go Report Card](https://goreportcard.com/badge/github.com/careyjames/DNS-Scout)](https://goreportcard.com/report/github.com/careyjames/DNS-Scout)
-[![OS - Linux](https://img.shields.io/badge/OS-Linux-blue?logo=linux&logoColor=white)](https://www.linux.org/ "Go to Linux homepage")
+![OS - Debian Linux](https://img.shields.io/badge/OS-Debian_Linux-blue?logo=linux&logoColor=white)
 [![OS - macOS](https://img.shields.io/badge/OS-macOS-blue?logo=apple&logoColor=white)](https://www.apple.com/macos/ "Go to Apple homepage")
 ![macOS](https://img.shields.io/badge/OS-Silicon_and_Intel-blue?logo=apple&logoColor=white)
 
