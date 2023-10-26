@@ -4,7 +4,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/careyjames/DNS-Scout)](https://goreportcard.com/report/github.com/careyjames/DNS-Scout)
 [![OS - Linux](https://img.shields.io/badge/OS-Linux-blue?logo=linux&logoColor=white)](https://www.linux.org/ "Go to Linux homepage")
 [![OS - macOS](https://img.shields.io/badge/OS-macOS-blue?logo=apple&logoColor=white)](https://www.apple.com/macos/ "Go to Apple homepage")
-![macOS - Silicon & Intel](https://img.shields.io/badge/OS-Silicon_and_Intel-blue?logo=apple&logoColor=white)
+![macOS](https://img.shields.io/badge/OS-Silicon_and_Intel-blue?logo=apple&logoColor=white)
 
 [español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
 
