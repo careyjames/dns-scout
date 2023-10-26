@@ -156,7 +156,6 @@ mv -f "${project_root}/../dns-scout_${VERSION}-1debian1_amd64.changes" "${projec
 mv -f "${project_root}/../dns-scout_${VERSION}-1debian1.dsc" "${project_root}/../binaries/"
 mv -f "${project_root}/../dns-scout_${VERSION}-1debian1_source.buildinfo" "${project_root}/../binaries/"
 mv -f "${project_root}/../dns-scout_${VERSION}-1debian1_source.changes" "${project_root}/../binaries/"
-mv -f "${project_root}/../dns-scout_${VERSION}-1debian1_source.build" "${project_root}/../binaries/"
 
 
 mv -f "${project_root}/../binaries/dns-scout" "${project_root}/bin/"
