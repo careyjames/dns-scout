@@ -18,7 +18,6 @@ dns-scout-**-deb/**
 dns-scout-linux**/**
 dns-scout-macos**/**
 
-bin/dns-scout
 
 obj-**-gnu
 
