@@ -18,12 +18,3 @@ parts:
   dns-scout:
     plugin: go
     source: https://github.com/careyjames/DNS-Scout.git
-apps:
-  dns-scout:
-    command: bin/dns-scout
-    daemon: simple
-    plugs: 
-      - network
-      - network-bind
-      - home
-      - removable-media
