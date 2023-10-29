@@ -12,17 +12,17 @@ confinement: strict
 base: core22
 architectures:
   - amd64
+build-snaps:
+  - go
 parts:
   dns-scout:
-    build-environment:
     plugin: go
-    source: https://github.com/careyjames/dns-scout
-    
+    source: https://github.com/careyjames/DNS-Scout.git
 apps:
   dns-scout:
     command: bin/dns-scout
     daemon: simple
-    plugs:
+    plugs: 
       - network
       - network-bind
       - home
