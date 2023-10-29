@@ -1,5 +1,5 @@
 name: dns-scout
-version: '6.4'
+version: '6.6'
 summary: DNS Scout for Linux/MacOS
 description: |
   DNS Scout for Linux/MacOS pulls and displays DNS records in a color-coded console output.
@@ -9,21 +9,25 @@ description: |
 grade: stable
 confinement: strict
 
-base: core18
+base: core22
 
 parts:
   dns-scout:
     plugin: go
-    source: . 
+    go-importpath: github.com/careyjames/dns-scout
+    source: https://github.com/careyjames/dns-scout
     
     build-packages:
-      - gcc
+    # No system-level build dependencies for a pure Go project
+      
     stage-packages:
-      - libssl-dev
+    # Include only the system-level runtime dependencies your application needs
+      
 
 apps:
   dns-scout:
-    command: dns-scout
+    command: bin/dns-scout
+    daemon: simple
     plugs:
       - network
       - network-bind
