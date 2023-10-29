@@ -10,7 +10,8 @@ grade: stable
 confinement: strict
 
 base: core22
-
+architectures:
+  - amd64
 parts:
   dns-scout:
     build-environment:
@@ -18,7 +19,7 @@ parts:
     plugin: go
     # go-importpath: github.com/careyjames/dns-scout
     source: https://github.com/careyjames/dns-scout
-    architectures: amd64
+    
     # build-packages:
     # No system-level build dependencies for a pure Go project
       
