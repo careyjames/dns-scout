@@ -9,7 +9,7 @@ description: |
 grade: stable
 confinement: strict
 
-base: core22
+base: amd64
 
 parts:
   dns-scout:
