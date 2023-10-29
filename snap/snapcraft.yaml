@@ -15,7 +15,6 @@ architectures:
 parts:
   dns-scout:
     build-environment:
-      - GOROOT: /usr/local/go
     plugin: go
     # go-importpath: github.com/careyjames/dns-scout
     source: https://github.com/careyjames/dns-scout
