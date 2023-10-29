@@ -16,16 +16,8 @@ parts:
   dns-scout:
     build-environment:
     plugin: go
-    # go-importpath: github.com/careyjames/dns-scout
     source: https://github.com/careyjames/dns-scout
     
-    # build-packages:
-    # No system-level build dependencies for a pure Go project
-      
-    # stage-packages:
-    # Include only the system-level runtime dependencies your application needs
-      
-
 apps:
   dns-scout:
     command: bin/dns-scout
