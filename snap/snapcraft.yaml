@@ -19,10 +19,10 @@ parts:
     go-importpath: github.com/careyjames/dns-scout
     source: https://github.com/careyjames/dns-scout
     
-    build-packages:
+    # build-packages:
     # No system-level build dependencies for a pure Go project
       
-    stage-packages:
+    # stage-packages:
     # Include only the system-level runtime dependencies your application needs
       
 
