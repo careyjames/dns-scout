@@ -29,7 +29,7 @@ jobs:
 
       - name: Run Tests and Upload Coverage
         env:
-          CC_TEST_REPORTER_ID: d48965e5014ef39430f07bfdbe0e6359cfd470f51564fc6e15cd1c91c4871e74
+          CC_TEST_REPORTER_ID: 4409f8e483a77d5f19fc0ccb0e31b4b0829d054f325e81eaf98cd2f4115f490e
         run: |
           go test ./... -coverprofile c.out
           mkdir -p ./github.com/careyjames
