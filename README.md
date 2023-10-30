@@ -78,7 +78,7 @@ Prerequisites: Go 1.21
 
 4. **Get free token (or paid token for ASN) from ipinfo.io**
    [Website](https://ipinfo.io) and run the "setup-api-token.sh".  
-   **If you don't need ASN data, you can skip this step. Press Enter at program launch to skip token entry.**
+   **If you don't need ASN data, you can skip this step. Press Enter at program launch to skip token entry.**  
    a. ```cd ~/Downloads/<unzipped-folder-name>``` "unzipped-folder-name"
    is the name of the folder created when extracting the tar file.  
    b. ```sudo chmod +x setup-api-token.sh```  
