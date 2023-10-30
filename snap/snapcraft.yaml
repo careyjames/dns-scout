@@ -12,7 +12,7 @@ type: app
 
 base: core22
 architectures:
-  - amd64
+  - all
 build-snaps:
   - go
 parts:
