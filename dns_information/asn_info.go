@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/careyjames/DNS-Scout/color"
-	constants "github.com/careyjames/DNS-Scout/constant"
-	"github.com/careyjames/DNS-Scout/dto"
+	"github.com/careyjames/dns-scout/color"
+	constants "github.com/careyjames/dns-scout/constant"
+	"github.com/careyjames/dns-scout/dto"
 )
 
 func getURL() string {

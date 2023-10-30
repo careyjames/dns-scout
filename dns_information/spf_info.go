@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/careyjames/DNS-Scout/color"
-	constants "github.com/careyjames/DNS-Scout/constant"
+	"github.com/careyjames/dns-scout/color"
+	constants "github.com/careyjames/dns-scout/constant"
 )
 
 // getSPF fetches and analyzes the SPF record for a given domain.

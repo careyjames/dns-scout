@@ -1,14 +1,14 @@
-[![Test Coverage](https://api.codeclimate.com/v1/badges/970a194c160c45855199/test_coverage)](https://codeclimate.com/github/careyjames/DNS-Scout/test_coverage)
-![Build Status](https://github.com/careyjames/DNS-Scout/actions/workflows/go.yml/badge.svg?branch=main)
-[![Code Climate](https://codeclimate.com/github/careyjames/DNS-Scout/badges/gpa.svg)](https://codeclimate.com/github/careyjames/DNS-Scout)
-[![Go Report Card](https://goreportcard.com/badge/github.com/careyjames/DNS-Scout)](https://goreportcard.com/report/github.com/careyjames/DNS-Scout)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/970a194c160c45855199/test_coverage)](https://codeclimate.com/github/careyjames/dns-scout/test_coverage)
+![Build Status](https://github.com/careyjames/dns-scout/actions/workflows/go.yml/badge.svg?branch=main)
+[![Code Climate](https://codeclimate.com/github/careyjames/dns-scout/badges/gpa.svg)](https://codeclimate.com/github/careyjames/dns-scout)
+[![Go Report Card](https://goreportcard.com/badge/github.com/careyjames/dns-scout)](https://goreportcard.com/report/github.com/careyjames/dns-scout)
 [![OS - Debian Linux](https://img.shields.io/badge/OS-Debian_Linux-blue?logo=linux&logoColor=white)](https://www.debian.org/ "Go to Debian homepage")
 [![OS - Ubuntu Linux](https://img.shields.io/badge/OS-Ubuntu_Linux-blue?logo=linux&logoColor=white)](https://ubuntu.com/ "Go to Ubuntu homepage")
 [![OS - Kali Linux](https://img.shields.io/badge/OS-Kali_Linux-blue?logo=linux&logoColor=white)](https://www.kali.org/ "Go to Kali homepage")
 [![OS - Raspberry Pi](https://img.shields.io/badge/OS-Raspberry_Pi-blue?logo=raspberry-pi&logoColor=white)](https://www.raspberrypi.org/ "Go to Raspberry Pi homepage")
 [![macOS](https://img.shields.io/badge/macOS-Silicon_and_Intel-blue?logo=apple&logoColor=white)](https://www.apple.com/macos/ "Go to Apple homepage")
 
-[español](https://github.com/careyjames/DNS-Scout/blob/main/README(espa%C3%B1ol).md)
+[español](https://github.com/careyjames/dns-scout/blob/main/README(espa%C3%B1ol).md)
 
 DNS Scout is a DNS troubleshooting tool that gets your email to the inbox. Checks SPF, DMARC, DKIM and MX records, for InfoSec Pros and Normies. Compatible with macOS, Ubuntu, Raspberry Pi and Kali Linux.
 

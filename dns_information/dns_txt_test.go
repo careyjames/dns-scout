@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/careyjames/DNS-Scout/color"
-	constants "github.com/careyjames/DNS-Scout/constant"
+	"github.com/careyjames/dns-scout/color"
+	constants "github.com/careyjames/dns-scout/constant"
 )
 
 func TestGetTXT(t *testing.T) {

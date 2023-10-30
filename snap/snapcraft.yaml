@@ -8,6 +8,7 @@ description: |
 
 grade: stable
 confinement: strict
+type: app
 
 base: core22
 architectures:
@@ -17,8 +18,9 @@ build-snaps:
 parts:
   dns-scout:
     plugin: go
-    source-type: git
-    source: https://github.com/careyjames/DNS-Scout.git
+    source: .
+#    source-type: git
+#    source: https://github.com/careyjames/dns-scout
 apps:
   dns-scout:
     command: bin/dns-scout

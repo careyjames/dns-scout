@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: DNS Scout
 Upstream-Contact: Carey James Balboa - Mac Help Nashville, Inc.
-Source: https://github.com/careyjames/DNS-Scout/
+Source: https://github.com/careyjames/dns-scout/
 
 Files: *
 Copyright: 2023 Carey James Balboa - Mac Help Nashville, Inc.

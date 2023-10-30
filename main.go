@@ -7,9 +7,9 @@ import (
 	"os"
 	"time"
 
-	clients "github.com/careyjames/DNS-Scout/clients"
-	constants "github.com/careyjames/DNS-Scout/constant"
-	dnsinformation "github.com/careyjames/DNS-Scout/dns_information"
+	clients "github.com/careyjames/dns-scout/clients"
+	constants "github.com/careyjames/dns-scout/constant"
+	dnsinformation "github.com/careyjames/dns-scout/dns_information"
 	color "github.com/fatih/color"
 
 	"github.com/briandowns/spinner"

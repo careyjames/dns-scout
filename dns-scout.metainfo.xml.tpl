@@ -6,7 +6,7 @@
   <project_license>MIT</project_license>
   <name>DNS Scout</name>
   <summary>DNS troubleshooting tool for email deliverability, checking SPF, DMARC, DKIM, and MX records. Compatible with multiple platforms.</summary>
-  <url type="homepage">https://github.com/careyjames/DNS-Scout/</url>
+  <url type="homepage">https://github.com/careyjames/dns-scout/</url>
   <developer_name>Carey James Balboa - Mac Help Nashville, Inc.</developer_name>
   <launchable type="desktop-id">dns-scout.desktop</launchable>
   <keywords>

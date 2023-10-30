@@ -3,8 +3,8 @@ package dnsinformation
 import (
 	"fmt"
 
-	"github.com/careyjames/DNS-Scout/color"
-	constants "github.com/careyjames/DNS-Scout/constant"
+	"github.com/careyjames/dns-scout/color"
+	constants "github.com/careyjames/dns-scout/constant"
 )
 
 const (

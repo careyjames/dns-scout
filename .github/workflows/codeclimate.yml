@@ -33,6 +33,6 @@ jobs:
         run: |
           go test ./... -coverprofile c.out
           mkdir -p ./github.com/careyjames
-          ln -s $PWD ./github.com/careyjames/DNS-Scout
+          ln -s $PWD ./github.com/careyjames/dns-scout
           ./cc-test-reporter format-coverage -t gocov -o codeclimate.json c.out
           ./cc-test-reporter upload-coverage -i ./codeclimate.json

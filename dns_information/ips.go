@@ -5,8 +5,8 @@ import (
 	"net"
 	"strings"
 
-	"github.com/careyjames/DNS-Scout/color"
-	constants "github.com/careyjames/DNS-Scout/constant"
+	"github.com/careyjames/dns-scout/color"
+	constants "github.com/careyjames/dns-scout/constant"
 )
 
 // IpsToStrings converts a slice of net.IP to a slice of string.
