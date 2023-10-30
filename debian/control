@@ -7,7 +7,7 @@ Standards-Version: 4.6.0.1
 XS-Go-Import-Path: github.com/careyjames/dns-scout
 
 Package: dns-scout
-Architecture: any
+Architecture: amd64
 Depends: ${misc:Depends}
 Description: DNS Scout for Linux/MacOS
  DNS Scout pulls and displays DNS records in a color-coded console output.

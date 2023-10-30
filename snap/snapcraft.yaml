@@ -1,5 +1,5 @@
 name: dns-scout
-version: '6.9'
+version: '6.10'
 summary: DNS Scout for Linux/MacOS
 description: |
   DNS Scout for Linux/MacOS pulls and displays DNS records in a color-coded console output.
