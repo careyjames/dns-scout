@@ -11,7 +11,19 @@ confinement: strict
 type: app
 
 base: core22
-architectures: [amd64, arm64, armhf, i386]
+architectures: 
+  - build-on: amd64
+    build-for: amd64
+  - build-on: arm64
+    build-for: arm64
+  - build-on: armhf
+    build-for: armhf
+  - build-on: i386
+    build-for: i386
+  - build-on: i686
+    build-for: i686
+  - build-on: x86_64
+    build-for: x86_64
 build-snaps:
   - go
 parts:
