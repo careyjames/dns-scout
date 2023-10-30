@@ -1,5 +1,5 @@
 name: dns-scout
-version: '6.8'
+version: '6.9'
 summary: DNS Scout for Linux/MacOS
 description: |
   DNS Scout for Linux/MacOS pulls and displays DNS records in a color-coded console output.
@@ -11,11 +11,7 @@ confinement: strict
 type: app
 
 base: core22
-architectures:
-  - amd64 
-  - arm64
-  - armhf
-  - i386
+architectures: [amd64, arm64, armhf, i386]
 build-snaps:
   - go
 parts:
