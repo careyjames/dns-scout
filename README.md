@@ -1,4 +1,4 @@
-[![Test Coverage](https://api.codeclimate.com/v1/badges/970a194c160c45855199/test_coverage)](https://codeclimate.com/github/careyjames/dns-scout/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/d4e845cc3d2bac221e50/test_coverage)](https://codeclimate.com/github/careyjames/dns-scout/test_coverage)
 ![Build Status](https://github.com/careyjames/dns-scout/actions/workflows/go.yml/badge.svg?branch=main)
 [![Code Climate](https://codeclimate.com/github/careyjames/dns-scout/badges/gpa.svg)](https://codeclimate.com/github/careyjames/dns-scout)
 [![Go Report Card](https://goreportcard.com/badge/github.com/careyjames/dns-scout)](https://goreportcard.com/report/github.com/careyjames/dns-scout)
