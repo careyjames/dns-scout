@@ -16,7 +16,7 @@ func FetchAPIToken(apiTokenFlag string) string {
 		apiToken = apiTokenFlag
 	}
 	if apiToken == "" {
-		fmt.Print("IPINFO_API_TOKEN environment variable is not set.\nPlease enter your IPInfo API token: ")
+		fmt.Print("IPINFO_API_TOKEN environment variable not set.\nEnter ipinfo.io API token, or press return to skip ASN: ")
 		fmt.Scanln(&apiToken)
 	}
 	return apiToken
