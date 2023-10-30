@@ -18,9 +18,8 @@ build-snaps:
 parts:
   dns-scout:
     plugin: go
-    source: .
-#    source-type: git
-#    source: https://github.com/careyjames/dns-scout
+    source-type: git
+    source: https://github.com/careyjames/dns-scout
 apps:
   dns-scout:
     command: bin/dns-scout
