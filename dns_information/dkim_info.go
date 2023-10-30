@@ -59,7 +59,7 @@ func GetDKIMPrompt(input string) {
 			}
 		}
 	}
-	fmt.Printf(color.Blue(" DKIM Records: ") + dkimPrompt)
+	fmt.Printf(color.Blue(" DKIM    : ") + dkimPrompt)
 }
 
 func hasDKIMRecord(record string) bool {
