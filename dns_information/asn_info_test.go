@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/careyjames/DNS-Scout/dto"
+	"github.com/careyjames/dns-scout/dto"
 )
 
 func TestGetURL(t *testing.T) {
