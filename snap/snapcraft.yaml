@@ -12,7 +12,10 @@ type: app
 
 base: core22
 architectures:
-  - all
+  - amd64 
+  - arm64
+  - armhf
+  - i386
 build-snaps:
   - go
 parts:
