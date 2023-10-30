@@ -73,3 +73,4 @@ extend-diff-ignore = "(^|/)(.*\.o|.*\.swp|.*\.swo|.*\.bak|.*\.log|.*\.dmp|\.giti
 --include-removal
 --include-removal
 --include-removal
+--include-removal
