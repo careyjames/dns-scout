@@ -11,6 +11,12 @@ import (
 
 // getPTR fetches the PTR records for a given domain.
 func getPTR(domain string) ([]string, error) {
+	// mx - ptr (AND OPERATION)
+	// TRUE - TRUE : TRUE
+	// FALSE - TRUE : FALSE
+	// TRUE - PTR : FALSE
+	// FALSE - FALSE : FALSE
+
 	ips, err := net.LookupIP(domain)
 	if err != nil {
 		return nil, err
@@ -40,16 +46,23 @@ func GetPTRPrompt(input string, isIp bool) {
 		// Join the records with a comma and a space, then replace ", " at the end of each line with a line break followed by a space
 		ptrStr := strings.Join(ptr, ", ")
 		ptrStr = strings.ReplaceAll(ptrStr, ", ", ",\n ")
-		if !isIp {
+		if !isIp && !isMx(input) {
 			fmt.Printf(color.Blue(" PTR   ✅: ") + color.Grey(ptrStr) + constants.Newline)
 		} else {
+			// we might need to delete this
 			fmt.Printf(color.Blue(" PTR   ✅: ") + color.Grey(ptrStr))
 		}
 	} else {
 		if !isIp {
+		        // FIXME: add mapping for google microsoft for their service
 			fmt.Printf(color.Blue(" PTR   🟢: ") + color.Grey("None, Google and Microsoft 365 use shared IPs, this is ok.") + constants.Newline)
 		} else {
 			fmt.Printf(color.Blue(" PTR   ❌: ") + color.Red("None"))
 		}
 	}
+}
+
+func isMx(input string) bool {
+	x, _ := getMX(input)
+	return len(x) > 0
 }
