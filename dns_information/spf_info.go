@@ -22,7 +22,7 @@ func getSPF(domain string) (bool, string) {
 			return false, record
 		}
 	}
-	return false, " No SPF record"
+	return false, "No SPF record"
 }
 
 // GetSPFPrompt is prompt for spf
