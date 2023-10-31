@@ -48,7 +48,7 @@ Servidores de nombres NS
 **Datos DNS exactos, sin desplazamiento**
 
 ### Guía de instalación de DNS Scout
-
+[![Instalar desde Snap Store](https://snapcraft.io/static/images/badges/es/snap-store-white.svg)](https://snapcraft.io/dns-scout)
 #### Instalación manual de Nerd para MacOS/Linux
 
 Requisitos previos: Go 1.21
