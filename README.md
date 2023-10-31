@@ -7,6 +7,7 @@
 [![OS - Kali Linux](https://img.shields.io/badge/OS-Kali_Linux-blue?logo=linux&logoColor=white)](https://www.kali.org/ "Go to Kali homepage")
 [![OS - Raspberry Pi](https://img.shields.io/badge/OS-Raspberry_Pi-blue?logo=raspberry-pi&logoColor=white)](https://snapcraft.io/install/dns-scout/raspbian "Go to Raspberry Pi installer")
 [![macOS](https://img.shields.io/badge/macOS-Silicon_and_Intel-blue?logo=apple&logoColor=white)](https://www.apple.com/macos/ "Go to Apple homepage")
+[![dns-scout](https://snapcraft.io/dns-scout/badge.svg)](https://snapcraft.io/dns-scout)  
 
 [español](https://github.com/careyjames/dns-scout/blob/main/README(espa%C3%B1ol).md)
 
