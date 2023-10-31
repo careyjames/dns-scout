@@ -12,7 +12,7 @@ require (
 
 require (
 	golang.org/x/term v0.13.0 // indirect
-	golang.org/x/tools/cmd/cover v0.1.0-deprecated // indirect
+	
 )
 
 require (
