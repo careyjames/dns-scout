@@ -1,2 +1,2 @@
-DNS-Scout-v6.0.tar.gz filter=lfs diff=lfs merge=lfs -text
-dns-scout_6.0.orig.tar.gz filter=lfs diff=lfs merge=lfs -text
+DNS-Scout-v6.11.tar.gz filter=lfs diff=lfs merge=lfs -text
+dns-scout_6.11.orig.tar.gz filter=lfs diff=lfs merge=lfs -text
