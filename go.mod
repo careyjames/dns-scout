@@ -10,7 +10,10 @@ require (
 	github.com/miekg/dns v1.1.56
 )
 
-require golang.org/x/term v0.13.0 // indirect
+require (
+	golang.org/x/term v0.13.0 // indirect
+	golang.org/x/tools/cmd/cover v0.1.0-deprecated // indirect
+)
 
 require (
 	github.com/briandowns/spinner v1.23.0
