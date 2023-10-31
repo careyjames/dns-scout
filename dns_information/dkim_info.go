@@ -48,18 +48,18 @@ func GetDKIMPrompt(input string) {
 				if index > 0 && len(dkimPrompt) > 0 {
 					dkimPrompt += " " + color.Grey(selector+".") + color.Grey(formattedDMARC) + constants.Newline
 				} else {
-					dkimPrompt += " " + color.Grey(selector+".") + color.Grey(formattedDMARC) + constants.Newline
+					dkimPrompt += color.Blue(" DKIM  ✅: ") + " " + color.Grey(selector+".") + color.Grey(formattedDMARC) + constants.Newline
 				}
 			} else {
 				dkimPrompt += " " + color.Grey(selector+".") + color.Red(dkim[7:]) + constants.Newline
 			}
 		} else {
 			if !flag {
-				dkimPrompt = color.Red(" None") + constants.Newline
+				dkimPrompt = color.Blue(" DKIM  ❌: ") + color.Red("None") + constants.Newline
 			}
 		}
 	}
-	fmt.Printf(color.Blue(" DKIM    : ") + dkimPrompt)
+	fmt.Printf(dkimPrompt)
 }
 
 func hasDKIMRecord(record string) bool {
