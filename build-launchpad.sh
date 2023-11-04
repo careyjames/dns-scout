@@ -28,7 +28,7 @@ tar czvf "../dns-scout_${VERSION}.orig.tar.gz" --exclude='.git' --exclude='.gita
 						--exclude='*.tpl' \
 						--exclude='./bin/*' \
 						--exclude='./dns-scout-linux-*' \
-						-C "${project_root}/dns-scout" .
+						-C "${project_root}" .
 
 # Download required GO modules
 go mod vendor
