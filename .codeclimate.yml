@@ -1,0 +1,11 @@
+version: '2'
+plugins:
+  - name: go
+    enabled: true
+plugins:
+  go:
+    enabled: true
+    channel: 'auto'
+exclude_paths:
+  - 'vendor/**/*'
+

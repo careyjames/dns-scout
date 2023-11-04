@@ -1,0 +1,26 @@
+
+.DS_Store
+.tmp-history
+.vscode/
+.git
+
+
+# ignore binaries
+
+debian/binaries
+*.tar.gz
+./bin/**
+dns-scout-**/**/dns-scout
+
+# ignore build artifacts
+dns-scout-**-deb/**
+dns-scout-linux**/**
+dns-scout-macos**/**
+
+
+obj-**-gnu
+
+# ignore generate files (we commit the .tpl)
+dns-scout.metainfo.xml
+debian/files
+debian/changelog

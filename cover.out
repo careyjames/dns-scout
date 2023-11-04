@@ -1,0 +1,15 @@
+mode: set
+github.com/careyjames/dns-scout/main.go:19.13,22.43 2 0
+github.com/careyjames/dns-scout/main.go:22.43,25.3 2 0
+github.com/careyjames/dns-scout/main.go:26.2,38.16 5 0
+github.com/careyjames/dns-scout/main.go:38.16,39.13 1 0
+github.com/careyjames/dns-scout/main.go:41.2,44.6 4 0
+github.com/careyjames/dns-scout/main.go:44.6,48.17 4 0
+github.com/careyjames/dns-scout/main.go:48.17,49.9 1 0
+github.com/careyjames/dns-scout/main.go:51.3,51.22 1 0
+github.com/careyjames/dns-scout/main.go:51.22,53.4 1 0
+github.com/careyjames/dns-scout/main.go:54.3,59.46 6 0
+github.com/careyjames/dns-scout/main.go:63.74,64.11 1 0
+github.com/careyjames/dns-scout/main.go:64.11,73.3 8 0
+github.com/careyjames/dns-scout/main.go:74.2,75.20 2 0
+github.com/careyjames/dns-scout/main.go:75.20,77.3 1 0
