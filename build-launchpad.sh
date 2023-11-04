@@ -34,7 +34,11 @@ cd dns-scout
 
 # Create the upstream tarball and place it in the parent directory
 echo "Creating upstream tarball..."
-tar czvf "../dns-scout_${VERSION}.orig.tar.gz" --exclude='.git' --exclude='./bin/*' --exclude='./dns-scout-linux-*' -C "${project_debsrc}/dns-scout" .
+tar czvf "../dns-scout_${VERSION}.orig.tar.gz" --exclude='.git' --exclude='.gitattributes' --exclude='.github/*' --exclude='.gitignore' \
+						--exclude='*.tpl' \
+						--exclude='./bin/*' \
+						--exclude='./dns-scout-linux-*' \
+						-C "${project_debsrc}/dns-scout" .
 
 # Download required GO modules
 go mod vendor
