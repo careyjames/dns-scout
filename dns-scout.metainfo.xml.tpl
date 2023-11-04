@@ -54,7 +54,7 @@
     </permissions>
   
     <releases>
-      <release version="$VERSION" date="2023-10-23"/>
+      <release version="$VERSION" date="2023-11-2"/>
     </releases>
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">none</content_attribute>
