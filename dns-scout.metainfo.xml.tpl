@@ -37,10 +37,10 @@
   </categories>
   <screenshots>
     <screenshot type="default">
-      <image>example-domain.png</image>
+      <image>https://raw.githubusercontent.com/careyjames/dns-scout/main/example-domain.png</image>
     </screenshot>
     <screenshot>
-      <image>example-IP.png</image>
+      <image>https://raw.githubusercontent.com/careyjames/dns-scout/main/example-IP.png</image>
     </screenshot>
   </screenshots>
   <description>
