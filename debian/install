@@ -1,6 +1,7 @@
 
 # This file specifies which files should be installed in which directories.
 # Syntax: <source file> <destination directory>
+desktop-menu/dns-scout.desktop /usr/share/applications/
 dns-scout.metainfo.xml /usr/share/metainfo/
 setup-api-token.sh /usr/share/doc/dns-scout/
 README.md /usr/share/doc/dns-scout/
