@@ -1,9 +1,15 @@
 Source: dns-scout
-Section: net
-Priority: optional
 Maintainer: Carey James Balboa <carey.balboa@machelpnashville.com>
-Build-Depends: debhelper-compat (= 13), dh-golang, golang-go
-Standards-Version: 4.6.0.1
+Uploaders: Carey James Balboa <carey.balboa@machelpnashville.com>
+Section: net
+Testsuite: autopkgtest-pkg-go
+Priority: optional
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/go-team/packages/dns-scout
+Vcs-Git: https://salsa.debian.org/go-team/packages/dns-scout.git
+Homepage: https://github.com/careyjames/dns-scout/
+Rules-Requires-Root: no
 XS-Go-Import-Path: github.com/careyjames/dns-scout
 
 Package: dns-scout
