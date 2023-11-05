@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 XS-Go-Import-Path: github.com/careyjames/dns-scout
 
 Package: dns-scout
-Architecture: amd64
+Architecture: amd64 i386 arm64 armhf
 Depends: libc6 ${misc:Depends}
 Description: DNS Scout for Linux/MacOS
  DNS Scout pulls and displays DNS records in a color-coded console output.
