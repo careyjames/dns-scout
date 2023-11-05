@@ -7,7 +7,6 @@
 
 # ignore binaries
 
-debian/binaries
 *.tar.gz
 ./bin/**
 dns-scout-**/**/dns-scout
@@ -22,8 +21,6 @@ obj-**-gnu
 
 # ignore generate files (we commit the .tpl)
 dns-scout.metainfo.xml
-debian/files
-debian/changelog
 
 # Ignore GO modules
 vendor/
