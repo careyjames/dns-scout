@@ -22,6 +22,9 @@ envsubst < dns-scout.metainfo.xml.tpl > dns-scout.metainfo.xml
 # Remove GO vendor modules
 [ -d vendor/ ] && rm -rf vendor/
 
+# Update version from changelog (because we might not have set it earlier for debugging)
+VERSION=`head -n 1 debian/changelog| sed -E 's|[a-z-]+\s+\(([^\)]+)\)\s+.*|\1|'`
+
 # Create the upstream tarball and place it in the parent directory
 echo "Creating upstream tarball..."
 tar czvf "../dns-scout_${VERSION}.orig.tar.gz" --exclude='.git' --exclude='.gitattributes' --exclude='.github/*' --exclude='.gitignore' \
