@@ -13,9 +13,7 @@
 
 DNS Scout is a DNS troubleshooting tool that gets your email to the inbox. Checks SPF, DMARC, DKIM and MX records, for InfoSec Pros and Normies. Compatible with macOS, Ubuntu, Raspberry Pi and Kali Linux.
 
-![Example DNS records](example-domain.png)
-![Example IP records](example-IP.png)
-![Example Misconfiguration](example-misconfiguration.png)
+[![asciicast](https://asciinema.org/a/WVYXCIHVyu5IjIcqqxvk5NWJu.svg)](https://asciinema.org/a/WVYXCIHVyu5IjIcqqxvk5NWJu)
 
 ## Features
 
