@@ -28,6 +28,7 @@ tar czvf "../dns-scout_${VERSION}.orig.tar.gz" --exclude='.git' --exclude='.gita
 						--exclude='*.tpl' \
 						--exclude='./bin/*' \
 						--exclude='./dns-scout-linux-*' \
+						--exclude='./generate_sitemap/*' \
 						-C "${project_root}" .
 
 # Download required GO modules
