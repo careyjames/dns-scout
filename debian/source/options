@@ -1,2 +1,2 @@
-extend-diff-ignore = "(^|/)(.*\.o|.*\.swp|.*\.swo|.*\.bak|.*\.log|.*\.dmp|\.gitignore|\.vscode/|\.test_cache/|\.git/|bin/dns-scout|dns-scout-linux-.*|dns-scout-macos-.*)$"
-
+extend-diff-ignore = "(^|/)(.*\.o|.*\.swp|.*\.swo|.*\.bak|.*\.log|.*\.dmp|.*\.tpl|build.*\.sh|\.gitignore|\.vscode/|\.test_cache/|\.git/|\.github/.*|generate_sitemap/.*|\.tmp-history|bin/dns-scout|dns-scout-linux-.*|dns-scout-macos-.*)$"
+--include-removal
