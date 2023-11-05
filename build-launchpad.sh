@@ -10,13 +10,21 @@ export VERSION=$(grep Version constant/constants.go  | awk -F '=' '{print $2}'| 
 
 cp -R ./debian "${HOME}/binaries/debian"
 
+
 # Run dpkg-buildpackage
 echo "======== Running Debian packaging process..."
 cd ~/binaries/debian
 dpkg-buildpackage -k${GPG_KEY_ID}
 
 # Run source changes
-echo "======== Running Debian source changes process..."
-dpkg-buildpackage -S -k${GPG_KEY_ID}
+#echo "======== Running Debian source changes process..."
+#dpkg-buildpackage -S -k${GPG_KEY_ID}
 
+cd ~/binaries/debian
+debuild -S -sd -k${GPG_KEY_ID}
+
+cd ~/binaries
+dput ppa:careyjames/dns-scout dns-scout_${VERSION}-1debian1_source.changes
+
+# 
 echo "Build complete."
