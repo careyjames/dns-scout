@@ -8,4 +8,5 @@ plugins:
     channel: 'auto'
 exclude_paths:
   - 'vendor/**/*'
+  - '*_test.go'
 
