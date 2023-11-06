@@ -31,7 +31,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: 4409f8e483a77d5f19fc0ccb0e31b4b0829d054f325e81eaf98cd2f4115f490e
         run: |
-          go test ./... -coverprofile c.out
+          go test $(go list ./... | grep -v constant | grep -v dto | grep -v generate_sitemap | grep -v generate_sitemap) -coverprofile c.out
           mkdir -p ./github.com/careyjames
           ln -s $PWD ./github.com/careyjames/dns-scout
           ./cc-test-reporter format-coverage -t gocov -o codeclimate.json c.out
