@@ -24,3 +24,7 @@ dns-scout.metainfo.xml
 
 # Ignore GO modules
 vendor/
+
+# coverage
+coverage.html
+coverage.out

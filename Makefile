@@ -16,4 +16,7 @@ clean:
 	rm -f bin/dns-scout
 
 test:
-	go test ./...
+	go test -cover ./...
+
+coverage:
+	go tool cover -html=coverage.out -o coverage.html
